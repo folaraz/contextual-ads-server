@@ -1,0 +1,38 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"strings"
+)
+
+func adHandler(w http.ResponseWriter, r *http.Request) {
+	keywords := r.URL.Query().Get("keywords")
+	url := r.URL.Query().Get("url")
+	fmt.Println(keywords, url)
+	requested := strings.Split(strings.ToLower(keywords), ",")
+	matched := GetAd(url, requested)
+
+	err := json.NewEncoder(w).Encode(matched)
+	if err != nil {
+		return
+	}
+}
+
+// request comes in with url and keywords.
+// checks cache for embeddings and usese that to query for the ads from inventory
+// matching engine for right ads to display
+// todo expose api to get vector representation of url from storage
+// run query to get the top k ads that matches the vector from the inventory
+// run the matching engine to get the bid winner for the ad and return it to the client
+func main() {
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("GET /ads", adHandler)
+
+	err := http.ListenAndServe(":8080", mux)
+	if err != nil {
+		fmt.Println(err)
+	}
+}
