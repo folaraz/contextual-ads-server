@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/folaraz/contextual-ads-server/internal/storage"
+	"github.com/folaraz/contextual-ads-server/internal/utils"
 )
 
 type Ad struct {
@@ -20,6 +21,7 @@ var ads = []Ad{
 
 func GetAd(url string, keyword []string) Ad {
 	var matched Ad
-	urlContext := storage.GetContext(url)
+	urlHash, _, _ := utils.GenerateHashAndURL(url)
+	urlContext := storage.GetContext(urlHash)
 	return matched
 }

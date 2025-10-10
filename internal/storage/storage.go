@@ -1,16 +1,18 @@
 package storage
 
 type UrlContext struct {
-	keywords map[string]int16
-	vector   []float64
+	Keywords        []string
+	NamedEntities   []string
+	EmbeddingVector []float64
+	IabCategories   []string
 }
 
 //hashing mechanism for urls
 
 var cache = map[string]UrlContext{}
 
-func GetContext(url string) UrlContext {
-	if context, ok := cache[url]; ok {
+func GetContext(urlHash string) UrlContext {
+	if context, ok := cache[urlHash]; ok {
 		return context
 	}
 	return UrlContext{}
@@ -19,6 +21,6 @@ func GetContext(url string) UrlContext {
 func set(url string, keywords map[string]int16, vector []float64) {
 	var stuff UrlContext
 	stuff.vector = vector
-	stuff.keywords = keywords
+	stuff.Keywords = keywords
 	cache[url] = stuff
 }
