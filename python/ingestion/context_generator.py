@@ -52,7 +52,27 @@ class ContextGenerator:
         self.embedder = SentenceTransformer("all-MiniLM-L6-v2", device=str(self.DEVICE))
         self.crawler = Crawler()
 
-    def generate_context(self):
+    def generate_ad_context(self, ad: dict) -> Any:
+        context_targeting = ad["targeting"]
+        creative = ad["creative"]
+        if not context_targeting or not creative:
+            return None
+        keywords = context_targeting["keywords"]
+        entities = context_targeting["entities"]
+        topics = context_targeting["topics"]
+
+        embedding_text = f"""
+        Ad Headline: {creative.get("headline", "")}
+        Description: {creative.get("description", "")}
+        Keywords: {', '.join([k.lower() for k in keywords])}
+        Topics: {', '.join([t.lower() for t in topics])}
+        Entities: {', '.join([e['entity'].lower() for e in entities])}
+        """
+
+        embeddings = self.embedder.encode(embedding_text, convert_to_numpy=True)
+        return embeddings.tolist()
+
+    def generate_page_context(self):
         if not self.crawler:
             return None
 
@@ -77,15 +97,9 @@ class ContextGenerator:
             context["keywords"] = self.get_keywords(cd["content"])
             context["entities"] = self.get_ner(cd["content"])
             context["topics_iab"] = self.get_iab_topic_categories(cd["content"])
-
             chunks, embeddings = self.get_embedding(cd["content"])
-            for index, embedding in enumerate(embeddings):
-                _id = "page_" + page_id + "_" + str(index)
-                context["id"] = _id
-                context["chunk_index"] = index
-                context["chunk_text"] = chunks[index]
-                context["embedding_vector"] = embedding.tolist()
-                processed_results.append(context)
+            combined_embedding = np.mean(embeddings, axis=0)
+            context["embedding"] = combined_embedding.tolist()
         return processed_results
 
     def get_ner(self, text):
@@ -102,7 +116,7 @@ class ContextGenerator:
         return [kw for kw, score in keywords]
 
     def get_iab_topic_categories(self, text):
-        return self._hierarchical_zero_shot(
+        topic_cats = self._hierarchical_zero_shot(
             text=text,
             hierarchy=self.iab_taxonomy,
             multi_label_per_tier=True,
@@ -113,8 +127,9 @@ class ContextGenerator:
             max_tokens=300,
             overlap=96,
             batch_size=8,
-            return_top_paths=5
+            return_top_paths=2
         )
+        return [cat.lower() for t in topic_cats for cat in t["category"]]
 
     def get_embedding(self, text):
         chunks = self.semantic_chunker(text)
@@ -233,8 +248,9 @@ class ContextGenerator:
         for p, iab_id, s in completed:
             if iab_id in seen_iab_ids:
                 continue
-            ans.append({"category": " > ".join(p), "iab_id": iab_id, "score": s})
+            ans.append({"category": p, "iab_id": iab_id, "score": s})
             seen_iab_ids.add(iab_id)
+        # todo limit to only top path and don't join them.
         return ans[:return_top_paths]
 
     def _chunk_text_by_tokens(self, text: str, max_tokens: int | None = None, overlap: int = 32) -> List[str]:
@@ -306,7 +322,7 @@ class ContextGenerator:
 
 if __name__ == "__main__":
     cg = ContextGenerator()
-    results = cg.generate_context()
+    results = cg.generate_page_context()
     print(f"Generated context for {len(results)} chunks.")
     with open("../data/processed_context.json", "w") as f:
         f.write(json.dumps(results, indent=2))

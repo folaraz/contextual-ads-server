@@ -1,0 +1,128 @@
+[
+    {
+        "id": "001",
+        "advertiser": {
+            "id": "adv_001",
+            "name": "Nike Inc.",
+            "domain": "nike.com",
+            "budget": 50000,
+            "currency": "USD"
+        },
+        "campaign": {
+            "name": "Football Gear 2025"
+        },
+        "creative": {
+            "headline": "Dominate the Field with Nike Football Boots",
+            "description": "Built for champions — explore our new range.",
+            "image_url": "https://cdn.nike.com/ads/football.jpg"
+        },
+        "targeting": {
+            "keywords": [
+                "football",
+                "sportswear",
+                "boots"
+            ],
+            "topics": [
+                "Sports",
+                "Athletics"
+            ],
+            "entities": [
+                "Nike",
+                "Football"
+            ]
+        }
+    },
+    {
+        "id": "002",
+        "advertiser": {
+            "name": "Apple",
+            "budget": 7000,
+            "currency": "USD"
+        },
+        "campaign": {
+            "name": "MacBook Air M4"
+        },
+        "creative": {
+            "headline": "Meet the New MacBook Air M4",
+            "description": "Blazing fast. Featherlight. Perfect for work and play.",
+            "image_url": "https://apple.com/macbookair.jpg"
+        },
+        "targeting": {
+            "keywords": [
+                "laptop",
+                "technology",
+                "macbook"
+            ],
+            "topics": [
+                "Tech",
+                "Hardware"
+            ],
+            "entities": [
+                "Apple",
+                "MacBook"
+            ]
+        }
+    },
+    {
+        "id": "003",
+        "advertiser": {
+            "name": "Expedia",
+            "budget": 900,
+            "currency": "USD"
+        },
+        "campaign": {
+            "name": "Winter Travel Deals"
+        },
+        "creative": {
+            "headline": "Save 25% on Winter Getaways",
+            "description": "Explore top destinations this winter with exclusive Expedia deals.",
+            "image_url": "https://expedia.com/winter.jpg"
+        },
+        "targeting": {
+            "keywords": [
+                "travel",
+                "vacation",
+                "winter"
+            ],
+            "topics": [
+                "Travel",
+                "Deals"
+            ],
+            "entities": [
+                "Expedia",
+                "Winter Getaway"
+            ]
+        }
+    },
+    {
+        "id": "004",
+        "advertiser": {
+            "name": "Spotify"
+        },
+        "campaign": {
+            "name": "Premium Plan 2025",
+            "budget": 2000,
+            "currency": "USD"
+        },
+        "creative": {
+            "headline": "Get 3 Months of Spotify Premium Free",
+            "description": "Enjoy ad-free music anywhere, anytime.",
+            "image_url": "https://spotify.com/premium.jpg"
+        },
+        "targeting": {
+            "keywords": [
+                "music",
+                "streaming",
+                "premium"
+            ],
+            "topics": [
+                "Entertainment",
+                "Music"
+            ],
+            "entities": [
+                "Spotify",
+                "Playlist"
+            ]
+        }
+    }
+]

@@ -18,3 +18,10 @@ func RetrieveAd(ctx storage.UrlContext) []Ad {
 
 	return []Ad{}
 }
+
+//todo: redis cache for ads kw:tag -> [ad1, ad2, ad3]
+//todo: redis cache for ner ner:tag -> [ad1, ad2, ad3]
+//todo: redis cache for iab iab:tag -> [ad1, ad2, ad3]
+//todo: redis cache for ad -> {id, title, url, keywords, bid, embedding}
+//todo: redis cache for urlhash -> {id, title, url, keywords, bid, embedding}
+//perofrm consine similarity on the url embedding vector and the embedding vector of the ad

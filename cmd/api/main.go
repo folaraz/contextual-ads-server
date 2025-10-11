@@ -20,6 +20,10 @@ func adHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func createAdInventory() {
+
+}
+
 // request comes in with url and keywords.
 // checks cache for embeddings and usese that to query for the ads from inventory
 // matching engine for right ads to display
