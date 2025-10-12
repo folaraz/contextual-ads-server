@@ -8,10 +8,15 @@ from redis.commands.search.field import (
 )
 from redis.commands.search.index_definition import IndexDefinition, IndexType
 
+from python.ingestion.context_generator import ContextGenerator
+
 
 class Index:
     def __init__(self):
         self.client = redis.Redis(host='localhost', port=6379, decode_responses=True)
+
+        self.client.ft("idx:ads").dropindex(delete_documents=True)
+
         schema = (
             TextField("$.id", no_stem=True, as_name="id"),
             TextField("$.advertiser.name", no_stem=True, as_name="advertiser_name"),
@@ -38,7 +43,7 @@ class Index:
                 page_context = {
                     "keywords": json.dumps(document["keywords"]),
                     "entities": json.dumps([entity["entity"].lower() for entity in document["entities"]]),
-                    "embedding": json.dumps(document["embedding_vector"]),
+                    "embedding": json.dumps(document["embedding"]),
                     "topics": json.dumps(document["topics_iab"]),
                     "meta_data": json.dumps(document["meta_data"]),
                 }
@@ -49,5 +54,18 @@ class Index:
         with self.client.pipeline() as pipe:
             for document in documents:
                 ad_id = document["id"]
-                pipe.hset("ad:" + ad_id, mapping=document)
+                pipe.json().set("ad:" + ad_id, "$", document)
             pipe.execute()
+
+
+if __name__ == "__main__":
+    cg = ContextGenerator()
+    results = cg.generate_page_context()
+    print(f"Generated context for {len(results)} pages.")
+    index = Index()
+    index.add_page_context(results)
+    print("Indexed page context.")
+    ad_results = cg.generate_ad_context()
+    print(f"Generated context for {len(ad_results)} ads.")
+    index.add_ad_context(ad_results)
+    print("Indexed ad context.")

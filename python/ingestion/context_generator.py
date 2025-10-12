@@ -52,25 +52,29 @@ class ContextGenerator:
         self.embedder = SentenceTransformer("all-MiniLM-L6-v2", device=str(self.DEVICE))
         self.crawler = Crawler()
 
-    def generate_ad_context(self, ad: dict) -> Any:
-        context_targeting = ad["targeting"]
-        creative = ad["creative"]
-        if not context_targeting or not creative:
+    def generate_ad_context(self) -> Any:
+        ads = self.crawler.get_ads_inventory()
+        if not ads:
             return None
-        keywords = context_targeting["keywords"]
-        entities = context_targeting["entities"]
-        topics = context_targeting["topics"]
+        for ad in tqdm(ads):
+            context_targeting = ad["targeting"]
+            creative = ad["creative"]
+            if not context_targeting or not creative:
+                return None
+            keywords = context_targeting["keywords"]
+            entities = context_targeting["entities"]
+            topics = context_targeting["topics"]
 
-        embedding_text = f"""
-        Ad Headline: {creative.get("headline", "")}
-        Description: {creative.get("description", "")}
-        Keywords: {', '.join([k.lower() for k in keywords])}
-        Topics: {', '.join([t.lower() for t in topics])}
-        Entities: {', '.join([e['entity'].lower() for e in entities])}
-        """
-
-        embeddings = self.embedder.encode(embedding_text, convert_to_numpy=True)
-        return embeddings.tolist()
+            embedding_text = f"""
+            Ad Headline: {creative.get("headline", "")}
+            Description: {creative.get("description", "")}
+            Keywords: {', '.join([k.lower() for k in keywords])}
+            Topics: {', '.join([t.lower() for t in topics])}
+            Entities: {', '.join([e.lower() for e in entities])}
+            """
+            embeddings = self.embedder.encode(embedding_text, convert_to_numpy=True)
+            ad["embedding"] = embeddings.tolist()
+        return ads
 
     def generate_page_context(self):
         if not self.crawler:
@@ -100,6 +104,7 @@ class ContextGenerator:
             chunks, embeddings = self.get_embedding(cd["content"])
             combined_embedding = np.mean(embeddings, axis=0)
             context["embedding"] = combined_embedding.tolist()
+            processed_results.append(context)
         return processed_results
 
     def get_ner(self, text):
@@ -129,13 +134,19 @@ class ContextGenerator:
             batch_size=8,
             return_top_paths=2
         )
-        return [cat.lower() for t in topic_cats for cat in t["category"]]
+        ans = []
+        for t in topic_cats:
+            for cat in t["category"]:
+                c_lower = cat.lower()
+                if c_lower not in ans:
+                    ans.append(c_lower)
+        return ans
 
     def get_embedding(self, text):
         chunks = self.semantic_chunker(text)
         if not chunks:
             return None
-        embeddings = self.embedder.encode(chunks, convert_to_tensor=True)
+        embeddings = self.embedder.encode(chunks, convert_to_numpy=True)
         return chunks, embeddings
 
     @staticmethod
@@ -318,12 +329,3 @@ class ContextGenerator:
         for lab in candidate_labels:
             scores.setdefault(lab, 0.0)
         return scores
-
-
-if __name__ == "__main__":
-    cg = ContextGenerator()
-    results = cg.generate_page_context()
-    print(f"Generated context for {len(results)} chunks.")
-    with open("../data/processed_context.json", "w") as f:
-        f.write(json.dumps(results, indent=2))
-    print("Saved processed context to ../data/processed_context.json")

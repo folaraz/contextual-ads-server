@@ -81,15 +81,20 @@ class Crawler:
                 "https://www.reuters.com/world/uk/uk-pm-starmer-outline-plan-make-britain-world-leader-ai-2025-01-12/"
             ]
         }
-        self.path = "../data/crawled_articles.json"
+        self.article_path = "../data/crawled_articles.json"
+        self.ads_inventory_path = "../data/ads_inventory.json"
+
+    def get_ads_inventory(self):
+        with open(self.ads_inventory_path, "r") as f:
+            return loads(f.read())
 
     def crawl(self):
         print("Checking path for existing data...")
         try:
-            with open(self.path, "r") as f:
+            with open(self.article_path, "r") as f:
                 data = loads(f.read())
                 if data:
-                    print(f"Found {len(data)} articles in {self.path}. Skipping crawl.")
+                    print(f"Found {len(data)} articles in {self.article_path}. Skipping crawl.")
                     return data
         except Exception as e:
             print(f"Error reading data: {str(e)}")
@@ -104,9 +109,9 @@ class Crawler:
                     data.append(result)
                 time.sleep(random.uniform(1, 3))
         print(f"Crawled {len(data)} articles.")
-        with open(self.path, "w") as f:
+        with open(self.article_path, "w") as f:
             f.write(dumps(data, indent=2))
-            print(f"Saved crawled data to {self.path}.")
+            print(f"Saved crawled data to {self.article_path}.")
         return data
 
     @staticmethod

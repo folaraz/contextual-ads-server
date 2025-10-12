@@ -22,6 +22,6 @@ var ads = []Ad{
 func GetAd(url string, keyword []string) Ad {
 	var matched Ad
 	urlHash, _, _ := utils.GenerateHashAndURL(url)
-	urlContext := storage.GetContext(urlHash)
+	pageContext := storage.GetContext(urlHash)
 	return matched
 }

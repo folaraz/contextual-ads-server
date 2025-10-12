@@ -1,26 +1,54 @@
 package storage
 
-type UrlContext struct {
-	Keywords        []string
-	NamedEntities   []string
-	EmbeddingVector []float64
-	IabCategories   []string
+import (
+	"context"
+	"fmt"
+
+	"github.com/folaraz/contextual-ads-server/internal/retrieval"
+	"github.com/redis/go-redis/v9"
+)
+
+type PageContext struct {
+	Keywords  []string
+	Entities  []string
+	Topics    []string
+	Embedding []float64
 }
 
-//hashing mechanism for urls
-
-var cache = map[string]UrlContext{}
-
-func GetContext(urlHash string) UrlContext {
-	if context, ok := cache[urlHash]; ok {
-		return context
+func GetContext(urlHash string) PageContext {
+	ctx := context.Background()
+	client := GetRedisClient()
+	var pageContext PageContext
+	err := client.HGetAll(ctx, "page:"+urlHash).Scan(&pageContext)
+	if err != nil {
+		panic(err)
 	}
-	return UrlContext{}
+	return pageContext
 }
 
-func set(url string, keywords map[string]int16, vector []float64) {
-	var stuff UrlContext
-	stuff.vector = vector
-	stuff.Keywords = keywords
-	cache[url] = stuff
+func QueryAds(pageContext PageContext) []retrieval.Ad {
+	client := GetRedisClient()
+	ctx := context.Background()
+
+	results, err := client.FTSearchWithArgs(ctx,
+		"vector_idx",
+		"*=>[KNN 3 @embedding $vec AS vector_distance]",
+		&redis.FTSearchOptions{
+			Return: []redis.FTSearchReturn{
+				{FieldName: "vector_distance"},
+				{FieldName: "content"},
+			},
+			DialectVersion: 2,
+			Params: map[string]any{
+				"vec": buffer,
+			},
+		},
+	).Result()
+
+	for _, doc := range results.Docs {
+		fmt.Printf(
+			"ID: %v, Distance:%v, Content:'%v'\n",
+			doc.ID, doc.Fields["vector_distance"], doc.Fields["content"],
+		)
+	}
 }
