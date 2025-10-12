@@ -32,7 +32,7 @@ class Index:
             TagField("$.targeting.topics[*]", as_name="topics"),
             TagField("$.targeting.entities[*]", as_name="entities"),
             VectorField("$.embedding", "HNSW",
-                        {"TYPE": "FLOAT32", "DIM": 384, "DISTANCE_METRIC": "COSINE"},
+                        {"TYPE": "FLOAT32", "DIM": 384, "DISTANCE_METRIC": "L2"},
                         as_name="embedding"),
         )
         definition = IndexDefinition(prefix=["ad:"], index_type=IndexType.JSON)

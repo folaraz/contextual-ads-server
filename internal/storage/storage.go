@@ -11,18 +11,6 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-//	func GetContext(urlHash string) models.PageContext {
-//		ctx := context.Background()
-//		client := GetRedisClient()
-//		var pageContext models.PageContext
-//		err := client.HGetAll(ctx, "page:"+urlHash).Scan(&pageContext)
-//		if err != nil {
-//			panic(err)
-//		}
-//		return pageContext
-//
-// }
-
 func GetContext(urlHash string) models.PageContext {
 	ctx := context.Background()
 	client := GetRedisClient()
@@ -65,31 +53,31 @@ func QueryAds(pageContext models.PageContext) []models.Ad {
 
 	client := GetRedisClient()
 	ctx := context.Background()
-	//buffer := floatsToBytes(pageContext.Embedding)
+	buffer := floatsToBytes(pageContext.Embedding)
 
-	//results, err := client.FTSearchWithArgs(
-	//	ctx,
-	//	"idx:ads",
-	//	"*=>[KNN 3 @embedding $query_vector AS vector_score]",
-	//	&redis.FTSearchOptions{
-	//		DialectVersion: 3,
-	//		Params: map[string]any{
-	//			"query_vector": buffer,
-	//		},
-	//		// Smaller distance is better.
-	//		SortBy: []redis.FTSearchSortBy{
-	//			{FieldName: "vector_score", Desc: false},
-	//		},
-	//		Return: []redis.FTSearchReturn{
-	//			{FieldName: "vector_score"},
-	//			{FieldName: "advertiser"},
-	//		},
-	//	},
-	//).Result()
+	results, err := client.FTSearchWithArgs(
+		ctx,
+		"idx:ads",
+		"*=>[KNN 3 @embedding $query_vector AS vector_score]",
+		&redis.FTSearchOptions{
+			DialectVersion: 2,
+			Params: map[string]any{
+				"query_vector": buffer,
+			},
+			// Smaller distance is better.
+			SortBy: []redis.FTSearchSortBy{
+				{FieldName: "vector_score", Desc: false},
+			},
+			//Return: []redis.FTSearchReturn{
+			//	{FieldName: "vector_score"},
+			//	{FieldName: "advertiser"},
+			//},
+		},
+	).Result()
 
-	results, err := client.FTSearchWithArgs(ctx, "idx:ads", "*", &redis.FTSearchOptions{}).Result()
 	if err != nil {
-		panic(err)
+		log.Printf("failed to query RediSearch: %v", err)
+		return nil
 	}
 
 	if results.Total == 0 || len(results.Docs) == 0 {
