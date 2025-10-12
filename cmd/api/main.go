@@ -4,15 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strings"
 )
 
 func adHandler(w http.ResponseWriter, r *http.Request) {
-	keywords := r.URL.Query().Get("keywords")
 	url := r.URL.Query().Get("url")
-	fmt.Println(keywords, url)
-	requested := strings.Split(strings.ToLower(keywords), ",")
-	matched := GetAd(url, requested)
+	matched := GetAd(url)
 
 	err := json.NewEncoder(w).Encode(matched)
 	if err != nil {

@@ -8,7 +8,7 @@ import (
 	"github.com/folaraz/contextual-ads-server/internal/utils"
 )
 
-func GetAd(url string, keyword []string) models.Ad {
+func GetAd(url string) models.Ad {
 	var matched models.Ad
 	urlHash, _, _ := utils.GenerateHashAndURL(url)
 	pageContext := storage.GetContext(urlHash)

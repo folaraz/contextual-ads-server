@@ -61,18 +61,21 @@ class ContextGenerator:
             creative = ad["creative"]
             if not context_targeting or not creative:
                 return None
-            keywords = context_targeting["keywords"]
-            entities = context_targeting["entities"]
-            topics = context_targeting["topics"]
+            keywords = [k.lower() for k in context_targeting["keywords"]]
+            entities = [e.lower() for e in context_targeting["entities"]]
+            topics = [t.lower() for t in context_targeting["topics"]]
 
             embedding_text = f"""
             Ad Headline: {creative.get("headline", "")}
             Description: {creative.get("description", "")}
-            Keywords: {', '.join([k.lower() for k in keywords])}
-            Topics: {', '.join([t.lower() for t in topics])}
-            Entities: {', '.join([e.lower() for e in entities])}
+            Keywords: {', '.join(keywords)}
+            Topics: {', '.join(topics)}
+            Entities: {', '.join(entities)}
             """
             embeddings = self.embedder.encode(embedding_text, convert_to_numpy=True)
+            ad["keywords"] = keywords
+            ad["topics"] = topics
+            ad["entities"] = entities
             ad["embedding"] = embeddings.tolist()
         return ads
 

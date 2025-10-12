@@ -63,11 +63,11 @@ class Index:
 
 if __name__ == "__main__":
     cg = ContextGenerator()
-    results = cg.generate_page_context()
-    print(f"Generated context for {len(results)} pages.")
+    # results = cg.generate_page_context()
+    # print(f"Generated context for {len(results)} pages.")
     index = Index()
-    index.add_page_context(results)
-    print("Indexed page context.")
+    # index.add_page_context(results)
+    # print("Indexed page context.")
     ad_results = cg.generate_ad_context()
     print(f"Generated context for {len(ad_results)} ads.")
     index.add_ad_context(ad_results)

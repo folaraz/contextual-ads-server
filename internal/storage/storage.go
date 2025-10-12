@@ -68,10 +68,6 @@ func QueryAds(pageContext models.PageContext) []models.Ad {
 			SortBy: []redis.FTSearchSortBy{
 				{FieldName: "vector_score", Desc: false},
 			},
-			//Return: []redis.FTSearchReturn{
-			//	{FieldName: "vector_score"},
-			//	{FieldName: "advertiser"},
-			//},
 		},
 	).Result()
 
