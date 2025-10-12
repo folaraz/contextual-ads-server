@@ -4,7 +4,7 @@ import redis
 from redis.commands.search.field import (
     NumericField,
     TagField,
-    TextField,
+    TextField, VectorField,
 )
 from redis.commands.search.index_definition import IndexDefinition, IndexType
 
@@ -31,6 +31,9 @@ class Index:
             TagField("$.targeting.keywords[*]", as_name="keywords"),
             TagField("$.targeting.topics[*]", as_name="topics"),
             TagField("$.targeting.entities[*]", as_name="entities"),
+            VectorField("$.embedding", "HNSW",
+                        {"TYPE": "FLOAT32", "DIM": 384, "DISTANCE_METRIC": "COSINE"},
+                        as_name="embedding"),
         )
         definition = IndexDefinition(prefix=["ad:"], index_type=IndexType.JSON)
         self.client.ft("idx:ads").create_index(fields=schema, definition=definition)

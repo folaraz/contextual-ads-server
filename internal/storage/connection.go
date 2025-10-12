@@ -6,8 +6,9 @@ import (
 
 func GetRedisClient() *redis.Client {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Protocol: 3,
+		Addr:          "localhost:6379",
+		Protocol:      3,
+		UnstableResp3: true,
 	})
 	return client
 }
