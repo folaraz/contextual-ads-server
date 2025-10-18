@@ -30,11 +30,11 @@ class Crawler:
                 "https://variety.com/2025/film/news/kill-bill-the-whole-bloody-affair-sets-theatrical-release-1236536800/"
             ],
             "finance": [
-                "https://www.reuters.com/business/finance/feds-williams-says-central-banks-must-prepare-unexpected-2025-10-03/",
-                "https://www.reuters.com/business/finance/global-markets-view-usa-2025-10-02/",
-                "https://www.reuters.com/business/never-mind-wall-street-records-investors-rethink-us-market-supremacy-2025-08-01/",
-                "https://www.reuters.com/business/wall-street-indexes-notch-record-high-closes-investors-bet-rate-cut-2025-09-09/",
-                "https://www.reuters.com/sustainability/boards-policy-regulation/how-us-government-shutdown-could-affect-financial-markets-2025-09-25/"
+                "https://www.theguardian.com/business/2025/oct/12/the-imf-boss-is-right-to-say-buckle-up-the-global-economy-is-facing-multiple-menaces",
+                "https://www.theguardian.com/business/2025/oct/12/urgent-call-debt-relief-imf-world-bank-debt-justice",
+                "https://abcnews.go.com/Business/soaring-gold-prices-warning-sign-economy/story?id=126414464",
+                "https://www.theguardian.com/business/2025/oct/09/the-debasement-trade-is-this-whats-driving-gold-bitcoin-and-shares-to-record-highs",
+                "https://www.theguardian.com/business/2025/sep/25/us-stock-market-trump-wall-street-financial-crisis-federal-reserve"
             ],
             "basketball": [
                 "https://www.espn.com/nba/story/_/id/46467409/nba-2025-2026-season-defining-names-paolo-banchero-mike-brown-trae-young",
@@ -50,35 +50,26 @@ class Crawler:
                 "https://www.espn.com/nfl/story/_/id/46423263/nfl-week-5-power-rankings-2025-biggest-issues-offense",
                 "https://www.espn.com/nfl/story/_/id/46449711/2025-nfl-week-5-predictions-fantasy-sleepers-upsets-bets-stats-matchups"
             ],
-            "tennis": [
-                "https://www.atptour.com/en/news/djokovic-shanghai-2025-friday-reaction",
-                "https://www.atptour.com/en/news/sinner-altmaier-shanghai-sunday-2025",
-                "https://www.atptour.com/en/news/shang-khachanov-shanghai-2025-saturday",
-                "https://www.atptour.com/en/news/alcaraz-wins-2025-atp-500-bonus-pool",
-                "https://www.atptour.com/en/news/sinner-griekspoor-shanghai-2025-sunday"
-            ],
             "politics": [
-                "https://www.reuters.com/world/us/government-shutdown-nears-with-no-deal-washington-2025-09-30/",
-                "https://www.reuters.com/world/us/us-government-begins-shut-down-most-operations-after-congress-fails-advance-2025-10-01/",
-                "https://www.reuters.com/world/us/us-senate-vote-dueling-plans-end-shutdown-though-neither-likely-pass-2025-10-03/",
-                "https://www.reuters.com/world/us/trump-discuss-agency-cuts-with-ombs-vought-thursday-2025-10-02/",
-                "https://www.reuters.com/world/france-names-new-government-amid-political-turmoil-2025-10-05/",
+                "https://www.aljazeera.com/news/2025/10/12/us-congress-fails-pass-budget-deal",
+                "https://abcnews.go.com/International/wireStory/us-government-shutdown-begins-2025-10-01",
+                "https://www.theguardian.com/world/2025/oct/10/macron-reappoints-sebastien-lecornu-as-french-prime-minister",
+                "https://www.aljazeera.com/news/2025/10/1/the-us-government-has-shut-down-what-happens-now",
                 "https://www.bbc.co.uk/news/articles/c24rmdngrrjo",
                 "https://www.bbc.co.uk/news/articles/cy0v7zwp0dlo"
             ],
-            "tech": [
-                "https://www.reuters.com/technology/opera-launches-neon-ai-browser-join-agentic-web-browsing-race-2025-09-30/",
-                "https://www.reuters.com/world/asia-pacific/inspired-by-thatcher-japans-pm-in-waiting-takaichi-smashes-glass-ceiling-2025-10-04/",
-                "https://www.reuters.com/world/china/japans-next-leader-may-be-its-first-wife-or-youngest-modern-era-2025-10-02/",
-                "https://www.reuters.com/world/china/japans-ruling-party-pick-new-leader-hoping-revive-fortunes-2025-10-03/",
-                "https://www.reuters.com/business/retail-consumer/amazons-aws-strikes-ai-cloud-partnership-with-nba-2025-10-01/"
+            "tennis": [
+                "https://www.tennis.com/news/articles/daniil-medvedev-records-50th-top-10-win-of-career-with-victory-over-de-minaur-in-shanghai"
             ],
-            "ai": [
-                "https://www.reuters.com/technology/artificial-intelligence/",
-                "https://www.reuters.com/technology/china-says-it-will-increase-support-ai-science-tech-innovation-2025-03-05/",
-                "https://www.reuters.com/technology/artificial-intelligence/synopsys-lays-out-strategy-ai-agents-design-computer-chips-2025-03-19/",
-                "https://www.reuters.com/technology/meta-invest-up-65-bln-capital-expenditure-this-year-2025-01-24/",
-                "https://www.reuters.com/world/uk/uk-pm-starmer-outline-plan-make-britain-world-leader-ai-2025-01-12/"
+            "soccer": [
+                "https://www.espn.com/soccer/iraqs-iqbal-earns-1-0-win-over-indonesia-world-cup-qualifier-2025-10-11",
+                "https://www.espn.com/soccer/story/_/id/39814568/south-korea-bounces-back-iraq-australia-progress-world-cup-qualifiers",
+                "https://www.espn.com/football/story/_/id/39480574/asian-cup-transfer-targets-which-young-guns-europes-giants-eying"
+            ],
+            "technology": [
+                "https://www.aljazeera.com/economy/2025/10/10/californias-landmark-frontier-ai-law-to-bring-transparency",
+                "https://abcnews.go.com/Technology/wireStory/us-opens-tesla-probe-after-crashes-involving-called-126365399",
+                "https://www.theguardian.com/technology/2025/oct/11/using-a-swearword-in-your-google-search-can-stop-the-ai-answer-but-should-you"
             ]
         }
         self.article_path = "../data/crawled_articles.json"
@@ -119,11 +110,13 @@ class Crawler:
         try:
             downloaded = fetch_url(url=url)
             if not downloaded:
+                print(f"Error downloading {url}")
                 return None
 
             result = extract(downloaded, output_format="json", include_comments=False, include_images=False,
                              include_links=False, with_metadata=True)
             if not result:
+                print(f"Error extracting {url}")
                 return None
             result = loads(result)
             payload = {

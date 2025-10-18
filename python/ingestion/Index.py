@@ -16,6 +16,7 @@ class Index:
         self.client = redis.Redis(host='localhost', port=6379, decode_responses=True)
 
         self.client.ft("idx:ads").dropindex(delete_documents=True)
+        self.client.delete("page:*")
 
         schema = (
             TextField("$.id", no_stem=True, as_name="id"),
@@ -32,7 +33,7 @@ class Index:
             TagField("$.targeting.topics[*]", as_name="topics"),
             TagField("$.targeting.entities[*]", as_name="entities"),
             VectorField("$.embedding", "HNSW",
-                        {"TYPE": "FLOAT32", "DIM": 384, "DISTANCE_METRIC": "L2"},
+                        {"TYPE": "FLOAT32", "DIM": 384, "DISTANCE_METRIC": "COSINE"},
                         as_name="embedding"),
         )
         definition = IndexDefinition(prefix=["ad:"], index_type=IndexType.JSON)
@@ -46,10 +47,19 @@ class Index:
                 page_context = {
                     "keywords": json.dumps(document["keywords"]),
                     "entities": json.dumps([entity["entity"].lower() for entity in document["entities"]]),
-                    "embedding": json.dumps(document["embedding"]),
+                    "embedding": json.dumps(document["page_embedding"]),
                     "topics": json.dumps(document["topics_iab"]),
                     "meta_data": json.dumps(document["meta_data"]),
                 }
+                embeddings = document["chunk_embeddings"]
+                chunks = document["chunk_texts"]
+                page_chunk_context = []
+                for i, embedding in enumerate(embeddings):
+                    page_chunk_context.append({
+                        "embedding": embedding,
+                        "chunk_text": chunks[i]
+                    })
+                page_context["chunk_context"] = json.dumps(page_chunk_context)
                 pipe.hset(redis_key, mapping=page_context)
             pipe.execute()
 
@@ -63,11 +73,11 @@ class Index:
 
 if __name__ == "__main__":
     cg = ContextGenerator()
-    # results = cg.generate_page_context()
-    # print(f"Generated context for {len(results)} pages.")
+    results = cg.generate_page_context()
+    print(f"Generated context for {len(results)} pages.")
     index = Index()
-    # index.add_page_context(results)
-    # print("Indexed page context.")
+    index.add_page_context(results)
+    print(f"Indexed {len(results)} pages.")
     ad_results = cg.generate_ad_context()
     print(f"Generated context for {len(ad_results)} ads.")
     index.add_ad_context(ad_results)

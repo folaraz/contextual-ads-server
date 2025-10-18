@@ -1,18 +1,5 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/folaraz/contextual-ads-server/internal/models"
-	"github.com/folaraz/contextual-ads-server/internal/storage"
-	"github.com/folaraz/contextual-ads-server/internal/utils"
-)
-
-func GetAd(url string) models.Ad {
-	var matched models.Ad
-	urlHash, _, _ := utils.GenerateHashAndURL(url)
-	pageContext := storage.GetContext(urlHash)
-	qualifiedAds := storage.QueryAds(pageContext)
-	fmt.Println(qualifiedAds)
-	return matched
-}
+// Note: The GetAd function has been moved into main.go to ensure single-file builds
+// (e.g., `go build main.go`) work in environments that compile only main.go.
+// This file is intentionally left without additional code to avoid duplicate symbol definitions.

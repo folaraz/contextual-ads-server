@@ -3,19 +3,26 @@ package utils
 import (
 	"crypto/sha256"
 	"encoding/hex"
-
-	"github.com/PuerkitoBio/purell"
+	"net/url"
+	"strings"
 )
 
-func GenerateHashAndURL(rawURL string) (string, string, error) {
-	flags := purell.FlagsUsuallySafeGreedy | purell.FlagRemoveFragment
-
-	canonicalURL, err := purell.NormalizeURLString(rawURL, flags)
+func CanonicalURL(raw string) (string, error) {
+	u, err := url.Parse(raw)
 	if err != nil {
-		return "", "", err
+		return "", err
 	}
+	u.Scheme = strings.ToLower(u.Scheme)
+	u.Host = strings.ToLower(u.Host)
+	u.Path = strings.TrimRight(u.Path, "/")
+	return u.String(), nil
+}
 
-	hash := sha256.Sum256([]byte(canonicalURL))
-	urlHash := hex.EncodeToString(hash[:])
-	return urlHash, canonicalURL, nil
+func GenerateHashAndURL(raw string) (string, error) {
+	norm, err := CanonicalURL(raw)
+	if err != nil {
+		return "", err
+	}
+	hash := sha256.Sum256([]byte(norm))
+	return hex.EncodeToString(hash[:]), nil
 }

@@ -1,5 +1,6 @@
 import hashlib
 import json
+import urllib
 from datetime import datetime
 from typing import List, Dict, Any, Tuple
 
@@ -10,7 +11,6 @@ from keybert import KeyBERT
 from sentence_transformers import SentenceTransformer, util
 from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
-from w3lib.url import canonicalize_url
 
 from python.ingestion.crawler import Crawler
 
@@ -106,7 +106,9 @@ class ContextGenerator:
             context["topics_iab"] = self.get_iab_topic_categories(cd["content"])
             chunks, embeddings = self.get_embedding(cd["content"])
             combined_embedding = np.mean(embeddings, axis=0)
-            context["embedding"] = combined_embedding.tolist()
+            context["page_embedding"] = combined_embedding.tolist()
+            context["chunk_embeddings"] = embeddings.tolist()
+            context["chunk_texts"] = chunks
             processed_results.append(context)
         return processed_results
 
@@ -135,7 +137,7 @@ class ContextGenerator:
             max_tokens=300,
             overlap=96,
             batch_size=8,
-            return_top_paths=2
+            return_top_paths=1
         )
         ans = []
         for t in topic_cats:
@@ -154,10 +156,14 @@ class ContextGenerator:
 
     @staticmethod
     def generate_hash_and_url(url: str) -> tuple[str, str]:
-        canonical_url = canonicalize_url(url)
-
-        url_hash = hashlib.sha256(canonical_url.encode('utf-8')).hexdigest()
-        return url_hash, canonical_url
+        parsed = urllib.parse.urlparse(url)
+        normalized = parsed._replace(
+            scheme=parsed.scheme.lower(),
+            netloc=parsed.netloc.lower(),
+            path=parsed.path.rstrip('/')
+        )
+        n = urllib.parse.urlunparse(normalized)
+        return hashlib.sha256(n.encode('utf-8')).hexdigest(), normalized
 
     def semantic_chunker(self, content: str, breakpoint_percentile_threshold: float = 70.0) -> list[str]:
         texts: list[str] = self._sent_tokenize(content)

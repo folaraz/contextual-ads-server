@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"log"
 	"math"
+	"strconv"
 
 	"github.com/folaraz/contextual-ads-server/internal/models"
 	"github.com/redis/go-redis/v9"
@@ -16,6 +17,7 @@ func GetContext(urlHash string) models.PageContext {
 	client := GetRedisClient()
 
 	result, err := client.HGetAll(ctx, "page:"+urlHash).Result()
+
 	if err != nil {
 		panic(err)
 	}
@@ -42,29 +44,43 @@ func GetContext(urlHash string) models.PageContext {
 		json.Unmarshal([]byte(metaDataStr), &pageContext.Metadata)
 	}
 
+	if chunkContextsStr, ok := result["chunk_context"]; ok {
+		json.Unmarshal([]byte(chunkContextsStr), &pageContext.ChunkContexts)
+	}
+
 	return pageContext
 }
 
-func QueryAds(pageContext models.PageContext) []models.Ad {
-	if len(pageContext.Embedding) == 0 {
-		log.Printf("empty embedding; skipping KNN search")
+func QueryAds(pageContext models.PageContext) []models.AdRankResult {
+	chunkContexts := pageContext.ChunkContexts
+
+	if len(chunkContexts) == 0 {
+		log.Printf("no chunk embeddings; skipping KNN search")
 		return nil
 	}
 
 	client := GetRedisClient()
 	ctx := context.Background()
-	buffer := floatsToBytes(pageContext.Embedding)
 
+	var ads []models.AdRankResult
+
+	for _, chunkContext := range chunkContexts {
+		buffer := floatsToBytes(chunkContext.Embedding)
+		ads = append(ads, getAdsFromRediSearch(ctx, client, buffer)...)
+	}
+	return ads
+}
+
+func getAdsFromRediSearch(ctx context.Context, client *redis.Client, buffer []byte) []models.AdRankResult {
 	results, err := client.FTSearchWithArgs(
 		ctx,
 		"idx:ads",
-		"*=>[KNN 3 @embedding $query_vector AS vector_score]",
+		"*=>[KNN 10 @embedding $query_vector AS vector_score]",
 		&redis.FTSearchOptions{
 			DialectVersion: 2,
 			Params: map[string]any{
 				"query_vector": buffer,
 			},
-			// Smaller distance is better.
 			SortBy: []redis.FTSearchSortBy{
 				{FieldName: "vector_score", Desc: false},
 			},
@@ -81,9 +97,11 @@ func QueryAds(pageContext models.PageContext) []models.Ad {
 		return nil
 	}
 
-	var ads []models.Ad
+	var ads []models.AdRankResult
+	var seenAdIDs = make(map[string]bool)
 	for _, doc := range results.Docs {
 		raw, ok := doc.Fields["$"]
+		vectorScoreStr, ok := doc.Fields["vector_score"]
 		if !ok {
 			log.Printf("missing $ JSON for id=%s", doc.ID)
 			continue
@@ -93,7 +111,23 @@ func QueryAds(pageContext models.PageContext) []models.Ad {
 			log.Printf("failed to unmarshal doc id=%s: %v", doc.ID, err)
 			continue
 		}
-		ads = append(ads, a)
+		if seenAdIDs[doc.ID] {
+			continue
+		}
+		vectorScore, e := strconv.ParseFloat(vectorScoreStr, 64)
+		if e != nil {
+			log.Printf("failed to parse vector score for id=%s: %v", doc.ID, e)
+			continue
+		}
+		if vectorScore > 0.65 {
+			log.Printf("skipping ad id=%s with vector score %.4f", doc.ID, vectorScore)
+			continue
+		}
+		adRank := models.AdRankResult{
+			Ad:          a,
+			VectorScore: vectorScore,
+		}
+		ads = append(ads, adRank)
 	}
 	return ads
 }

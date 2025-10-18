@@ -4,7 +4,19 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"github.com/folaraz/contextual-ads-server/internal/models"
+	"github.com/folaraz/contextual-ads-server/internal/storage"
+	"github.com/folaraz/contextual-ads-server/internal/utils"
 )
+
+func GetAd(url string) []models.AdRankResult {
+	urlHash, _ := utils.GenerateHashAndURL(url)
+	fmt.Println(urlHash)
+	pageContext := storage.GetContext(urlHash)
+	qualifiedAds := storage.QueryAds(pageContext)
+	return qualifiedAds
+}
 
 func adHandler(w http.ResponseWriter, r *http.Request) {
 	url := r.URL.Query().Get("url")
