@@ -3,6 +3,7 @@ import json
 import urllib
 from datetime import datetime
 from typing import List, Dict, Any, Tuple
+from itertools import chain
 
 import numpy as np
 import spacy
@@ -66,11 +67,11 @@ class ContextGenerator:
             topics = [t.lower() for t in context_targeting["topics"]]
 
             embedding_text = f"""
-            Ad Headline: {creative.get("headline", "")}
-            Description: {creative.get("description", "")}
-            Keywords: {', '.join(keywords)}
-            Topics: {', '.join(topics)}
-            Entities: {', '.join(entities)}
+            {creative.get("headline", "")}.
+            {creative.get("description", "")}.
+            Keywords: {', '.join(keywords)}.
+            Entities: {', '.join(entities)}.
+            Topics: {', '.join(topics)}.
             """
             embeddings = self.embedder.encode(embedding_text, convert_to_numpy=True)
             ad["keywords"] = keywords
@@ -121,9 +122,14 @@ class ContextGenerator:
                 entities[key] = {"entity": ent.text, "type": ent.label_}
         return list(entities.values())
 
-    def get_keywords(self, text, top_n=10):
-        keywords = self.keybert.extract_keywords(text, top_n=top_n)
-        return [kw for kw, score in keywords]
+    def get_keywords(self, text, top_n=15):
+        unigram_keywords = self.keybert.extract_keywords(text, top_n=top_n, keyphrase_ngram_range=(1, 1), stop_words="english")
+        bigram_keywords = self.keybert.extract_keywords(text, top_n=top_n, keyphrase_ngram_range=(2, 2), stop_words="english")
+        keywords = dict()
+        for keyword, score in chain(unigram_keywords, bigram_keywords):
+            keywords[keyword] = max(score, keywords.get(keyword, 0))
+        return keywords
+
 
     def get_iab_topic_categories(self, text):
         topic_cats = self._hierarchical_zero_shot(

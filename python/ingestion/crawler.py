@@ -119,13 +119,12 @@ class Crawler:
                 print(f"Error extracting {url}")
                 return None
             result = loads(result)
+            content = result.get("title", "") + "." + result.get("description", "") + "." + result.get("raw_text", "")
             payload = {
                 "image": result.get("image", ""),
                 "url": result.get("source", url),
                 "tags": result.get("tags", "").split(", ") if result.get("tags") else [],
-                "title": result.get("title", ""),
-                "description": result.get("description", ""),
-                "content": result.get("raw_text", ""),
+                "content": content,
                 "date": result.get("date", ""),
                 "author": result.get("author", "")
             }

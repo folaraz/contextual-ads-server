@@ -1,0 +1,4 @@
+### GET request to example server
+GET http://localhost:8080/ads?url=https://www.vogue.com/article/spring-2025-fashion-trends
+
+###

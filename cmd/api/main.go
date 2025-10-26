@@ -20,10 +20,27 @@ func GetAd(url string) []models.AdRankResult {
 
 func adHandler(w http.ResponseWriter, r *http.Request) {
 	url := r.URL.Query().Get("url")
-	matched := GetAd(url)
+	var matched []models.AdRankResult
+	matched = GetAd(url)
 
-	err := json.NewEncoder(w).Encode(matched)
+	var response []struct {
+		Creative    models.Creative `json:"creative"`
+		VectorScore float64         `json:"vector_score"`
+	}
+	for _, ad := range matched {
+		response = append(response, struct {
+			Creative    models.Creative `json:"creative"`
+			VectorScore float64         `json:"vector_score"`
+		}{
+			Creative:    ad.Ad.Creative,
+			VectorScore: ad.VectorScore,
+		})
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	err := json.NewEncoder(w).Encode(response)
 	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 }

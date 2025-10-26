@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"log"
 	"math"
+	"sort"
 	"strconv"
 
 	"github.com/folaraz/contextual-ads-server/internal/models"
@@ -62,16 +63,29 @@ func QueryAds(pageContext models.PageContext) []models.AdRankResult {
 	client := GetRedisClient()
 	ctx := context.Background()
 
-	var ads []models.AdRankResult
+	var ads = make(map[string]models.AdRankResult)
 
 	for _, chunkContext := range chunkContexts {
 		buffer := floatsToBytes(chunkContext.Embedding)
-		ads = append(ads, getAdsFromRediSearch(ctx, client, buffer)...)
+		getAdsFromRediSearch(ctx, client, buffer, ads)
 	}
-	return ads
+	//
+	//buffer := floatsToBytes(pageContext.Embedding)
+	//getAdsFromRediSearch(ctx, client, buffer, ads)
+
+	adResults := make([]models.AdRankResult, 0, len(ads))
+	for _, ad := range ads {
+		adResults = append(adResults, ad)
+	}
+
+	sort.Slice(adResults, func(i, j int) bool {
+		return adResults[i].VectorScore > adResults[j].VectorScore
+	})
+
+	return adResults
 }
 
-func getAdsFromRediSearch(ctx context.Context, client *redis.Client, buffer []byte) []models.AdRankResult {
+func getAdsFromRediSearch(ctx context.Context, client *redis.Client, buffer []byte, ads map[string]models.AdRankResult) {
 	results, err := client.FTSearchWithArgs(
 		ctx,
 		"idx:ads",
@@ -82,23 +96,21 @@ func getAdsFromRediSearch(ctx context.Context, client *redis.Client, buffer []by
 				"query_vector": buffer,
 			},
 			SortBy: []redis.FTSearchSortBy{
-				{FieldName: "vector_score", Desc: false},
+				{FieldName: "vector_score", Desc: true},
 			},
 		},
 	).Result()
 
 	if err != nil {
 		log.Printf("failed to query RediSearch: %v", err)
-		return nil
+		return
 	}
 
 	if results.Total == 0 || len(results.Docs) == 0 {
 		log.Printf("no results from RediSearch (total=%d)", results.Total)
-		return nil
+		return
 	}
 
-	var ads []models.AdRankResult
-	var seenAdIDs = make(map[string]bool)
 	for _, doc := range results.Docs {
 		raw, ok := doc.Fields["$"]
 		vectorScoreStr, ok := doc.Fields["vector_score"]
@@ -111,25 +123,31 @@ func getAdsFromRediSearch(ctx context.Context, client *redis.Client, buffer []by
 			log.Printf("failed to unmarshal doc id=%s: %v", doc.ID, err)
 			continue
 		}
-		if seenAdIDs[doc.ID] {
-			continue
-		}
 		vectorScore, e := strconv.ParseFloat(vectorScoreStr, 64)
 		if e != nil {
 			log.Printf("failed to parse vector score for id=%s: %v", doc.ID, e)
 			continue
 		}
-		if vectorScore > 0.65 {
+		if vectorScore < 0.65 {
 			log.Printf("skipping ad id=%s with vector score %.4f", doc.ID, vectorScore)
 			continue
 		}
-		adRank := models.AdRankResult{
-			Ad:          a,
-			VectorScore: vectorScore,
+
+		adInCache, ok := ads[a.ID]
+		if !ok {
+			adRank := models.AdRankResult{
+				Ad:          a,
+				VectorScore: vectorScore,
+			}
+			ads[a.ID] = adRank
+		} else {
+			if adInCache.VectorScore < vectorScore {
+				adInCache.VectorScore = vectorScore
+				ads[a.ID] = adInCache
+			}
 		}
-		ads = append(ads, adRank)
+
 	}
-	return ads
 }
 
 func floatsToBytes(fs []float32) []byte {
