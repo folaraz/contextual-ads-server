@@ -76,13 +76,9 @@ def read_taxonomy_json(path):
 
 def generate_taxonomy_mapping(path=None):
     df = read_taxonomy_json(path=path)
-    valid_mask = (
-        df['Unique ID 2'].notna() & (df['Unique ID 2'] != '') &
-        df['Unique ID'].notna() & (df['Unique ID'] != '')
-    )
+    valid_mask = df['Unique ID 2'].notna() & (df['Unique ID 2'] != '')
     df_valid = df[valid_mask].copy()
-    mapping = df_valid.groupby('Unique ID')['Unique ID 2'].agg(list).to_dict()
-    return {str(k): [str(v) for v in vals] for k, vals in mapping.items()}
+    return pd.Series(df_valid['Unique ID'].values, index=df_valid['Unique ID 2']).to_dict()
 
 
 def write_taxonomy_json(taxonomy, path):

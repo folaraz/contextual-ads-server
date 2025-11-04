@@ -2,8 +2,8 @@ import hashlib
 import json
 import urllib
 from datetime import datetime
-from typing import List, Dict, Any, Tuple
 from itertools import chain
+from typing import List, Dict, Any, Tuple
 
 import numpy as np
 import spacy
@@ -104,12 +104,10 @@ class ContextGenerator:
             context["last_analyzed"] = datetime.now().isoformat()
             context["keywords"] = self.get_keywords(cd["content"])
             context["entities"] = self.get_ner(cd["content"])
-            context["topics_iab"] = self.get_iab_topic_categories(cd["content"])
-            chunks, embeddings = self.get_embedding(cd["content"])
-            combined_embedding = np.mean(embeddings, axis=0)
-            context["page_embedding"] = combined_embedding.tolist()
-            context["chunk_embeddings"] = embeddings.tolist()
-            context["chunk_texts"] = chunks
+            context["topics"] = self.get_iab_topic_categories(cd["content"])
+            chunks, page_embedding = self.get_embedding(cd["content"])
+            context["page_embedding"] = page_embedding.tolist()
+            context["chunks"] = chunks
             processed_results.append(context)
         return processed_results
 
@@ -123,16 +121,17 @@ class ContextGenerator:
         return list(entities.values())
 
     def get_keywords(self, text, top_n=15):
-        unigram_keywords = self.keybert.extract_keywords(text, top_n=top_n, keyphrase_ngram_range=(1, 1), stop_words="english")
-        bigram_keywords = self.keybert.extract_keywords(text, top_n=top_n, keyphrase_ngram_range=(2, 2), stop_words="english")
+        unigram_keywords = self.keybert.extract_keywords(text, top_n=top_n, keyphrase_ngram_range=(1, 1),
+                                                         stop_words="english")
+        bigram_keywords = self.keybert.extract_keywords(text, top_n=top_n, keyphrase_ngram_range=(2, 2),
+                                                        stop_words="english")
         keywords = dict()
         for keyword, score in chain(unigram_keywords, bigram_keywords):
             keywords[keyword] = max(score, keywords.get(keyword, 0))
         return keywords
 
-
     def get_iab_topic_categories(self, text):
-        topic_cats = self._hierarchical_zero_shot(
+        return self._hierarchical_zero_shot(
             text=text,
             hierarchy=self.iab_taxonomy,
             multi_label_per_tier=True,
@@ -145,20 +144,20 @@ class ContextGenerator:
             batch_size=8,
             return_top_paths=1
         )
-        ans = []
-        for t in topic_cats:
-            for cat in t["category"]:
-                c_lower = cat.lower()
-                if c_lower not in ans:
-                    ans.append(c_lower)
-        return ans
 
     def get_embedding(self, text):
-        chunks = self.semantic_chunker(text)
-        if not chunks:
-            return None
-        embeddings = self.embedder.encode(chunks, convert_to_numpy=True)
-        return chunks, embeddings
+        chunks = self.semantic_chunker(content=text)
+        merged_chunks = self.merge_short_chunks(chunks=chunks, min_chunk_words=20)
+        refined_chunks = self.split_large_chunks_by_embedding_size(chunks=merged_chunks, max_tokens=256)
+        result = []
+        embeddings = []
+        for index, chunk in enumerate(refined_chunks):
+            embedding = self.embedder.encode(chunk, convert_to_numpy=True)
+            chunk_result = {"content": chunk, "embedding": embedding.tolist(), "chunk_index": index}
+            embeddings.append(embedding)
+            result.append(chunk_result)
+        mean_embeddings = np.mean(embeddings, axis=0)
+        return result, mean_embeddings
 
     @staticmethod
     def generate_hash_and_url(url: str) -> tuple[str, str]:
@@ -171,28 +170,105 @@ class ContextGenerator:
         n = urllib.parse.urlunparse(normalized)
         return hashlib.sha256(n.encode('utf-8')).hexdigest(), normalized
 
-    def semantic_chunker(self, content: str, breakpoint_percentile_threshold: float = 70.0) -> list[str]:
-        texts: list[str] = self._sent_tokenize(content)
-        if not texts:
-            return []
-        if len(texts) == 1:
-            return texts
+    def semantic_chunker(self, content: str, std_dev_knob: float = 0.5) -> list[str]:
+        sentences = self._sent_tokenize(content)
+        if len(sentences) <= 1:
+            return sentences
 
-        embeddings = self.embedder.encode(texts, convert_to_tensor=True)
-        similarities = util.cos_sim(embeddings[:-1], embeddings[1:]).diagonal().cpu().numpy()
-        threshold = np.percentile(similarities, breakpoint_percentile_threshold)
-        split_indices = [i for i, sim in enumerate(similarities) if sim < threshold]
+        embeddings = self.embedder.encode(sentences)
+
+        similarities = []
+
+        for index in range(len(embeddings) - 1):
+            current_embedding = embeddings[index].reshape(1, -1)
+            next_embedding = embeddings[index + 1].reshape(1, -1)
+            sim = util.cos_sim(current_embedding, next_embedding)[0][0]
+            similarities.append(sim)
+
+        if len(similarities) <= 1:
+            return sentences
+
+        mean_similarity = np.mean(similarities)
+        standard_deviation = np.std(similarities)
+        threshold = mean_similarity - std_dev_knob * standard_deviation
 
         chunks = []
-        start = 0
-        for idx in split_indices:
-            chunks.append(" ".join(texts[start:idx + 1]))
-            start = idx + 1
+        current_chunk = [sentences[0]]
 
-        if start < len(texts):
-            chunks.append(" ".join(texts[start:]))
+        for index in range(len(similarities)):
+            if similarities[index] < threshold:
+                chunks.append(" ".join(current_chunk))
+                current_chunk = [sentences[index + 1]]
+            else:
+                current_chunk.append(sentences[index + 1])
+
+        if current_chunk:
+            chunks.append(" ".join(current_chunk))
 
         return chunks
+
+    def merge_short_chunks(self, chunks: list[str], min_chunk_words: int = 20) -> list[str]:
+
+        if len(chunks) <= 1:
+            return chunks
+
+        index = 0
+        merged_chunks = []
+        chunk_size = len(chunks)
+        while index < chunk_size:
+            current_chunk = chunks[index]
+            word_count = len(current_chunk.split())
+            if word_count < min_chunk_words and (index < chunk_size - 1):
+                combined_chunks = current_chunk + " " + chunks[index + 1]
+                merged_chunks.append(combined_chunks)
+                index += 2
+            else:
+                merged_chunks.append(current_chunk)
+                index += 1
+
+        if len(merged_chunks) > 1 and len(merged_chunks[-1].split()) < min_chunk_words:
+            merged_chunks[-2] = merged_chunks[-2] + " " + merged_chunks[-1]
+            merged_chunks.pop()
+
+        return merged_chunks
+
+    def split_large_chunks_by_embedding_size(self, chunks: list[str], max_tokens: int = 256) -> list[str]:
+        final_chunks = []
+
+        for chunk in chunks:
+            token_ids = self.tokenizer.encode(chunk, add_special_tokens=False)
+
+            if len(token_ids) <= max_tokens:
+                final_chunks.append(chunk)
+            else:
+                sub_sentences = self._sent_tokenize(chunk)
+                current_sub_chunk_sentences = []
+                current_sub_chunk_tokens = 0
+
+                for sentence in sub_sentences:
+                    sentence_token_ids = self.tokenizer.encode(sentence, add_special_tokens=False)
+                    sentence_tokens = len(sentence_token_ids)
+
+                    if sentence_tokens > max_tokens:
+                        if current_sub_chunk_sentences:
+                            final_chunks.append(" ".join(current_sub_chunk_sentences))
+                        final_chunks.append(sentence)  # Add the long sentence
+                        current_sub_chunk_sentences = []
+                        current_sub_chunk_tokens = 0
+                        continue
+
+                    if current_sub_chunk_tokens + sentence_tokens <= max_tokens:
+                        current_sub_chunk_sentences.append(sentence)
+                        current_sub_chunk_tokens += sentence_tokens
+                    else:
+                        final_chunks.append(" ".join(current_sub_chunk_sentences))
+                        current_sub_chunk_sentences = [sentence]
+                        current_sub_chunk_tokens = sentence_tokens
+
+                if current_sub_chunk_sentences:
+                    final_chunks.append(" ".join(current_sub_chunk_sentences))
+
+        return final_chunks
 
     def _sent_tokenize(self, text):
         doc = self.spacy_core_web_sm(text)
@@ -212,22 +288,34 @@ class ContextGenerator:
                                 shortlist_top_k: int = 8,
                                 return_top_paths: int = 5
                                 ) -> List[Dict[str, Any]]:
-        branches: List[Tuple[List[Dict[str, Any]], List[str], List[str], float]] = [(hierarchy, [], [], 1.0)]
-        completed: List[Tuple[List[str], str, float]] = []
+        """
+        Hierarchical zero-shot classification that returns complete paths through the taxonomy.
+
+        Returns:
+            List of paths, where each path is a list of dictionaries containing:
+            - category: The category name
+            - iab_id: The IAB taxonomy ID
+            - tier: The tier level (1, 2, 3, etc.)
+            - score: The classification score for this tier
+        """
+        # Store branches with full tier information: (nodes, path_with_details, cum_score)
+        branches: List[Tuple[List[Dict[str, Any]], List[Dict[str, Any]], float]] = [(hierarchy, [], 1.0)]
+        completed: List[Tuple[List[Dict[str, Any]], float]] = []
 
         while branches:
-            next_branches: List[Tuple[List[Dict[str, Any]], List[str], List[str], float]] = []
-            for nodes, path, ids, cum_score in branches:
+            next_branches: List[Tuple[List[Dict[str, Any]], List[Dict[str, Any]], float]] = []
+            for nodes, path_details, cum_score in branches:
                 if not nodes:
-                    last_id = ids[-1] if ids else ""
-                    completed.append((path, last_id, cum_score))
+                    completed.append((path_details, cum_score))
                     continue
 
                 labels = [n.get("name", "") for n in nodes if n.get("name")]
                 if not labels:
-                    last_id = ids[-1] if ids else ""
-                    completed.append((path, last_id, cum_score))
+                    completed.append((path_details, cum_score))
                     continue
+
+                # Determine current tier level
+                current_tier = len(path_details) + 1
 
                 scores = self._score_tier(
                     text=text,
@@ -249,8 +337,7 @@ class ContextGenerator:
                     chosen = [(lab, s)] if s >= tier_threshold else []
 
                 if not chosen:
-                    last_id = ids[-1] if ids else ""
-                    completed.append((path, last_id, cum_score))
+                    completed.append((path_details, cum_score))
                     continue
 
                 for lab, s in chosen:
@@ -258,26 +345,50 @@ class ContextGenerator:
                     if node:
                         node_id = node.get("id", "")
                         child_nodes = node.get("children", [])
-                        next_branches.append((child_nodes, path + [lab], ids + [node_id], cum_score * s))
+
+                        # Create a tier entry with all required information
+                        tier_entry = {
+                            "category": lab,
+                            "iab_id": node_id,
+                            "tier": current_tier,
+                            "score": s
+                        }
+
+                        # Create a new path with this tier added
+                        new_path_details = path_details + [tier_entry]
+                        next_branches.append((child_nodes, new_path_details, cum_score * s))
 
             if not next_branches:
                 break
             branches = next_branches
 
-        for _, path, ids, cum_score in branches:
-            last_id = ids[-1] if ids else ""
-            completed.append((path, last_id, cum_score))
+        # Add any remaining branches to completed
+        for nodes, path_details, cum_score in branches:
+            completed.append((path_details, cum_score))
 
-        completed = sorted(completed, key=lambda x: x[2], reverse=True)
-        ans = []
-        seen_iab_ids = set()
-        for p, iab_id, s in completed:
-            if iab_id in seen_iab_ids:
+        # Sort by cumulative score (descending)
+        completed = sorted(completed, key=lambda x: x[1], reverse=True)
+
+        # Return top paths, each path is a list of tier dictionaries
+        result = []
+        seen_leaf_ids = set()
+
+        for path_details, cum_score in completed:
+            if not path_details:
                 continue
-            ans.append({"category": p, "iab_id": iab_id, "score": s})
-            seen_iab_ids.add(iab_id)
-        # todo limit to only top path and don't join them.
-        return ans[:return_top_paths]
+
+            # Use the last tier's iab_id as the leaf identifier to avoid duplicates
+            leaf_id = path_details[-1]["iab_id"]
+            if leaf_id in seen_leaf_ids:
+                continue
+
+            result.append(path_details)
+            seen_leaf_ids.add(leaf_id)
+
+            if len(result) >= return_top_paths:
+                break
+
+        return result
 
     def _chunk_text_by_tokens(self, text: str, max_tokens: int | None = None, overlap: int = 32) -> List[str]:
         limit = self.tokenizer.model_max_length if max_tokens is None else min(max_tokens,
