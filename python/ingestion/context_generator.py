@@ -1,25 +1,41 @@
+import asyncio
 import hashlib
 import json
+import os
+import threading
 import urllib
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from itertools import chain
 from typing import List, Dict, Any, Tuple
-
+import ftfy
 import numpy as np
+import regex as re
 import spacy
 import torch
+from jupyterlab.utils import deprecated
 from keybert import KeyBERT
+from openai import OpenAI
 from sentence_transformers import SentenceTransformer, util
 from tqdm import tqdm
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
 from python.ingestion.crawler import Crawler
+from python.prompts.prompt import NER_EXTRACTION_PROMPT
 
 
-def load_iab_taxonomy():
-    with open("../data/iab_taxonomy.json", "r") as f:
-        iab_taxonomy = json.load(f)
-    return iab_taxonomy
+def load_iab_taxonomy(taxonomy: str | None = "content"):
+    key = taxonomy.value if hasattr(taxonomy, "value") else (taxonomy or "content")
+    key = str(key).lower()
+    mapping = {
+        "content": "../data/iab_content_taxonomy.json",
+        "product": "../data/iab_product_taxonomy.json"
+    }
+    path = mapping.get(key)
+    if not path or not os.path.exists(path):
+        raise FileNotFoundError(f"Taxonomy file not found for '{key}': {path}")
+    with open(path, "r") as f:
+        return json.load(f)
 
 
 def _device():
@@ -34,7 +50,8 @@ class ContextGenerator:
     def __init__(self):
         self.keybert = KeyBERT()
         self.spacy_core_web_sm = spacy.load("en_core_web_sm")
-        self.iab_taxonomy = load_iab_taxonomy()
+        self.iab_content_taxonomy = load_iab_taxonomy("content")
+        self.iab_product_taxonomy = load_iab_taxonomy("product")
         self.DEVICE = _device()
         self.DTYPE = torch.float16 if self.DEVICE.type in ["cuda", "mps"] else torch.float32
         self.ZEROSHOT_MODEL_ID = "MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
@@ -47,78 +64,216 @@ class ContextGenerator:
                                             tokenizer=self.ZEROSHOT_TOK,
                                             device=0 if self.DEVICE.type == "cuda" else (
                                                 -1 if self.DEVICE.type == "cpu" else self.DEVICE),
-                                            batch_size=8
-                                            )
+                                            batch_size=8)
         self.tokenizer = self.ZEROSHOT_CLASSIFIER.tokenizer
         self.embedder = SentenceTransformer("all-MiniLM-L6-v2", device=str(self.DEVICE))
         self.crawler = Crawler()
+        self.openai_api_key = os.getenv("OPENAI_API_KEY", "")
+        self.openai_client = OpenAI(api_key=self.openai_api_key)
+        self._tokenizer_lock = threading.Lock()
+        self._classifier_lock = threading.Lock()
+        self.crawled_results = self.crawler.crawl_web_pages()
 
-    def generate_ad_context(self) -> Any:
+    async def generate_ad_context(self) -> List[Dict[str, Any]] | None:
         ads = self.crawler.get_ads_inventory()
         if not ads:
             return None
-        for ad in tqdm(ads):
-            context_targeting = ad["targeting"]
-            creative = ad["creative"]
+
+        loop = asyncio.get_running_loop()
+
+        ad_inventory_page_results = self.crawled_results.get("ads_inventory_web_pages", {})
+
+        def _process_ad(ad):
+            context_targeting = ad.get("targeting", {})
+            manually_crafted_keywords = context_targeting.get("keywords", [])
+            manually_crafted_topics = context_targeting.get("topics", [])
+
+            creative = ad.get("creative", None)
+
             if not context_targeting or not creative:
                 return None
-            keywords = [k.lower() for k in context_targeting["keywords"]]
-            entities = [e.lower() for e in context_targeting["entities"]]
-            topics = [t.lower() for t in context_targeting["topics"]]
 
-            embedding_text = f"""
-            {creative.get("headline", "")}.
-            {creative.get("description", "")}.
-            Keywords: {', '.join(keywords)}.
-            Entities: {', '.join(entities)}.
-            Topics: {', '.join(topics)}.
-            """
+            ad_context_keywords = {}
+            ad_context_entities = []
+            ad_context_topics = []
+
+            # Extract creative fields
+            landing_page_url = creative.get("landing_page_url", "")
+            headline = creative.get("headline", "")
+            description = creative.get("description", "")
+            landing_page_content = ""
+
+            # Crawl landing page if URL exists
+            if landing_page_url:
+                landing_page_result = ad_inventory_page_results[
+                    landing_page_url] if landing_page_url in ad_inventory_page_results else None
+                if landing_page_result:
+                    landing_page_content = landing_page_result.get("content", "")
+
+            # Extract context only if we have content
+            if landing_page_content:
+                ad_context_keywords = self.get_keywords(text=landing_page_content)
+                ad_context_entities = self.get_named_entities(text=landing_page_content)
+                ad_context_topics = self.get_iab_topic_categories(
+                    text=landing_page_content, taxonomy="product", threshold=0.1
+                )
+
+            # Create embedding text with safe string concatenation
+            embedding_text = f"{headline}. {description}. {landing_page_content}".strip()
             embeddings = self.embedder.encode(embedding_text, convert_to_numpy=True)
-            ad["keywords"] = keywords
-            ad["topics"] = topics
-            ad["entities"] = entities
-            ad["embedding"] = embeddings.tolist()
-        return ads
 
-    def generate_page_context(self):
+            # Merge keywords
+            keywords = ad_context_keywords.copy()
+            for k in manually_crafted_keywords:
+                keywords[k] = 1.0
+
+            # Topics
+            generated_iab_topics = {
+                t["iab_id"]: t
+                for path in ad_context_topics
+                for t in path
+                if t and "iab_id" in t
+            }
+
+            manual_topics_to_merge = {
+                mct["iab_id"]: {**mct, "score": 1.0}
+                for mct in manually_crafted_topics
+                if "iab_id" in mct
+            }
+
+            generated_iab_topics.update(manual_topics_to_merge)
+
+            # todo sentiment analysis could be added here in the future
+            ad["ad_context"] = {
+                "keywords": keywords,
+                "entities": list(ad_context_entities),
+                "topics": generated_iab_topics,
+                "embedding": embeddings.tolist()
+            }
+
+            return ad
+
+        processed = []
+        max_workers = 1
+        with ThreadPoolExecutor(max_workers=max_workers) as pool:
+            tasks = [loop.run_in_executor(pool, _process_ad, ad) for ad in ads]
+            for future in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
+                ad_res = await future
+                if ad_res:
+                    processed.append(ad_res)
+
+        return processed
+
+    async def generate_page_context(self):
         if not self.crawler:
             return None
 
-        crawled_results = self.crawler.crawl()
+        loop = asyncio.get_running_loop()
+        crawled_results = self.crawled_results["publication_web_ages"].values()
         if not crawled_results:
             return None
 
         processed_results = []
-        for cd in tqdm(crawled_results):
+
+        def _process(cd):
             page_id, url = self.generate_hash_and_url(cd["url"])
+            page_content = cd["content"]
             meta_data = {
                 "url": url,
-                "title": cd["title"],
-                "description": cd["description"],
-                "tags": cd["tags"],
-                "text": cd["content"]
+                "title": cd.get("title"),
+                "description": cd.get("description"),
+                "tags": cd.get("tags"),
+                "content": page_content
             }
-            context = dict()
+            context = {}
+            topic_categories = self.get_iab_topic_categories(text=page_content, taxonomy="content")
             context["page_id"] = page_id
             context["meta_data"] = meta_data
             context["last_analyzed"] = datetime.now().isoformat()
-            context["keywords"] = self.get_keywords(cd["content"])
-            context["entities"] = self.get_ner(cd["content"])
-            context["topics"] = self.get_iab_topic_categories(cd["content"])
-            chunks, page_embedding = self.get_embedding(cd["content"])
+            context["keywords"] = self.get_keywords(text=page_content)
+            context["entities"] = self.get_named_entities(text=page_content)
+            context["topics"] = {t["iab_id"]: t for path in topic_categories for t in path if t and "iab_id" in t}
+            chunks, page_embedding = self.get_embedding(text=page_content)
             context["page_embedding"] = page_embedding.tolist()
             context["chunks"] = chunks
-            processed_results.append(context)
+            return context
+
+        max_workers = 1
+        with ThreadPoolExecutor(max_workers=max_workers) as pool:
+            tasks = [loop.run_in_executor(pool, _process, cd) for cd in crawled_results]
+            for future in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
+                res = await future
+                if res:
+                    processed_results.append(res)
+
         return processed_results
 
-    def get_ner(self, text):
+    @deprecated
+    def get_named_entities_via_open_ai(self, text: str) -> List[Dict[str, str]]:
+        try:
+            response = self.openai_client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": NER_EXTRACTION_PROMPT},
+                    {"role": "user", "content": text}
+                ]
+            )
+        except Exception:
+            return []
+
+        raw = ""
+        try:
+            if hasattr(response, "choices") and response.choices:
+                choice = response.choices[0]
+                message = getattr(choice, "message", None)
+                if message is not None:
+                    raw = getattr(message, "content", "") or (message.content if hasattr(message, "content") else "")
+                elif isinstance(choice, dict):
+                    raw = choice.get("message", {}).get("content") or choice.get("text", "") or ""
+                else:
+                    raw = getattr(choice, "text", "") or ""
+        except (AttributeError, IndexError, KeyError, TypeError):
+            raw = ""
+
+        try:
+            return json.loads(raw) if raw else []
+        except (json.JSONDecodeError, TypeError, ValueError):
+            return []
+
+    def get_named_entities(self, text: str) -> List[Dict[str, str]]:
         doc = self.spacy_core_web_sm(text)
-        entities = dict()
+        unique_entities = {}
+
+        allowed = {"ORG", "PRODUCT", "PERSON", "EVENT", "GPE"}
+
         for ent in doc.ents:
-            key = ent.text.lower()
-            if key not in entities:
-                entities[key] = {"entity": ent.text, "type": ent.label_}
-        return list(entities.values())
+            if ent.label_ in allowed and len(ent.text) >= 3:
+                cleaned = self.clean_entity_text(ent.text)
+                if not cleaned:
+                    continue
+
+                key = (cleaned, ent.label_)
+                if key not in unique_entities:
+                    unique_entities[key] = {
+                        "text": cleaned,
+                        "type": ent.label_
+                    }
+
+        return list(unique_entities.values())
+
+    @staticmethod
+    def clean_entity_text(text: str) -> str:
+        cleaned = ftfy.fix_text(text)
+
+        cleaned = cleaned.lower()
+
+        cleaned = re.sub(r"’s\b|'s\b", "", cleaned)
+
+        cleaned = cleaned.strip(" ,.;:!?-()[]{}\"'")
+
+        cleaned = re.sub(r"\s+", " ", cleaned).strip()
+
+        return cleaned
 
     def get_keywords(self, text, top_n=15):
         unigram_keywords = self.keybert.extract_keywords(text, top_n=top_n, keyphrase_ngram_range=(1, 1),
@@ -130,19 +285,24 @@ class ContextGenerator:
             keywords[keyword] = max(score, keywords.get(keyword, 0))
         return keywords
 
-    def get_iab_topic_categories(self, text):
+    def get_iab_topic_categories(self, text, taxonomy: str = "content", threshold: float = 0.5):
+        if taxonomy == "product":
+            hierarchy = self.iab_product_taxonomy
+        else:
+            hierarchy = self.iab_content_taxonomy
+
         return self._hierarchical_zero_shot(
             text=text,
-            hierarchy=self.iab_taxonomy,
+            hierarchy=hierarchy,
             multi_label_per_tier=True,
-            tier_threshold=0.5,
+            tier_threshold=threshold,
             tier_top_k=2,
             hypothesis_template="The topic of this text is {}.",
             score_aggregate="mean",
             max_tokens=300,
             overlap=96,
             batch_size=8,
-            return_top_paths=1
+            return_top_paths=5
         )
 
     def get_embedding(self, text):
@@ -348,7 +508,7 @@ class ContextGenerator:
 
                         # Create a tier entry with all required information
                         tier_entry = {
-                            "category": lab,
+                            "name": lab,
                             "iab_id": node_id,
                             "tier": current_tier,
                             "score": s
@@ -394,7 +554,8 @@ class ContextGenerator:
         limit = self.tokenizer.model_max_length if max_tokens is None else min(max_tokens,
                                                                                self.tokenizer.model_max_length)
         usable = max(64, limit - 16)
-        ids = self.tokenizer.encode(text, add_special_tokens=False)
+        with self._tokenizer_lock:
+            ids = self.tokenizer.encode(text, add_special_tokens=False)
         if len(ids) <= usable:
             return [text]
         stride = max(1, usable - overlap)
@@ -403,7 +564,8 @@ class ContextGenerator:
             chunk_ids = ids[start:start + usable]
             if not chunk_ids:
                 break
-            chunks.append(self.tokenizer.decode(chunk_ids, skip_special_tokens=True))
+            with self._tokenizer_lock:
+                chunks.append(self.tokenizer.decode(chunk_ids, skip_special_tokens=True))
             if start + usable >= len(ids):
                 break
         return chunks
@@ -431,13 +593,14 @@ class ContextGenerator:
                     ) -> Dict[str, float]:
         chunks = self._chunk_text_by_tokens(text, max_tokens=max_tokens, overlap=overlap)
         labels = self._shortlist_labels(chunks, candidate_labels, top_k=min(shortlist_top_k, len(candidate_labels)))
-        results = self.ZEROSHOT_CLASSIFIER(
-            sequences=chunks if len(chunks) > 1 else chunks[0],
-            candidate_labels=labels,
-            multi_label=multi_label,
-            hypothesis_template=hypothesis_template,
-            batch_size=batch_size
-        )
+        with self._classifier_lock:
+            results = self.ZEROSHOT_CLASSIFIER(
+                sequences=chunks if len(chunks) > 1 else chunks[0],
+                candidate_labels=labels,
+                multi_label=multi_label,
+                hypothesis_template=hypothesis_template,
+                batch_size=batch_size
+            )
         if isinstance(results, dict):
             results = [results]
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.adServerQueue = window.adServerQueue || [];
+
+        adServerQueue.push({
+            type: 'renderAd',
+            slotId: '123455',
+            siteId: 'pub-123456',
+        });
+    </script>
+</head>
+<body>
+<h1>Ad Rendering Tests</h1>
+
+<div id="123455" style="width:300px;height:250px;border:2px solid blue;"></div>
+
+<script src="backend/sdk.js" async></script>
+</body>
+</html>

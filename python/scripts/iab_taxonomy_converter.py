@@ -74,11 +74,20 @@ def read_taxonomy_json(path):
     )
 
 
-def generate_taxonomy_mapping(path=None):
+def generate_taxonomy_mapping(path=None, index_col='Unique ID'):
     df = read_taxonomy_json(path=path)
-    valid_mask = df['Unique ID 2'].notna() & (df['Unique ID 2'] != '')
-    df_valid = df[valid_mask].copy()
-    return pd.Series(df_valid['Unique ID'].values, index=df_valid['Unique ID 2']).to_dict()
+
+    uniqueIdValues = df['Unique ID'].tolist()
+    uniqueId2Values = df['Unique ID 2'].tolist()
+
+    mapping = dict()
+
+    zipped_values = zip(uniqueIdValues, uniqueId2Values) if index_col == 'Unique ID' else zip(uniqueId2Values,
+                                                                                              uniqueIdValues)
+    for k, v in zipped_values:
+        if pd.notna(k) and k != '' and pd.notna(v) and v != '':
+            mapping[k] = v
+    return mapping
 
 
 def write_taxonomy_json(taxonomy, path):

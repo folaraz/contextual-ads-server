@@ -8,9 +8,21 @@ import (
 	"math"
 	"sort"
 	"strconv"
+	"sync"
 
 	"github.com/folaraz/contextual-ads-server/internal/models"
 	"github.com/redis/go-redis/v9"
+)
+
+type AdTaxonomyMapping struct {
+	ContentToProduct map[string]string
+	ProductToContent map[string]string
+}
+
+var (
+	adTaxonomyMapping AdTaxonomyMapping
+	adContentMu       sync.RWMutex
+	adContentOnce     sync.Once
 )
 
 func GetContext(urlHash string) models.PageContext {
@@ -54,6 +66,12 @@ func GetContext(urlHash string) models.PageContext {
 
 func QueryAds(pageContext models.PageContext) []models.AdRankResult {
 	chunkContexts := pageContext.ChunkContexts
+	keywordMap := pageContext.Keywords
+
+	keywords := make([]string, 0, len(keywordMap))
+	for k := range keywordMap {
+		keywords = append(keywords, "kw:"+k)
+	}
 
 	if len(chunkContexts) == 0 {
 		log.Printf("no chunk embeddings; skipping KNN search")
@@ -128,10 +146,10 @@ func getAdsFromRediSearch(ctx context.Context, client *redis.Client, buffer []by
 			log.Printf("failed to parse vector score for id=%s: %v", doc.ID, e)
 			continue
 		}
-		if vectorScore < 0.65 {
-			log.Printf("skipping ad id=%s with vector score %.4f", doc.ID, vectorScore)
-			continue
-		}
+		//if vectorScore < 0.65 {
+		//	log.Printf("skipping ad id=%s with vector score %.4f", doc.ID, vectorScore)
+		//	continue
+		//}
 
 		adInCache, ok := ads[a.ID]
 		if !ok {
@@ -159,4 +177,65 @@ func floatsToBytes(fs []float32) []byte {
 	}
 
 	return buf
+}
+
+func GetAdMapping() AdTaxonomyMapping {
+	adContentOnce.Do(func() {
+		if err := LoadAdContentToProductMapping(); err != nil {
+			log.Printf("failed to load ad content to product mapping: %v", err)
+			adTaxonomyMapping = AdTaxonomyMapping{
+				ContentToProduct: make(map[string]string),
+				ProductToContent: make(map[string]string),
+			}
+		}
+	})
+
+	adContentMu.RLock()
+	defer adContentMu.RUnlock()
+
+	// doing this will prevent external modification of the cache
+	return AdTaxonomyMapping{
+		ContentToProduct: adTaxonomyMapping.ContentToProduct,
+		ProductToContent: adTaxonomyMapping.ProductToContent,
+	}
+}
+
+func LoadAdContentToProductMapping() error {
+	ctx := context.Background()
+	client := GetRedisClient()
+
+	c_t_p, err1 := client.HGetAll(ctx, "iab_content_to_product").Result()
+	p_t_c, err2 := client.HGetAll(ctx, "iab_product_to_content").Result()
+
+	if err1 != nil {
+		panic(err1)
+	}
+	if err2 != nil {
+		panic(err2)
+	}
+
+	adContentToProduct := make(map[string]string)
+	adProductToContent := make(map[string]string)
+
+	for adContentID, productsStr := range c_t_p {
+		var product string
+		json.Unmarshal([]byte(productsStr), &product)
+		adContentToProduct[adContentID] = product
+	}
+
+	for adProductID, contentsStr := range p_t_c {
+		var content string
+		json.Unmarshal([]byte(contentsStr), &content)
+		adProductToContent[adProductID] = content
+	}
+
+	adContentMu.Lock()
+	adTaxonomyMapping = AdTaxonomyMapping{
+		ContentToProduct: adContentToProduct,
+		ProductToContent: adProductToContent,
+	}
+	adContentMu.Unlock()
+
+	return nil
+
 }

@@ -2,6 +2,9 @@ import random
 import time
 from json import loads, dumps
 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 from trafilatura import fetch_url, extract
 
 
@@ -72,41 +75,111 @@ class Crawler:
                 "https://www.theguardian.com/technology/2025/oct/11/using-a-swearword-in-your-google-search-can-stop-the-ai-answer-but-should-you"
             ]
         }
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
+        self.chrome_options = chrome_options
+
         self.article_path = "../data/crawled_articles.json"
         self.ads_inventory_path = "../data/ads_inventory.json"
+        self.crawled_pages_path = "../data/crawled_pages.json"
+        self.crawled_pages_cache = self._load_crawled_pages()
 
     def get_ads_inventory(self):
+        ad_inventories = []
+        print(f"Loading ads inventory from {self.ads_inventory_path}...")
         with open(self.ads_inventory_path, "r") as f:
-            return loads(f.read())
+            ad_inventories = loads(f.read())
+            print(f"Loaded {len(ad_inventories)} ads from inventory.")
+        return ad_inventories
 
-    def crawl(self):
-        print("Checking path for existing data...")
+    def _load_crawled_pages(self):
+        """Load existing crawled pages from file into cache"""
         try:
-            with open(self.article_path, "r") as f:
+            with open(self.crawled_pages_path, "r") as f:
                 data = loads(f.read())
-                if data:
-                    print(f"Found {len(data)} articles in {self.article_path}. Skipping crawl.")
-                    return data
+                print(f"Loaded {len(data)} crawled pages into cache.")
+                return data
+        except FileNotFoundError:
+            print("No existing crawled pages file found. Starting with empty cache.")
+            return {}
         except Exception as e:
-            print(f"Error reading data: {str(e)}")
+            print(f"Error loading crawled pages: {str(e)}")
+            return {}
 
-        print("Starting crawling...")
-        data = []
-        for theme, values in self.urls.items():
-            for url in values:
-                result = self.scrape(url)
-                if result:
-                    result["theme"] = theme
-                    data.append(result)
-                time.sleep(random.uniform(1, 3))
-        print(f"Crawled {len(data)} articles.")
-        with open(self.article_path, "w") as f:
-            f.write(dumps(data, indent=2))
-            print(f"Saved crawled data to {self.article_path}.")
+    def save_crawled_page(self, url, page_data):
+        """Update cache and persist to file"""
+        self.crawled_pages_cache[url] = page_data
+
+        with open(self.crawled_pages_path, "w") as f:
+            f.write(dumps(self.crawled_pages_cache, indent=2))
+            print(f"Updated crawled pages cache with {url}.")
+
+    def crawl_ads_landing_page(self, url):
+        print(f"Scraping ads landing page: {url}")
+        if url in self.crawled_pages_cache:
+            print(f"Found cached data for {url}.")
+            return self.crawled_pages_cache[url]
+        print("No cached data found. Scraping anew...")
+        result = self.scrape(url)
+        if result:
+            self.save_crawled_page(url, result)
+            print(f"Successfully scraped ads landing page: {url}")
+        else:
+            print(f"Failed to scrape ads landing page: {url}")
+        return result
+
+    def crawl_web_pages(self):
+        publication_data = self.crawl_publication_pages()
+        ads_inventory_data = self.craw_ad_inventory_pages()
+        data = {
+            "publication_web_ages": publication_data,
+            "ads_inventory_web_pages": ads_inventory_data
+        }
         return data
 
+    def craw_ad_inventory_pages(self):
+        ads = self.get_ads_inventory()
+        print("Starting crawling ads inventory pages...")
+        data = dict()
+        for ad in ads:
+            creative = ad.get("creative", None)
+            landing_page_url = creative.get("landing_page_url", "")
+            result = self.crawl_ads_landing_page(landing_page_url)
+            if result:
+                data[landing_page_url] = result
+        return data
+
+    def crawl_publication_pages(self):
+        print("Starting crawling publication pages...")
+        data = {}
+        for _, values in self.urls.items():
+            for url in values:
+                if url in self.crawled_pages_cache:
+                    print(f"Using cached data for {url}.")
+                    result = self.crawled_pages_cache[url]
+                    data[url] = result
+                    continue
+                print("No cached data found. Scraping anew...")
+                result = self.scrape(url)
+                if result:
+                    print(f"Successfully scraped: {url}")
+                self.save_crawled_page(url, result)
+                data[url] = result
+                time.sleep(random.uniform(1, 3))
+        return data
+
+    def scrape(self, url):
+        result = self.scrape_via_fetch(url)
+        if result:
+            return result
+        result = self.scrape_via_driver(url)
+        return result
+
     @staticmethod
-    def scrape(url):
+    def scrape_via_fetch(url):
         try:
             downloaded = fetch_url(url=url)
             if not downloaded:
@@ -126,9 +199,63 @@ class Crawler:
                 "tags": result.get("tags", "").split(", ") if result.get("tags") else [],
                 "content": content,
                 "date": result.get("date", ""),
+                "title": result.get("title", ""),
+                "description": result.get("description", ""),
                 "author": result.get("author", "")
             }
             return payload
         except Exception as e:
             print(f"Error scraping {url}: {str(e)}")
             return None
+
+    def scrape_via_driver(self, url):
+        driver = webdriver.Chrome(options=self.chrome_options)
+        try:
+            print(f"Scraping via driver: {url}")
+            driver.get(url)
+
+            time.sleep(10)
+
+            title = driver.title
+            description = self._get_meta_description(driver)
+            body_text = self._get_body_text(driver)
+            img_alts_text = self._get_image_alts(driver)
+
+            content = f"""{title}. {description}. {body_text}. {img_alts_text}"""
+
+            payload = {
+                'url': url,
+                'title': title,
+                'content': content,
+                'description': description,
+            }
+            return payload
+
+        finally:
+            driver.quit()
+
+    def _get_meta_description(self, driver):
+        """Extract meta description"""
+        try:
+            meta = driver.find_element(By.CSS_SELECTOR, 'meta[name="description"]')
+            return meta.get_attribute('content')
+        except:
+            return ""
+
+    def _get_body_text(self, driver):
+        """Extract main body text"""
+        try:
+            body = driver.find_element(By.TAG_NAME, 'body')
+            return body.text
+        except:
+            return ""
+
+    def _get_image_alts(self, driver):
+        """Extract image alt text"""
+        alts = []
+        images = driver.find_elements(By.TAG_NAME, 'img')
+        for img in images[:30]:
+            alt = img.get_attribute('alt')
+            if alt:
+                alts.append(alt)
+        return alts

@@ -1,84 +1,5 @@
 [
     {
-        "id": "1576",
-        "name": "Weapons and Ammunition",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1577",
-                "name": "Ammunition",
-                "tier": 2
-            },
-            {
-                "id": "1578",
-                "name": "Guns",
-                "tier": 2
-            },
-            {
-                "id": "1579",
-                "name": "Gun Accessories",
-                "tier": 2
-            },
-            {
-                "id": "1580",
-                "name": "Gun Shows and Auctions",
-                "tier": 2
-            },
-            {
-                "id": "1581",
-                "name": "Non-Projectile Weapons",
-                "tier": 2
-            },
-            {
-                "id": "1582",
-                "name": "Taser and Stun Guns",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1474",
-        "name": "Politics",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1475",
-                "name": "Ballot measures",
-                "tier": 2
-            },
-            {
-                "id": "1476",
-                "name": "Elections",
-                "tier": 2
-            },
-            {
-                "id": "1477",
-                "name": "Political Action Committees",
-                "tier": 2
-            },
-            {
-                "id": "1478",
-                "name": "Political Analysis and Opinion",
-                "tier": 2
-            },
-            {
-                "id": "1479",
-                "name": "Political candidates",
-                "tier": 2
-            },
-            {
-                "id": "1480",
-                "name": "Political Donations",
-                "tier": 2
-            },
-            {
-                "id": "1481",
-                "name": "Referendums or promoting causes; eg: Healthcare reform, energy trades (Oil/Solar), etc...",
-                "tier": 2
-            }
-        ]
-    },
-    {
         "id": "1315",
         "name": "Events and Performances",
         "tier": 1,
@@ -146,28 +67,28 @@
         ]
     },
     {
-        "id": "1037",
-        "name": "Aerospace and Defense",
+        "id": "1519",
+        "name": "Sexual Health",
         "tier": 1,
         "children": [
             {
-                "id": "1038",
-                "name": "Construction and Engineering",
+                "id": "1520",
+                "name": "Contraceptives",
                 "tier": 2
             },
             {
-                "id": "1039",
-                "name": "Industrial Conglomerates",
+                "id": "1521",
+                "name": "Doctor Perscribed Medicines",
                 "tier": 2
             },
             {
-                "id": "1040",
-                "name": "Trading Companies and Distributors",
+                "id": "1522",
+                "name": "Fertility Tracking Applications",
                 "tier": 2
             },
             {
-                "id": "1041",
-                "name": "Transportation",
+                "id": "1523",
+                "name": "Non-perscribed Performance Enhancers",
                 "tier": 2
             }
         ]
@@ -349,23 +270,38 @@
         ]
     },
     {
-        "id": "1291",
-        "name": "Dieting and Weightloss",
+        "id": "1075",
+        "name": "Collectables and Antiques",
         "tier": 1,
         "children": [
             {
-                "id": "1292",
-                "name": "Food Logging",
+                "id": "1076",
+                "name": "Antiques",
                 "tier": 2
             },
             {
-                "id": "1293",
-                "name": "Weightloss Services",
+                "id": "1077",
+                "name": "Coins and Paper Money",
                 "tier": 2
             },
             {
-                "id": "1294",
-                "name": "Workout and Step Tracking Applications",
+                "id": "1078",
+                "name": "Collectibles",
+                "tier": 2
+            },
+            {
+                "id": "1079",
+                "name": "Entertainment Memorabilia",
+                "tier": 2
+            },
+            {
+                "id": "1080",
+                "name": "Sports Memorabilia and Trading Cards",
+                "tier": 2
+            },
+            {
+                "id": "1081",
+                "name": "Stamps",
                 "tier": 2
             }
         ]
@@ -403,60 +339,244 @@
         ]
     },
     {
-        "id": "1460",
-        "name": "Pet Ownership",
+        "id": "1551",
+        "name": "Vehicles",
         "tier": 1,
         "children": [
             {
-                "id": "1461",
-                "name": "Pet Adoption",
+                "id": "1552",
+                "name": "Automotive Leasing",
                 "tier": 2
             },
             {
-                "id": "1462",
-                "name": "Pet Breeders",
+                "id": "1553",
+                "name": "Automotive Ownership",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1554",
+                        "name": "New vehicle Ownership",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1555",
+                        "name": "Pre-owned Automotive Ownership",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1556",
+                "name": "Automotive Products",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1557",
+                        "name": "Automotive Care Products",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1558",
+                        "name": "Automotive Parts and Accessories",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1559",
+                        "name": "Aftermarket Parts and Accessories",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1560",
+                "name": "Automotive Services",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1561",
+                        "name": "Auto Towing",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1562",
+                        "name": "Auto Repair",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1563",
+                        "name": "Car Wash",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1564",
+                "name": "Automotive Sales Applications",
                 "tier": 2
             },
             {
-                "id": "1463",
-                "name": "Pet Care and Supply Applications",
+                "id": "1565",
+                "name": "Ride-sharing Services",
                 "tier": 2
             },
             {
-                "id": "1464",
-                "name": "Pet Grooming",
+                "id": "1566",
+                "name": "Taxi Services",
                 "tier": 2
             },
             {
-                "id": "1465",
-                "name": "Pet Sitting",
+                "id": "1567",
+                "name": "Vehicle Rental",
                 "tier": 2
             },
             {
-                "id": "1466",
-                "name": "Veterinary Services",
+                "id": "1568",
+                "name": "Vehicle Type",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1569",
+                        "name": "Boats",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1570",
+                        "name": "Diesel Vehicles",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1571",
+                        "name": "Electric Vehicles",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1572",
+                        "name": "Gas Vehicles",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1573",
+                        "name": "Hybrid Vehicles",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1574",
+                        "name": "Recreational Vehicles",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1575",
+                        "name": "Scooters, Motorbikes, and E-bikes",
+                        "tier": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "1371",
+        "name": "Gifts and Holiday Items",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1372",
+                "name": "Flowers",
+                "tier": 2
+            },
+            {
+                "id": "1373",
+                "name": "Gift Baskets",
+                "tier": 2
+            },
+            {
+                "id": "1374",
+                "name": "Gift Cards and Coupons",
+                "tier": 2
+            },
+            {
+                "id": "1375",
+                "name": "Gift Certificates",
+                "tier": 2
+            },
+            {
+                "id": "1376",
+                "name": "Greeting Cards",
+                "tier": 2
+            },
+            {
+                "id": "1377",
+                "name": "Party Goods",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1448",
-        "name": "Non-Fiat Currency",
+        "id": "1368",
+        "name": "Green/Eco",
         "tier": 1,
         "children": [
             {
-                "id": "1449",
-                "name": "Cryptocurrency Exchanges",
+                "id": "1369",
+                "name": "Green/Eco Products",
                 "tier": 2
             },
             {
-                "id": "1450",
-                "name": "Cryptocurrency Stock",
+                "id": "1370",
+                "name": "Green/Eco Services",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1259",
+        "name": "Dating",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1260",
+                "name": "Casual Relationships",
                 "tier": 2
             },
             {
-                "id": "1451",
-                "name": "NFTs",
+                "id": "1261",
+                "name": "Serious Relationships",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1576",
+        "name": "Weapons and Ammunition",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1577",
+                "name": "Ammunition",
+                "tier": 2
+            },
+            {
+                "id": "1578",
+                "name": "Guns",
+                "tier": 2
+            },
+            {
+                "id": "1579",
+                "name": "Gun Accessories",
+                "tier": 2
+            },
+            {
+                "id": "1580",
+                "name": "Gun Shows and Auctions",
+                "tier": 2
+            },
+            {
+                "id": "1581",
+                "name": "Non-Projectile Weapons",
+                "tier": 2
+            },
+            {
+                "id": "1582",
+                "name": "Taser and Stun Guns",
                 "tier": 2
             }
         ]
@@ -566,643 +686,322 @@
         ]
     },
     {
-        "id": "1482",
-        "name": "Real Estate",
+        "id": "1544",
+        "name": "Tobacco",
         "tier": 1,
         "children": [
             {
-                "id": "1483",
-                "name": "Commercial Real Estate",
+                "id": "1545",
+                "name": "Cigars",
                 "tier": 2
             },
             {
-                "id": "1484",
-                "name": "Real Estate Rentals",
+                "id": "1546",
+                "name": "Cigarettes",
                 "tier": 2
             },
             {
-                "id": "1485",
-                "name": "Real Estate Sales",
+                "id": "1547",
+                "name": "Smokeless Tobacco",
                 "tier": 2
             },
             {
-                "id": "1486",
-                "name": "Real Estate Services For Owners",
+                "id": "1548",
+                "name": "Vaping",
+                "tier": 2
+            },
+            {
+                "id": "1549",
+                "name": "Vaping Cartridges",
+                "tier": 2
+            },
+            {
+                "id": "1550",
+                "name": "Vaporizors",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1419",
-        "name": "Media",
+        "id": "1008",
+        "name": "Culture and Fine Arts",
         "tier": 1,
         "children": [
             {
-                "id": "1420",
-                "name": "Blogs/Forums/Social Networks",
-                "tier": 2
-            },
-            {
-                "id": "1421",
-                "name": "Book Reading and Review Applications",
-                "tier": 2
-            },
-            {
-                "id": "1422",
-                "name": "Books and Audio Books",
-                "tier": 2
-            },
-            {
-                "id": "1423",
-                "name": "Casual Games",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1424",
-                        "name": "Casual Games Apps",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1426",
-                        "name": "Core Gaming Apps",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1425",
-                "name": "Core Gaming",
-                "tier": 2
-            },
-            {
-                "id": "1427",
-                "name": "CDs and Vinyl Records",
-                "tier": 2
-            },
-            {
-                "id": "1428",
-                "name": "DVDs",
-                "tier": 2
-            },
-            {
-                "id": "1429",
-                "name": "Live Television",
-                "tier": 2
-            },
-            {
-                "id": "1430",
-                "name": "Magazines and Newspapers",
-                "tier": 2
-            },
-            {
-                "id": "1431",
-                "name": "Music and Video Streaming Services",
-                "tier": 2
-            },
-            {
-                "id": "1432",
-                "name": "News and Analysis",
-                "tier": 2
-            },
-            {
-                "id": "1433",
-                "name": "Radio and Podcasts",
-                "tier": 2
-            },
-            {
-                "id": "1434",
-                "name": "Sports",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1435",
-                        "name": "Fantasy Sports",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1436",
-                        "name": "Sports Highlights",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1437",
-                        "name": "Team News and Analysis",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1438",
-                "name": "Utilities Apps",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1439",
-                        "name": "Productivity Apps",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1440",
-                        "name": "Reference Apps",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1441",
-                        "name": "Search Engine Apps",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1442",
-                        "name": "Weather Apps",
-                        "tier": 3
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": "1368",
-        "name": "Green/Eco",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1369",
-                "name": "Green/Eco Products",
-                "tier": 2
-            },
-            {
-                "id": "1370",
-                "name": "Green/Eco Services",
+                "id": "1009",
+                "name": "Museums and Galleries",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1262",
-        "name": "Debated Sensitive Social Issue",
+        "id": "1295",
+        "name": "Education and Careers",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1296",
+                "name": "Adult Education",
+                "tier": 2
+            },
+            {
+                "id": "1297",
+                "name": "Certification Programs",
+                "tier": 2
+            },
+            {
+                "id": "1298",
+                "name": "Colleges and Universities",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1299",
+                        "name": "Post-Graduate Education",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1300",
+                "name": "Education Applications",
+                "tier": 2
+            },
+            {
+                "id": "1301",
+                "name": "Employment Agencies",
+                "tier": 2
+            },
+            {
+                "id": "1302",
+                "name": "Higher Education",
+                "tier": 2
+            },
+            {
+                "id": "1303",
+                "name": "Language Learning",
+                "tier": 2
+            },
+            {
+                "id": "1304",
+                "name": "Online Education",
+                "tier": 2
+            },
+            {
+                "id": "1305",
+                "name": "Primary Education",
+                "tier": 2
+            },
+            {
+                "id": "1306",
+                "name": "Remote work and school",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1307",
+                        "name": "Distance learning",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1308",
+                        "name": "Homeschooling",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1309",
+                        "name": "Online Surveys",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1310",
+                        "name": "Multi-Level Marketing",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1311",
+                        "name": "Telecommuting",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1312",
+                "name": "Study Skills",
+                "tier": 2
+            },
+            {
+                "id": "1313",
+                "name": "Teaching Resources",
+                "tier": 2
+            },
+            {
+                "id": "1314",
+                "name": "Trade Schools",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1000",
+        "name": "Ad Safety Risk",
         "tier": 1
     },
     {
-        "id": "1097",
-        "name": "Consumer Electronics",
+        "id": "1416",
+        "name": "Legal Services",
         "tier": 1,
         "children": [
             {
-                "id": "1098",
-                "name": "Arcade Equipment",
+                "id": "1417",
+                "name": "Lawyers",
                 "tier": 2
             },
             {
-                "id": "1099",
-                "name": "Camcorders",
-                "tier": 2
-            },
-            {
-                "id": "1100",
-                "name": "Cameras and Photo",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1101",
-                        "name": "Camera and Photo Accessories",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1102",
-                        "name": "Cameras",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1103",
-                        "name": "Photo Applications",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1104",
-                "name": "Circuit Boards and Components",
-                "tier": 2
-            },
-            {
-                "id": "1105",
-                "name": "Communications Electronics",
-                "tier": 2
-            },
-            {
-                "id": "1106",
-                "name": "Computers",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1107",
-                        "name": "Laptops",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1108",
-                        "name": "Desktops",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1109",
-                "name": "E-Readers",
-                "tier": 2
-            },
-            {
-                "id": "1110",
-                "name": "Electronics Accessories",
-                "tier": 2
-            },
-            {
-                "id": "1111",
-                "name": "Headphones",
-                "tier": 2
-            },
-            {
-                "id": "1112",
-                "name": "Home Theater Systems",
-                "tier": 2
-            },
-            {
-                "id": "1113",
-                "name": "Marine Electronics",
-                "tier": 2
-            },
-            {
-                "id": "1114",
-                "name": "Mobile Phones and Accessories",
-                "tier": 2
-            },
-            {
-                "id": "1115",
-                "name": "Networking",
-                "tier": 2
-            },
-            {
-                "id": "1116",
-                "name": "Printers/Copiers/Scanners/Fax",
-                "tier": 2
-            },
-            {
-                "id": "1117",
-                "name": "Security Devices",
-                "tier": 2
-            },
-            {
-                "id": "1118",
-                "name": "Tablets",
-                "tier": 2
-            },
-            {
-                "id": "1119",
-                "name": "Televisions",
-                "tier": 2
-            },
-            {
-                "id": "1120",
-                "name": "Video Games ",
-                "tier": 2
-            },
-            {
-                "id": "1121",
-                "name": "Video Games and Consoles",
-                "tier": 2
-            },
-            {
-                "id": "1122",
-                "name": "Video Game Console Accessories",
+                "id": "1418",
+                "name": "Bail Bonds",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1473",
-        "name": "Pharmaceuticals",
-        "tier": 1
-    },
-    {
-        "id": "1467",
-        "name": "Personal/Consumer Telcom",
+        "id": "1396",
+        "name": "Home and Garden Services",
         "tier": 1,
         "children": [
             {
-                "id": "1468",
-                "name": "Home Internet Services",
+                "id": "1397",
+                "name": "Appliance Repair",
                 "tier": 2
             },
             {
-                "id": "1469",
-                "name": "Home Phone Services",
+                "id": "1398",
+                "name": "Business and Home Security Services",
                 "tier": 2
             },
             {
-                "id": "1470",
-                "name": "Home Television Services",
+                "id": "1399",
+                "name": "Carpeting and Flooring Services",
                 "tier": 2
             },
             {
-                "id": "1471",
-                "name": "Mobile Phone Plans",
+                "id": "1400",
+                "name": "Do It Yourself Applications",
                 "tier": 2
             },
             {
-                "id": "1472",
-                "name": "Prepaid International Phone Services",
+                "id": "1401",
+                "name": "Emergency Preparedness",
+                "tier": 2
+            },
+            {
+                "id": "1402",
+                "name": "Flood, Fire and Gas Safety",
+                "tier": 2
+            },
+            {
+                "id": "1403",
+                "name": "Gas and Electric Services",
+                "tier": 2
+            },
+            {
+                "id": "1404",
+                "name": "Home Improvement and Repair",
+                "tier": 2
+            },
+            {
+                "id": "1405",
+                "name": "Home Security and Monitoring Applications",
+                "tier": 2
+            },
+            {
+                "id": "1406",
+                "name": "Home Service Provider Review",
+                "tier": 2
+            },
+            {
+                "id": "1407",
+                "name": "Housekeeping Services",
+                "tier": 2
+            },
+            {
+                "id": "1408",
+                "name": "Landscaping Services",
+                "tier": 2
+            },
+            {
+                "id": "1409",
+                "name": "Lawn and Garden Services",
+                "tier": 2
+            },
+            {
+                "id": "1410",
+                "name": "Pest Exterminators",
+                "tier": 2
+            },
+            {
+                "id": "1411",
+                "name": "Plumbers",
+                "tier": 2
+            },
+            {
+                "id": "1412",
+                "name": "Pool and Spa Installation and Maintenance",
+                "tier": 2
+            },
+            {
+                "id": "1413",
+                "name": "Remodeling and Construction",
+                "tier": 2
+            },
+            {
+                "id": "1414",
+                "name": "Water Services",
+                "tier": 2
+            },
+            {
+                "id": "1415",
+                "name": "Window Installation and Treatments",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1524",
-        "name": "Sporting Goods",
+        "id": "1452",
+        "name": "Non-Profits",
         "tier": 1,
         "children": [
             {
-                "id": "1525",
-                "name": "Athletics Equipment",
+                "id": "1453",
+                "name": "Charities and Donations",
                 "tier": 2
             },
             {
-                "id": "1526",
-                "name": "Exercise and Fitness Equipment",
+                "id": "1454",
+                "name": "Civic Organizations",
                 "tier": 2
             },
             {
-                "id": "1527",
-                "name": "Indoor Games Equipment",
+                "id": "1455",
+                "name": "Federations and Professional Associations",
                 "tier": 2
             },
             {
-                "id": "1528",
-                "name": "Outdoor Recreation Equipment",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1378",
-        "name": "Health and Medical Services",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1379",
-                "name": "Alternative and Natural Medicine",
+                "id": "1456",
+                "name": "Military Organizations",
                 "tier": 2
             },
             {
-                "id": "1380",
-                "name": "Assisted Living",
+                "id": "1457",
+                "name": "Non-Governmental Organizations",
                 "tier": 2
             },
             {
-                "id": "1381",
-                "name": "Chiropractors",
+                "id": "1458",
+                "name": "Public Service Announcements",
                 "tier": 2
             },
             {
-                "id": "1382",
-                "name": "Clinical Research",
-                "tier": 2
-            },
-            {
-                "id": "1383",
-                "name": "Cosmetic Medical Services",
-                "tier": 2
-            },
-            {
-                "id": "1384",
-                "name": "Dental Care",
-                "tier": 2
-            },
-            {
-                "id": "1385",
-                "name": "Dermatology",
-                "tier": 2
-            },
-            {
-                "id": "1386",
-                "name": "Drugstores and Pharmacies",
-                "tier": 2
-            },
-            {
-                "id": "1387",
-                "name": "Fertility and Family Planning",
-                "tier": 2
-            },
-            {
-                "id": "1388",
-                "name": "General Practitioners",
-                "tier": 2
-            },
-            {
-                "id": "1389",
-                "name": "Home Healthcare",
-                "tier": 2
-            },
-            {
-                "id": "1390",
-                "name": "Hospitals",
-                "tier": 2
-            },
-            {
-                "id": "1391",
-                "name": "Mental Health",
-                "tier": 2
-            },
-            {
-                "id": "1392",
-                "name": "Physical Therapists",
-                "tier": 2
-            },
-            {
-                "id": "1393",
-                "name": "Service Provider Search and Scheduling",
-                "tier": 2
-            },
-            {
-                "id": "1394",
-                "name": "Symptom Monitoring Apps",
-                "tier": 2
-            },
-            {
-                "id": "1395",
-                "name": "Vision Care",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1361",
-        "name": "Gambling",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1362",
-                "name": "Casinos",
-                "tier": 2
-            },
-            {
-                "id": "1363",
-                "name": "Contests",
-                "tier": 2
-            },
-            {
-                "id": "1364",
-                "name": "Give Aways",
-                "tier": 2
-            },
-            {
-                "id": "1365",
-                "name": "Lottery",
-                "tier": 2
-            },
-            {
-                "id": "1366",
-                "name": "Sports Betting",
-                "tier": 2
-            },
-            {
-                "id": "1367",
-                "name": "Virtual Betting",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1058",
-        "name": "Clothing and Accessories",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1059",
-                "name": "Clothing",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1060",
-                        "name": "Children's Clothing",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1061",
-                        "name": "Maternity Clothing",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1062",
-                        "name": "Men's Clothing",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1063",
-                        "name": "Sportswear",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1064",
-                        "name": "Swimwear",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1065",
-                        "name": "Underwear and Lingerie",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1066",
-                        "name": "Wedding Dresses/Bridal Wear/Tuxedos",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1067",
-                        "name": "Women's Clothing",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1068",
-                "name": "Clothing Accessories",
-                "tier": 2
-            },
-            {
-                "id": "1069",
-                "name": "Costumes and Accessories",
-                "tier": 2
-            },
-            {
-                "id": "1070",
-                "name": "Footwear",
-                "tier": 2
-            },
-            {
-                "id": "1071",
-                "name": "Footwear Accessories",
-                "tier": 2
-            },
-            {
-                "id": "1072",
-                "name": "Handbags and Wallets",
-                "tier": 2
-            },
-            {
-                "id": "1073",
-                "name": "Jewelry and Watches",
-                "tier": 2
-            },
-            {
-                "id": "1074",
-                "name": "Sunglasses",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1088",
-        "name": "Cosmetic Services",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1089",
-                "name": "Beauty Salons",
-                "tier": 2
-            },
-            {
-                "id": "1090",
-                "name": "Hair Salons",
-                "tier": 2
-            },
-            {
-                "id": "1091",
-                "name": "Hair Removal",
-                "tier": 2
-            },
-            {
-                "id": "1092",
-                "name": "Hair Restoration",
-                "tier": 2
-            },
-            {
-                "id": "1093",
-                "name": "Nail Salons",
-                "tier": 2
-            },
-            {
-                "id": "1094",
-                "name": "Med Spas",
-                "tier": 2
-            },
-            {
-                "id": "1095",
-                "name": "Piercing and Tattooing",
-                "tier": 2
-            },
-            {
-                "id": "1096",
-                "name": "Tanning Salons",
+                "id": "1459",
+                "name": "Scholarships",
                 "tier": 2
             }
         ]
@@ -1938,176 +1737,33 @@
         ]
     },
     {
-        "id": "1510",
-        "name": "Fitness Activities",
+        "id": "1467",
+        "name": "Personal/Consumer Telcom",
         "tier": 1,
         "children": [
             {
-                "id": "1511",
-                "name": "Dance Studios",
+                "id": "1468",
+                "name": "Home Internet Services",
                 "tier": 2
             },
             {
-                "id": "1512",
-                "name": "Gyms and Health Clubs",
+                "id": "1469",
+                "name": "Home Phone Services",
                 "tier": 2
             },
             {
-                "id": "1513",
-                "name": "Participant Sports Leagues",
+                "id": "1470",
+                "name": "Home Television Services",
                 "tier": 2
             },
             {
-                "id": "1514",
-                "name": "Personal Trainers",
+                "id": "1471",
+                "name": "Mobile Phone Plans",
                 "tier": 2
             },
             {
-                "id": "1515",
-                "name": "Self Defense and Martial Arts Classes",
-                "tier": 2
-            },
-            {
-                "id": "1516",
-                "name": "Swimming Facilities",
-                "tier": 2
-            },
-            {
-                "id": "1517",
-                "name": "Workout and Step Tracking Applications",
-                "tier": 2
-            },
-            {
-                "id": "1518",
-                "name": "Yoga Studios",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1452",
-        "name": "Non-Profits",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1453",
-                "name": "Charities and Donations",
-                "tier": 2
-            },
-            {
-                "id": "1454",
-                "name": "Civic Organizations",
-                "tier": 2
-            },
-            {
-                "id": "1455",
-                "name": "Federations and Professional Associations",
-                "tier": 2
-            },
-            {
-                "id": "1456",
-                "name": "Military Organizations",
-                "tier": 2
-            },
-            {
-                "id": "1457",
-                "name": "Non-Governmental Organizations",
-                "tier": 2
-            },
-            {
-                "id": "1458",
-                "name": "Public Service Announcements",
-                "tier": 2
-            },
-            {
-                "id": "1459",
-                "name": "Scholarships",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1544",
-        "name": "Tobacco",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1545",
-                "name": "Cigars",
-                "tier": 2
-            },
-            {
-                "id": "1546",
-                "name": "Cigarettes",
-                "tier": 2
-            },
-            {
-                "id": "1547",
-                "name": "Smokeless Tobacco",
-                "tier": 2
-            },
-            {
-                "id": "1548",
-                "name": "Vaping",
-                "tier": 2
-            },
-            {
-                "id": "1549",
-                "name": "Vaping Cartridges",
-                "tier": 2
-            },
-            {
-                "id": "1550",
-                "name": "Vaporizors",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1371",
-        "name": "Gifts and Holiday Items",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1372",
-                "name": "Flowers",
-                "tier": 2
-            },
-            {
-                "id": "1373",
-                "name": "Gift Baskets",
-                "tier": 2
-            },
-            {
-                "id": "1374",
-                "name": "Gift Cards and Coupons",
-                "tier": 2
-            },
-            {
-                "id": "1375",
-                "name": "Gift Certificates",
-                "tier": 2
-            },
-            {
-                "id": "1376",
-                "name": "Greeting Cards",
-                "tier": 2
-            },
-            {
-                "id": "1377",
-                "name": "Party Goods",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1008",
-        "name": "Culture and Fine Arts",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1009",
-                "name": "Museums and Galleries",
+                "id": "1472",
+                "name": "Prepaid International Phone Services",
                 "tier": 2
             }
         ]
@@ -2150,324 +1806,105 @@
         ]
     },
     {
-        "id": "1529",
-        "name": "Travel and Tourism",
+        "id": "1328",
+        "name": "Family and Parenting",
         "tier": 1,
         "children": [
             {
-                "id": "1530",
-                "name": "Accommodations",
+                "id": "1329",
+                "name": "Childcare",
                 "tier": 2,
                 "children": [
                     {
-                        "id": "1531",
-                        "name": "Bed and Breakfasts",
+                        "id": "1330",
+                        "name": "Day Care Centers",
                         "tier": 3
                     },
                     {
-                        "id": "1532",
-                        "name": "Camping and Camp Grounds",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1533",
-                        "name": "Hotels and Resorts",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1534",
-                        "name": "Motels",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1535",
-                        "name": "Timeshares",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1536",
-                        "name": "Vacation Rentals",
+                        "id": "1331",
+                        "name": "Nanny Services",
                         "tier": 3
                     }
                 ]
             },
             {
-                "id": "1537",
-                "name": "Air Travel",
+                "id": "1332",
+                "name": "Genealogy and Family Trees",
                 "tier": 2
             },
             {
-                "id": "1538",
-                "name": "Cruises",
+                "id": "1333",
+                "name": "Kids Activities",
                 "tier": 2
             },
             {
-                "id": "1539",
-                "name": "Rail Travel",
-                "tier": 2
-            },
-            {
-                "id": "1540",
-                "name": "Sightseeing Tours and Activities",
-                "tier": 2
-            },
-            {
-                "id": "1541",
-                "name": "Travel Agents and Online Travel Services",
-                "tier": 2
-            },
-            {
-                "id": "1542",
-                "name": "Travel Packages",
-                "tier": 2
-            },
-            {
-                "id": "1543",
-                "name": "Travel Planning and Itinerary Management Applications",
+                "id": "1334",
+                "name": "Senior Living",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1000",
-        "name": "Ad Safety Risk",
-        "tier": 1
-    },
-    {
-        "id": "1519",
-        "name": "Sexual Health",
+        "id": "1460",
+        "name": "Pet Ownership",
         "tier": 1,
         "children": [
             {
-                "id": "1520",
-                "name": "Contraceptives",
+                "id": "1461",
+                "name": "Pet Adoption",
                 "tier": 2
             },
             {
-                "id": "1521",
-                "name": "Doctor Perscribed Medicines",
+                "id": "1462",
+                "name": "Pet Breeders",
                 "tier": 2
             },
             {
-                "id": "1522",
-                "name": "Fertility Tracking Applications",
+                "id": "1463",
+                "name": "Pet Care and Supply Applications",
                 "tier": 2
             },
             {
-                "id": "1523",
-                "name": "Non-perscribed Performance Enhancers",
+                "id": "1464",
+                "name": "Pet Grooming",
+                "tier": 2
+            },
+            {
+                "id": "1465",
+                "name": "Pet Sitting",
+                "tier": 2
+            },
+            {
+                "id": "1466",
+                "name": "Veterinary Services",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1355",
-        "name": "Food and Beverage Services",
+        "id": "1482",
+        "name": "Real Estate",
         "tier": 1,
         "children": [
             {
-                "id": "1356",
-                "name": "Bakeries",
+                "id": "1483",
+                "name": "Commercial Real Estate",
                 "tier": 2
             },
             {
-                "id": "1357",
-                "name": "Catering",
+                "id": "1484",
+                "name": "Real Estate Rentals",
                 "tier": 2
             },
             {
-                "id": "1358",
-                "name": "Fast Food",
+                "id": "1485",
+                "name": "Real Estate Sales",
                 "tier": 2
             },
             {
-                "id": "1359",
-                "name": "Food Delivery Services",
+                "id": "1486",
+                "name": "Real Estate Services For Owners",
                 "tier": 2
-            },
-            {
-                "id": "1360",
-                "name": "Restaurants",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1443",
-        "name": "Metals",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1444",
-                "name": "Coin Trade In",
-                "tier": 2
-            },
-            {
-                "id": "1445",
-                "name": "Gold Trade In",
-                "tier": 2
-            },
-            {
-                "id": "1446",
-                "name": "Platinum Trade In",
-                "tier": 2
-            },
-            {
-                "id": "1447",
-                "name": "Silver Trade In",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1259",
-        "name": "Dating",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1260",
-                "name": "Casual Relationships",
-                "tier": 2
-            },
-            {
-                "id": "1261",
-                "name": "Serious Relationships",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1551",
-        "name": "Vehicles",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1552",
-                "name": "Automotive Leasing",
-                "tier": 2
-            },
-            {
-                "id": "1553",
-                "name": "Automotive Ownership",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1554",
-                        "name": "New vehicle Ownership",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1555",
-                        "name": "Pre-owned Automotive Ownership",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1556",
-                "name": "Automotive Products",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1557",
-                        "name": "Automotive Care Products",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1558",
-                        "name": "Automotive Parts and Accessories",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1559",
-                        "name": "Aftermarket Parts and Accessories",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1560",
-                "name": "Automotive Services",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1561",
-                        "name": "Auto Towing",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1562",
-                        "name": "Auto Repair",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1563",
-                        "name": "Car Wash",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1564",
-                "name": "Automotive Sales Applications",
-                "tier": 2
-            },
-            {
-                "id": "1565",
-                "name": "Ride-sharing Services",
-                "tier": 2
-            },
-            {
-                "id": "1566",
-                "name": "Taxi Services",
-                "tier": 2
-            },
-            {
-                "id": "1567",
-                "name": "Vehicle Rental",
-                "tier": 2
-            },
-            {
-                "id": "1568",
-                "name": "Vehicle Type",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1569",
-                        "name": "Boats",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1570",
-                        "name": "Diesel Vehicles",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1571",
-                        "name": "Electric Vehicles",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1572",
-                        "name": "Gas Vehicles",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1573",
-                        "name": "Hybrid Vehicles",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1574",
-                        "name": "Recreational Vehicles",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1575",
-                        "name": "Scooters, Motorbikes, and E-bikes",
-                        "tier": 3
-                    }
-                ]
             }
         ]
     },
@@ -2475,6 +1912,144 @@
         "id": "1001",
         "name": "Adult Products and Services",
         "tier": 1
+    },
+    {
+        "id": "1262",
+        "name": "Debated Sensitive Social Issue",
+        "tier": 1
+    },
+    {
+        "id": "1473",
+        "name": "Pharmaceuticals",
+        "tier": 1
+    },
+    {
+        "id": "1088",
+        "name": "Cosmetic Services",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1089",
+                "name": "Beauty Salons",
+                "tier": 2
+            },
+            {
+                "id": "1090",
+                "name": "Hair Salons",
+                "tier": 2
+            },
+            {
+                "id": "1091",
+                "name": "Hair Removal",
+                "tier": 2
+            },
+            {
+                "id": "1092",
+                "name": "Hair Restoration",
+                "tier": 2
+            },
+            {
+                "id": "1093",
+                "name": "Nail Salons",
+                "tier": 2
+            },
+            {
+                "id": "1094",
+                "name": "Med Spas",
+                "tier": 2
+            },
+            {
+                "id": "1095",
+                "name": "Piercing and Tattooing",
+                "tier": 2
+            },
+            {
+                "id": "1096",
+                "name": "Tanning Salons",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1082",
+        "name": "Computer Software",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1083",
+                "name": "Browser Extensions",
+                "tier": 2
+            },
+            {
+                "id": "1084",
+                "name": "Downloadable Utilities",
+                "tier": 2
+            },
+            {
+                "id": "1085",
+                "name": "Enterprise Computer Software",
+                "tier": 2
+            },
+            {
+                "id": "1086",
+                "name": "Personal Computer Software",
+                "tier": 2
+            },
+            {
+                "id": "1087",
+                "name": "Toolbars",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1037",
+        "name": "Aerospace and Defense",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1038",
+                "name": "Construction and Engineering",
+                "tier": 2
+            },
+            {
+                "id": "1039",
+                "name": "Industrial Conglomerates",
+                "tier": 2
+            },
+            {
+                "id": "1040",
+                "name": "Trading Companies and Distributors",
+                "tier": 2
+            },
+            {
+                "id": "1041",
+                "name": "Transportation",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1448",
+        "name": "Non-Fiat Currency",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1449",
+                "name": "Cryptocurrency Exchanges",
+                "tier": 2
+            },
+            {
+                "id": "1450",
+                "name": "Cryptocurrency Stock",
+                "tier": 2
+            },
+            {
+                "id": "1451",
+                "name": "NFTs",
+                "tier": 2
+            }
+        ]
     },
     {
         "id": "1049",
@@ -2526,258 +2101,389 @@
         ]
     },
     {
-        "id": "1082",
-        "name": "Computer Software",
+        "id": "1058",
+        "name": "Clothing and Accessories",
         "tier": 1,
         "children": [
             {
-                "id": "1083",
-                "name": "Browser Extensions",
-                "tier": 2
-            },
-            {
-                "id": "1084",
-                "name": "Downloadable Utilities",
-                "tier": 2
-            },
-            {
-                "id": "1085",
-                "name": "Enterprise Computer Software",
-                "tier": 2
-            },
-            {
-                "id": "1086",
-                "name": "Personal Computer Software",
-                "tier": 2
-            },
-            {
-                "id": "1087",
-                "name": "Toolbars",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1295",
-        "name": "Education and Careers",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1296",
-                "name": "Adult Education",
-                "tier": 2
-            },
-            {
-                "id": "1297",
-                "name": "Certification Programs",
-                "tier": 2
-            },
-            {
-                "id": "1298",
-                "name": "Colleges and Universities",
+                "id": "1059",
+                "name": "Clothing",
                 "tier": 2,
                 "children": [
                     {
-                        "id": "1299",
-                        "name": "Post-Graduate Education",
+                        "id": "1060",
+                        "name": "Children's Clothing",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1061",
+                        "name": "Maternity Clothing",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1062",
+                        "name": "Men's Clothing",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1063",
+                        "name": "Sportswear",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1064",
+                        "name": "Swimwear",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1065",
+                        "name": "Underwear and Lingerie",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1066",
+                        "name": "Wedding Dresses/Bridal Wear/Tuxedos",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1067",
+                        "name": "Women's Clothing",
                         "tier": 3
                     }
                 ]
             },
             {
-                "id": "1300",
-                "name": "Education Applications",
+                "id": "1068",
+                "name": "Clothing Accessories",
                 "tier": 2
             },
             {
-                "id": "1301",
-                "name": "Employment Agencies",
+                "id": "1069",
+                "name": "Costumes and Accessories",
                 "tier": 2
             },
             {
-                "id": "1302",
-                "name": "Higher Education",
+                "id": "1070",
+                "name": "Footwear",
                 "tier": 2
             },
             {
-                "id": "1303",
-                "name": "Language Learning",
+                "id": "1071",
+                "name": "Footwear Accessories",
                 "tier": 2
             },
             {
-                "id": "1304",
-                "name": "Online Education",
+                "id": "1072",
+                "name": "Handbags and Wallets",
                 "tier": 2
             },
             {
-                "id": "1305",
-                "name": "Primary Education",
+                "id": "1073",
+                "name": "Jewelry and Watches",
                 "tier": 2
             },
             {
-                "id": "1306",
-                "name": "Remote work and school",
-                "tier": 2,
-                "children": [
-                    {
-                        "id": "1307",
-                        "name": "Distance learning",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1308",
-                        "name": "Homeschooling",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1309",
-                        "name": "Online Surveys",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1310",
-                        "name": "Multi-Level Marketing",
-                        "tier": 3
-                    },
-                    {
-                        "id": "1311",
-                        "name": "Telecommuting",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "id": "1312",
-                "name": "Study Skills",
-                "tier": 2
-            },
-            {
-                "id": "1313",
-                "name": "Teaching Resources",
-                "tier": 2
-            },
-            {
-                "id": "1314",
-                "name": "Trade Schools",
+                "id": "1074",
+                "name": "Sunglasses",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1416",
-        "name": "Legal Services",
+        "id": "1510",
+        "name": "Fitness Activities",
         "tier": 1,
         "children": [
             {
-                "id": "1417",
-                "name": "Lawyers",
+                "id": "1511",
+                "name": "Dance Studios",
                 "tier": 2
             },
             {
-                "id": "1418",
-                "name": "Bail Bonds",
+                "id": "1512",
+                "name": "Gyms and Health Clubs",
+                "tier": 2
+            },
+            {
+                "id": "1513",
+                "name": "Participant Sports Leagues",
+                "tier": 2
+            },
+            {
+                "id": "1514",
+                "name": "Personal Trainers",
+                "tier": 2
+            },
+            {
+                "id": "1515",
+                "name": "Self Defense and Martial Arts Classes",
+                "tier": 2
+            },
+            {
+                "id": "1516",
+                "name": "Swimming Facilities",
+                "tier": 2
+            },
+            {
+                "id": "1517",
+                "name": "Workout and Step Tracking Applications",
+                "tier": 2
+            },
+            {
+                "id": "1518",
+                "name": "Yoga Studios",
                 "tier": 2
             }
         ]
     },
     {
-        "id": "1396",
-        "name": "Home and Garden Services",
+        "id": "1361",
+        "name": "Gambling",
         "tier": 1,
         "children": [
             {
-                "id": "1397",
-                "name": "Appliance Repair",
+                "id": "1362",
+                "name": "Casinos",
                 "tier": 2
             },
             {
-                "id": "1398",
-                "name": "Business and Home Security Services",
+                "id": "1363",
+                "name": "Contests",
                 "tier": 2
             },
             {
-                "id": "1399",
-                "name": "Carpeting and Flooring Services",
+                "id": "1364",
+                "name": "Give Aways",
                 "tier": 2
             },
             {
-                "id": "1400",
-                "name": "Do It Yourself Applications",
+                "id": "1365",
+                "name": "Lottery",
                 "tier": 2
             },
             {
-                "id": "1401",
-                "name": "Emergency Preparedness",
+                "id": "1366",
+                "name": "Sports Betting",
                 "tier": 2
             },
             {
-                "id": "1402",
-                "name": "Flood, Fire and Gas Safety",
+                "id": "1367",
+                "name": "Virtual Betting",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1355",
+        "name": "Food and Beverage Services",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1356",
+                "name": "Bakeries",
                 "tier": 2
             },
             {
-                "id": "1403",
-                "name": "Gas and Electric Services",
+                "id": "1357",
+                "name": "Catering",
                 "tier": 2
             },
             {
-                "id": "1404",
-                "name": "Home Improvement and Repair",
+                "id": "1358",
+                "name": "Fast Food",
                 "tier": 2
             },
             {
-                "id": "1405",
-                "name": "Home Security and Monitoring Applications",
+                "id": "1359",
+                "name": "Food Delivery Services",
                 "tier": 2
             },
             {
-                "id": "1406",
-                "name": "Home Service Provider Review",
+                "id": "1360",
+                "name": "Restaurants",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1291",
+        "name": "Dieting and Weightloss",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1292",
+                "name": "Food Logging",
                 "tier": 2
             },
             {
-                "id": "1407",
-                "name": "Housekeeping Services",
+                "id": "1293",
+                "name": "Weightloss Services",
                 "tier": 2
             },
             {
-                "id": "1408",
-                "name": "Landscaping Services",
+                "id": "1294",
+                "name": "Workout and Step Tracking Applications",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1378",
+        "name": "Health and Medical Services",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1379",
+                "name": "Alternative and Natural Medicine",
                 "tier": 2
             },
             {
-                "id": "1409",
-                "name": "Lawn and Garden Services",
+                "id": "1380",
+                "name": "Assisted Living",
                 "tier": 2
             },
             {
-                "id": "1410",
-                "name": "Pest Exterminators",
+                "id": "1381",
+                "name": "Chiropractors",
                 "tier": 2
             },
             {
-                "id": "1411",
-                "name": "Plumbers",
+                "id": "1382",
+                "name": "Clinical Research",
                 "tier": 2
             },
             {
-                "id": "1412",
-                "name": "Pool and Spa Installation and Maintenance",
+                "id": "1383",
+                "name": "Cosmetic Medical Services",
                 "tier": 2
             },
             {
-                "id": "1413",
-                "name": "Remodeling and Construction",
+                "id": "1384",
+                "name": "Dental Care",
                 "tier": 2
             },
             {
-                "id": "1414",
-                "name": "Water Services",
+                "id": "1385",
+                "name": "Dermatology",
                 "tier": 2
             },
             {
-                "id": "1415",
-                "name": "Window Installation and Treatments",
+                "id": "1386",
+                "name": "Drugstores and Pharmacies",
+                "tier": 2
+            },
+            {
+                "id": "1387",
+                "name": "Fertility and Family Planning",
+                "tier": 2
+            },
+            {
+                "id": "1388",
+                "name": "General Practitioners",
+                "tier": 2
+            },
+            {
+                "id": "1389",
+                "name": "Home Healthcare",
+                "tier": 2
+            },
+            {
+                "id": "1390",
+                "name": "Hospitals",
+                "tier": 2
+            },
+            {
+                "id": "1391",
+                "name": "Mental Health",
+                "tier": 2
+            },
+            {
+                "id": "1392",
+                "name": "Physical Therapists",
+                "tier": 2
+            },
+            {
+                "id": "1393",
+                "name": "Service Provider Search and Scheduling",
+                "tier": 2
+            },
+            {
+                "id": "1394",
+                "name": "Symptom Monitoring Apps",
+                "tier": 2
+            },
+            {
+                "id": "1395",
+                "name": "Vision Care",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1474",
+        "name": "Politics",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1475",
+                "name": "Ballot measures",
+                "tier": 2
+            },
+            {
+                "id": "1476",
+                "name": "Elections",
+                "tier": 2
+            },
+            {
+                "id": "1477",
+                "name": "Political Action Committees",
+                "tier": 2
+            },
+            {
+                "id": "1478",
+                "name": "Political Analysis and Opinion",
+                "tier": 2
+            },
+            {
+                "id": "1479",
+                "name": "Political candidates",
+                "tier": 2
+            },
+            {
+                "id": "1480",
+                "name": "Political Donations",
+                "tier": 2
+            },
+            {
+                "id": "1481",
+                "name": "Referendums or promoting causes; eg: Healthcare reform, energy trades (Oil/Solar), etc...",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1524",
+        "name": "Sporting Goods",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1525",
+                "name": "Athletics Equipment",
+                "tier": 2
+            },
+            {
+                "id": "1526",
+                "name": "Exercise and Fitness Equipment",
+                "tier": 2
+            },
+            {
+                "id": "1527",
+                "name": "Indoor Games Equipment",
+                "tier": 2
+            },
+            {
+                "id": "1528",
+                "name": "Outdoor Recreation Equipment",
                 "tier": 2
             }
         ]
@@ -2935,77 +2641,137 @@
         ]
     },
     {
-        "id": "1075",
-        "name": "Collectables and Antiques",
+        "id": "1097",
+        "name": "Consumer Electronics",
         "tier": 1,
         "children": [
             {
-                "id": "1076",
-                "name": "Antiques",
+                "id": "1098",
+                "name": "Arcade Equipment",
                 "tier": 2
             },
             {
-                "id": "1077",
-                "name": "Coins and Paper Money",
+                "id": "1099",
+                "name": "Camcorders",
                 "tier": 2
             },
             {
-                "id": "1078",
-                "name": "Collectibles",
-                "tier": 2
-            },
-            {
-                "id": "1079",
-                "name": "Entertainment Memorabilia",
-                "tier": 2
-            },
-            {
-                "id": "1080",
-                "name": "Sports Memorabilia and Trading Cards",
-                "tier": 2
-            },
-            {
-                "id": "1081",
-                "name": "Stamps",
-                "tier": 2
-            }
-        ]
-    },
-    {
-        "id": "1328",
-        "name": "Family and Parenting",
-        "tier": 1,
-        "children": [
-            {
-                "id": "1329",
-                "name": "Childcare",
+                "id": "1100",
+                "name": "Cameras and Photo",
                 "tier": 2,
                 "children": [
                     {
-                        "id": "1330",
-                        "name": "Day Care Centers",
+                        "id": "1101",
+                        "name": "Camera and Photo Accessories",
                         "tier": 3
                     },
                     {
-                        "id": "1331",
-                        "name": "Nanny Services",
+                        "id": "1102",
+                        "name": "Cameras",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1103",
+                        "name": "Photo Applications",
                         "tier": 3
                     }
                 ]
             },
             {
-                "id": "1332",
-                "name": "Genealogy and Family Trees",
+                "id": "1104",
+                "name": "Circuit Boards and Components",
                 "tier": 2
             },
             {
-                "id": "1333",
-                "name": "Kids Activities",
+                "id": "1105",
+                "name": "Communications Electronics",
                 "tier": 2
             },
             {
-                "id": "1334",
-                "name": "Senior Living",
+                "id": "1106",
+                "name": "Computers",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1107",
+                        "name": "Laptops",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1108",
+                        "name": "Desktops",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1109",
+                "name": "E-Readers",
+                "tier": 2
+            },
+            {
+                "id": "1110",
+                "name": "Electronics Accessories",
+                "tier": 2
+            },
+            {
+                "id": "1111",
+                "name": "Headphones",
+                "tier": 2
+            },
+            {
+                "id": "1112",
+                "name": "Home Theater Systems",
+                "tier": 2
+            },
+            {
+                "id": "1113",
+                "name": "Marine Electronics",
+                "tier": 2
+            },
+            {
+                "id": "1114",
+                "name": "Mobile Phones and Accessories",
+                "tier": 2
+            },
+            {
+                "id": "1115",
+                "name": "Networking",
+                "tier": 2
+            },
+            {
+                "id": "1116",
+                "name": "Printers/Copiers/Scanners/Fax",
+                "tier": 2
+            },
+            {
+                "id": "1117",
+                "name": "Security Devices",
+                "tier": 2
+            },
+            {
+                "id": "1118",
+                "name": "Tablets",
+                "tier": 2
+            },
+            {
+                "id": "1119",
+                "name": "Televisions",
+                "tier": 2
+            },
+            {
+                "id": "1120",
+                "name": "Video Games ",
+                "tier": 2
+            },
+            {
+                "id": "1121",
+                "name": "Video Games and Consoles",
+                "tier": 2
+            },
+            {
+                "id": "1122",
+                "name": "Video Game Console Accessories",
                 "tier": 2
             }
         ]
@@ -3089,6 +2855,240 @@
                 "id": "1509",
                 "name": "Ticket Services",
                 "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1443",
+        "name": "Metals",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1444",
+                "name": "Coin Trade In",
+                "tier": 2
+            },
+            {
+                "id": "1445",
+                "name": "Gold Trade In",
+                "tier": 2
+            },
+            {
+                "id": "1446",
+                "name": "Platinum Trade In",
+                "tier": 2
+            },
+            {
+                "id": "1447",
+                "name": "Silver Trade In",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1529",
+        "name": "Travel and Tourism",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1530",
+                "name": "Accommodations",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1531",
+                        "name": "Bed and Breakfasts",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1532",
+                        "name": "Camping and Camp Grounds",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1533",
+                        "name": "Hotels and Resorts",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1534",
+                        "name": "Motels",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1535",
+                        "name": "Timeshares",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1536",
+                        "name": "Vacation Rentals",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1537",
+                "name": "Air Travel",
+                "tier": 2
+            },
+            {
+                "id": "1538",
+                "name": "Cruises",
+                "tier": 2
+            },
+            {
+                "id": "1539",
+                "name": "Rail Travel",
+                "tier": 2
+            },
+            {
+                "id": "1540",
+                "name": "Sightseeing Tours and Activities",
+                "tier": 2
+            },
+            {
+                "id": "1541",
+                "name": "Travel Agents and Online Travel Services",
+                "tier": 2
+            },
+            {
+                "id": "1542",
+                "name": "Travel Packages",
+                "tier": 2
+            },
+            {
+                "id": "1543",
+                "name": "Travel Planning and Itinerary Management Applications",
+                "tier": 2
+            }
+        ]
+    },
+    {
+        "id": "1419",
+        "name": "Media",
+        "tier": 1,
+        "children": [
+            {
+                "id": "1420",
+                "name": "Blogs/Forums/Social Networks",
+                "tier": 2
+            },
+            {
+                "id": "1421",
+                "name": "Book Reading and Review Applications",
+                "tier": 2
+            },
+            {
+                "id": "1422",
+                "name": "Books and Audio Books",
+                "tier": 2
+            },
+            {
+                "id": "1423",
+                "name": "Casual Games",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1424",
+                        "name": "Casual Games Apps",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1426",
+                        "name": "Core Gaming Apps",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1425",
+                "name": "Core Gaming",
+                "tier": 2
+            },
+            {
+                "id": "1427",
+                "name": "CDs and Vinyl Records",
+                "tier": 2
+            },
+            {
+                "id": "1428",
+                "name": "DVDs",
+                "tier": 2
+            },
+            {
+                "id": "1429",
+                "name": "Live Television",
+                "tier": 2
+            },
+            {
+                "id": "1430",
+                "name": "Magazines and Newspapers",
+                "tier": 2
+            },
+            {
+                "id": "1431",
+                "name": "Music and Video Streaming Services",
+                "tier": 2
+            },
+            {
+                "id": "1432",
+                "name": "News and Analysis",
+                "tier": 2
+            },
+            {
+                "id": "1433",
+                "name": "Radio and Podcasts",
+                "tier": 2
+            },
+            {
+                "id": "1434",
+                "name": "Sports",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1435",
+                        "name": "Fantasy Sports",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1436",
+                        "name": "Sports Highlights",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1437",
+                        "name": "Team News and Analysis",
+                        "tier": 3
+                    }
+                ]
+            },
+            {
+                "id": "1438",
+                "name": "Utilities Apps",
+                "tier": 2,
+                "children": [
+                    {
+                        "id": "1439",
+                        "name": "Productivity Apps",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1440",
+                        "name": "Reference Apps",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1441",
+                        "name": "Search Engine Apps",
+                        "tier": 3
+                    },
+                    {
+                        "id": "1442",
+                        "name": "Weather Apps",
+                        "tier": 3
+                    }
+                ]
             }
         ]
     }
