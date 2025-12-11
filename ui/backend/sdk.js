@@ -300,25 +300,25 @@
             console.log('Adding click tracking...')
 
             const onClick = (event) => {
-                if (this.tracker.clicks.has(adId)) {
-                    log(`Click already tracked for adId: ${adId}`)
-                    return;
-                }
                 log('Ad clicked:', adId);
 
                 const payload = {
                     adId: adId,
                     eventType: 'click',
                     timestamp: Date.now(),
-                    url: window.location.href,
+                    pageUrl: window.location.href,
                     clickUrl: clickUrl,
-                    siteId: publisherId
+                    publisherId: publisherId
 
                     //anything we need to track for fraud detecation??
                 }
                 this.tracker.clicks.add(adId)
 
-                this.sendTrackingEvent({eventType: 'click', payload})
+                const queryParams = new URLSearchParams(payload).toString();
+
+                const eventUrl = `${this.config.apiEndpoint}/v1/events/click?${queryParams}`;
+
+                window.open(eventUrl, '_blank');
             }
 
             console.log('Adding click event listener...')
@@ -455,6 +455,12 @@
 
         sendTrackingEvent({eventType, payload}) {
             const url = `${this.config.apiEndpoint}/v1/events/${eventType}`;
+
+            if (eventType == "click") {
+                log('Sending click tracking event...', payload)
+            } else {
+
+            }
 
             if (navigator.sendBeacon) {
                 navigator.sendBeacon(url, JSON.stringify(payload));

@@ -39,6 +39,15 @@ type Meta struct {
 	Timestamp int64 `json:"timestamp"`
 }
 
+type EventPayload struct {
+	AdID        string `json:"adId"`
+	EventType   string `json:"eventType"`
+	Timestamp   int64  `json:"timestamp"`
+	URL         string `json:"url"`
+	ClickURL    string `json:"clickUrl"`
+	PublisherID string `json:"publisherId"`
+}
+
 type AdTestResponse struct {
 	AdID     string `json:"adId"`
 	Type     string `json:"type"`
@@ -134,6 +143,7 @@ func adHandler(w http.ResponseWriter, r *http.Request) {
 		AdID:     fmt.Sprintf("test-ad-%d", time.Now().UnixNano()),
 		Type:     "html",
 		Creative: `<div style="padding:40px;background:brown;color:white;text-align:center;border-radius:8px;"><h2>Test Ad</h2><p>Click tracking enabled</p></div>`,
+		//Security (Signing the URL)
 		ClickURL: "https://example.com",
 	}
 
@@ -144,10 +154,32 @@ func adHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func eventHandler(w http.ResponseWriter, r *http.Request) {
-	//todo implement event logging
-	fmt.Println(r)
-	w.WriteHeader(http.StatusOK)
+func clickEventHandler(w http.ResponseWriter, r *http.Request) {
+	adID := r.URL.Query().Get("adId")
+	clickURL := r.URL.Query().Get("clickUrl")
+	pageURL := r.URL.Query().Get("pageUrl")
+
+	eventPayload := EventPayload{
+		AdID:      adID,
+		EventType: "click",
+		Timestamp: time.Now().Unix(),
+		URL:       pageURL,
+		//we should check the cache for the clickURL mapping to avoid open redirector attack
+		ClickURL: clickURL,
+	}
+	// have a logic to determin if you want to record the event as it might have been recorded already.
+
+	fmt.Printf("Received Event: %+v\n", eventPayload)
+
+	//todo log the click event to storage or analytics system. Maybe some in memory queue system for batching.
+	// Think about deduplication of clicks(idempotency). Maybe as part of the ad response payload create a unique id. Will think about it further later.
+
+	http.Redirect(w, r, eventPayload.ClickURL, http.StatusFound)
+}
+
+func impressionEventHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("Received impression event\n")
+
 }
 
 func corsMiddleware(next http.Handler) http.Handler {
@@ -184,8 +216,8 @@ func main() {
 
 	//get user agent from request header
 	mux.HandleFunc("POST /v1/ads", adHandler)
-	mux.HandleFunc("POST /v1/events/impression", eventHandler)
-	mux.HandleFunc("POST /v1/events/click", eventHandler)
+	mux.HandleFunc("POST /v1/events/impression", impressionEventHandler)
+	mux.HandleFunc("GET /v1/events/click", clickEventHandler)
 
 	// Wrap the mux with CORS middleware
 	handler := corsMiddleware(mux)
