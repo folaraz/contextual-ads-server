@@ -16,7 +16,7 @@ func GetAdRankResults(url string, requestContext contextextractor.RequestContext
 	pageContext, err := storage.GetPageContext(urlHash)
 	if err != nil {
 		fmt.Printf("Error retrieving page context: %v\n", err)
-		//todo needs updating can't just return empty
+		//todo needs updating can't just return empty, need to trigger an asyn process to extract context for this url and store in redis
 		return models.AuctionResult{}
 	}
 	qualifiedAds := storage.QueryAds(pageContext)
