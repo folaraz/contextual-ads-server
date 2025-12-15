@@ -98,14 +98,14 @@
         }
 
         async renderAd(command) {
-            const {slotId, siteId, sizes} = command || {};
+            const {slotId, publisherId, sizes} = command || {};
 
             if (!slotId) {
                 logError('Slot Id not provided')
                 return;
             }
 
-            if (!siteId) {
+            if (!publisherId) {
                 logError('Site Id not provided')
                 return;
             }
@@ -125,7 +125,7 @@
             try {
                 console.log('[Ad SDK] before request build...')
 
-                const adRequest = this.buildAdRequest(siteId, slotId, sizes)
+                const adRequest = this.buildAdRequest(publisherId)
                 console.log('[Ad SDK] after request buid...')
 
                 console.log('Built ad request:', adRequest)
@@ -137,7 +137,7 @@
                     adSlotElement: adSlotElement,
                     slotId: slotId,
                     adData: adResponse,
-                    siteId: siteId
+                    siteId: publisherId
                 })
 
                 console.log('[Ad SDK] after render creative...')
@@ -145,7 +145,7 @@
                 const observer = this.trackViewability({
                     element: adSlotElement,
                     adData: adResponse.ad,
-                    publisherId: siteId
+                    publisherId: publisherId
                 })
 
                 this.slots.set(slotId, {
@@ -332,11 +332,9 @@
 
         }
 
-        buildAdRequest = (publisherId, slotId, sizes) => {
+        buildAdRequest = (publisherId) => {
             return {
-                slotId,
                 publisherId,
-                sizes: sizes || [[270, 270]],
                 context: {
                     url: window.location.href,
                     keywords: this.adContext.extractKeyword(),

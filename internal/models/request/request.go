@@ -1,9 +1,7 @@
 package request
 
 type AdRequest struct {
-	SlotID      string  `json:"slotId"`
 	PublisherID string  `json:"publisherId"`
-	Sizes       [][]int `json:"sizes"`
 	Context     Context `json:"context"`
 	Device      Device  `json:"device"`
 	Meta        Meta    `json:"meta"`

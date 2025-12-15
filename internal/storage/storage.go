@@ -25,14 +25,15 @@ var (
 	adContentOnce     sync.Once
 )
 
-func GetContext(urlHash string) models.PageContext {
+func GetPageContext(urlHash string) (models.PageContext, error) {
 	ctx := context.Background()
 	client := GetRedisClient()
 
 	result, err := client.HGetAll(ctx, "page:"+urlHash).Result()
 
 	if err != nil {
-		panic(err)
+		log.Printf("failed to get page context for url hash %s: %v", urlHash, err)
+		return models.PageContext{}, err
 	}
 
 	var pageContext models.PageContext
@@ -61,7 +62,7 @@ func GetContext(urlHash string) models.PageContext {
 		json.Unmarshal([]byte(chunkContextsStr), &pageContext.ChunkContexts)
 	}
 
-	return pageContext
+	return pageContext, nil
 }
 
 func QueryAds(pageContext models.PageContext) []models.AdRankResult {

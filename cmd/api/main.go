@@ -6,19 +6,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/folaraz/contextual-ads-server/internal/auction"
 	"github.com/folaraz/contextual-ads-server/internal/contextextractor"
 	"github.com/folaraz/contextual-ads-server/internal/models"
+	"github.com/folaraz/contextual-ads-server/internal/models/request"
 	"github.com/folaraz/contextual-ads-server/internal/storage"
-	"github.com/folaraz/contextual-ads-server/internal/utils"
 )
-
-type AdTestResponse struct {
-	AdID     string `json:"adId"`
-	Type     string `json:"type"`
-	Creative string `json:"creative"`
-	ClickURL string `json:"clickUrl"`
-}
 
 func init() {
 	contextextractor.InitRequestExtractorDB()
@@ -28,29 +20,21 @@ func init() {
 	}
 }
 
-func GetAd(url string) models.AuctionResult {
-	urlHash, _ := utils.GenerateHashAndURL(url)
-	fmt.Println(urlHash)
-	pageContext := storage.GetContext(urlHash)
-	qualifiedAds := storage.QueryAds(pageContext)
-	result := auction.RunAdAuction(qualifiedAds, pageContext)
-	return result
-}
-
 func adHandler(w http.ResponseWriter, r *http.Request) {
 
-	var adRequest AdRequest
+	var adRequest request.AdRequest
 	if err := json.NewDecoder(r.Body).Decode(&adRequest); err != nil {
 		fmt.Printf("Error decoding request payload: %v\n", err)
 		http.Error(w, fmt.Sprintf("Invalid request payload: %v", err), http.StatusBadRequest)
 		return
 	}
+	requestContext := contextextractor.RetrieveRequestContext(r)
 
 	fmt.Printf("Received AdRequest: %+v\n", adRequest)
 
 	var matched []models.AdRankResult
 	requestContext := contextextractor.RetrieveRequestContext(r)
-	//fmt.Printf("Request Context: %+v\n", requestContext)
+	fmt.Printf("Request Context: %+v\n", requestContext)
 	_ = requestContext
 	_ = matched
 	fmt.Println(r)
@@ -104,10 +88,11 @@ func adHandler(w http.ResponseWriter, r *http.Request) {
 	//	})
 	//}
 
-	response := AdTestResponse{
-		AdID:     fmt.Sprintf("test-ad-%d", time.Now().UnixNano()),
-		Type:     "html",
-		Creative: `<div style="padding:40px;background:brown;color:white;text-align:center;border-radius:8px;"><h2>Test Ad</h2><p>Click tracking enabled</p></div>`,
+	response := AdResponse{
+		AdID:        fmt.Sprintf("test-ad-%d", time.Now().UnixNano()),
+		PublisherID: "publisher-123",
+		Type:        "html",
+		Creative:    `<div style="padding:40px;background:brown;color:white;text-align:center;border-radius:8px;"><h2>Test Ad</h2><p>Click tracking enabled</p></div>`,
 		//Security (Signing the URL)
 		ClickURL: "https://example.com",
 	}
