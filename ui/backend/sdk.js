@@ -166,7 +166,7 @@
         }
 
 
-        trackViewability = ({element, adData, publisherId}) => {
+        trackViewability = ({element, adData, pubId}) => {
             const adId = adData?.adId;
             let hasBeenVisible = false;
             let visibilityTimer = null;

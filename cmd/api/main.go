@@ -13,41 +13,6 @@ import (
 	"github.com/folaraz/contextual-ads-server/internal/utils"
 )
 
-type AdRequest struct {
-	SlotID      string  `json:"slotId"`
-	PublisherID string  `json:"publisherId"`
-	Sizes       [][]int `json:"sizes"`
-	Context     Context `json:"context"`
-	Device      Device  `json:"device"`
-	Meta        Meta    `json:"meta"`
-}
-
-type Context struct {
-	URL         string   `json:"url"`
-	Keywords    []string `json:"keywords"`
-	Title       string   `json:"title"`
-	Description string   `json:"description"`
-}
-
-type Device struct {
-	Type      string `json:"type"`
-	UserAgent string `json:"userAgent"`
-	Language  string `json:"language"`
-}
-
-type Meta struct {
-	Timestamp int64 `json:"timestamp"`
-}
-
-type EventPayload struct {
-	AdID        string `json:"adId"`
-	EventType   string `json:"eventType"`
-	Timestamp   int64  `json:"timestamp"`
-	URL         string `json:"url"`
-	ClickURL    string `json:"clickUrl"`
-	PublisherID string `json:"publisherId"`
-}
-
 type AdTestResponse struct {
 	AdID     string `json:"adId"`
 	Type     string `json:"type"`
@@ -159,22 +124,18 @@ func clickEventHandler(w http.ResponseWriter, r *http.Request) {
 	clickURL := r.URL.Query().Get("clickUrl")
 	pageURL := r.URL.Query().Get("pageUrl")
 
-	eventPayload := EventPayload{
-		AdID:      adID,
-		EventType: "click",
-		Timestamp: time.Now().Unix(),
-		URL:       pageURL,
-		//we should check the cache for the clickURL mapping to avoid open redirector attack
-		ClickURL: clickURL,
-	}
+	_ = pageURL  // to avoid unused variable warning if not used later
+	_ = adID     // to avoid unused variable warning if not used later
+	_ = clickURL // to avoid unused variable warning if not used later
+
 	// have a logic to determin if you want to record the event as it might have been recorded already.
 
-	fmt.Printf("Received Event: %+v\n", eventPayload)
+	fmt.Printf("Received Event: %+v\n", "testing")
 
 	//todo log the click event to storage or analytics system. Maybe some in memory queue system for batching.
 	// Think about deduplication of clicks(idempotency). Maybe as part of the ad response payload create a unique id. Will think about it further later.
 
-	http.Redirect(w, r, eventPayload.ClickURL, http.StatusFound)
+	http.Redirect(w, r, "testing", http.StatusFound)
 }
 
 func impressionEventHandler(w http.ResponseWriter, r *http.Request) {
