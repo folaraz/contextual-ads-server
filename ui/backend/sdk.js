@@ -180,7 +180,7 @@
 
                         visibilityTimer = setTimeout(() => {
                             if (hasBeenVisible) {
-                                this.trackImpression({adId: adId, adData: adData, publisherId: publisherId});
+                                this.trackImpression({adId: adId, adData: adData, pubId: pubId});
                                 observer.disconnect();
                             }
                         }, this.config.viewabilityDuration)
@@ -434,7 +434,7 @@
             log('Removed slotId', slotId);
         }
 
-        trackImpression({adId, publisherId}) {
+        trackImpression({adId, pubId}) {
             if (this.tracker.impressions.has(adId)) {
                 log(`Impression already tracked for ad: ${adId}`)
                 return;
@@ -443,31 +443,16 @@
             this.tracker.impressions.add(adId);
 
             const payload = {
-                publisherId: publisherId,
                 adId: adId,
+                pubId: publisherId,
                 eventType: 'impression',
                 url: window.location.href,
             }
 
-            this.sendTrackingEvent({eventType: 'impression', payload})
+            const url = `${this.config.apiEndpoint}/v1/events/impression`;
+            const pixel = new Image();
+            pixel.src = `${url}?data=${encodeURIComponent(JSON.stringify(payload))}`;
 
-        }
-
-        sendTrackingEvent({eventType, payload}) {
-            const url = `${this.config.apiEndpoint}/v1/events/${eventType}`;
-
-            if (eventType == "click") {
-                log('Sending click tracking event...', payload)
-            } else {
-
-            }
-
-            if (navigator.sendBeacon) {
-                navigator.sendBeacon(url, JSON.stringify(payload));
-            } else {
-                const pixel = new Image();
-                pixel.src = `${url}?data=${encodeURIComponent(JSON.stringify(payload))}`;
-            }
         }
     }
 

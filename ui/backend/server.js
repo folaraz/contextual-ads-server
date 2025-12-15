@@ -47,20 +47,10 @@ app.get('/preview', async (req, res) => {
             });
         });
 
-        const slotId = 'ad-slot-' + Date.now();
-        const width = 300;
-        const height = 250;
-
-        const adContainer = `<div id="${slotId}" 
-           class="injected-ad-slot" 
-           style="margin: 20px auto; 
-                  width: ${width}px; 
-                  height: ${height}px;
-                  background: transparent;
-                  position: relative;">
-       <div style="position:absolute; top:5px; right:5px; background:#ff0000; color:white; padding:2px 8px; font-size:10px; font-weight:bold; border-radius:3px;">TEST AD</div>
-      </div>
-    `;
+        const slotId = '123455';
+        const width = 1000;
+        const height = 300;
+        const adContainer = `<div id="${slotId}" style="margin: 20px auto; width: ${width}px; height: ${height}px; background: transparent; position: relative;"></div>`;
 
         let injected = false;
 
