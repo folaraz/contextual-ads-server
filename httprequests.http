@@ -1,0 +1,192 @@
+POST http://localhost:8081/api/advertisers
+Content-Type: application/json
+
+{
+    "name": "Sephora",
+    "website": "https://www.sephora.com"
+}
+
+
+
+###
+POST http://localhost:8081/api/publishers
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Beauty Daily",
+    "domain": "https://www.beautydaily.com"
+}
+
+
+###
+POST http://localhost:8081/api/campaigns
+Accept: application/json
+Content-Type: application/json
+
+{
+    "advertiser_id": 1,
+    "campaign": {
+        "name": "Skincare Revolution",
+        "status": "ACTIVE",
+        "budget": 75418.00,
+        "currency": "USD",
+        "start_date": "2025-10-18",
+        "end_date": "2026-03-10"
+    },
+    "ad_set": {
+        "name": "Premium Skincare Set",
+        "bid_amount": 3.50,
+        "daily_budget": 527.40,
+        "pricing_model": "CPM"
+    },
+    "creative": {
+        "headline": "Beauty Trends for 2025",
+        "description": "Explore our collection of premium beauty products. From skincare to makeup, find everything you need for your wellness journey.",
+        "image_url": "https://orane.com/wp-content/uploads/2020/04/99.-Best-Beauty-Academy-scaled-1.jpg",
+        "call_to_action": "Get Started",
+        "landing_page_url": "https://www.sephora.com",
+        "status": "PENDING_ANALYSIS",
+        "creative_type": "banner"
+    },
+    "targeting": {
+        "keywords": [
+            "wellness",
+            "fashion",
+            "shopping",
+            "lifestyle",
+            "trends"
+        ],
+        "topics": [
+            1138,
+            1088
+        ],
+        "entities": [
+            {
+                "type": "PRODUCT",
+                "name": "sephora"
+            },
+            {
+                "type": "ORGANIZATION",
+                "name": "beauty brands"
+            }
+        ],
+        "countries": [
+            "US",
+            "CA",
+            "GB"
+        ],
+        "devices": [
+            "mobile",
+            "desktop",
+            "tablet"
+        ]
+    }
+}
+
+###
+
+POST http://localhost:8081/api/campaigns
+Accept: application/json
+Content-Type: application/json
+
+{
+    "advertiser_id": 1,
+    "campaign": {
+        "name": "Fantastic 4 movie launch",
+        "status": "ACTIVE",
+        "budget": 50000.00,
+        "currency": "USD",
+        "start_date": "2025-10-18",
+        "end_date": "2026-03-10"
+    },
+    "ad_set": {
+        "name": "Movie Enthusiasts",
+        "bid_amount": 3.50,
+        "daily_budget": 527.40,
+        "pricing_model": "CPC"
+    },
+    "creative": {
+        "headline": "Movie Premiere: Fantastic 4",
+        "description": "Join us for the premiere of Fantastic 4. Experience the thrill and excitement of this epic movie event. stream on netflix, hulu, disney plus and more.",
+        "image_url": "https://orane.com/wp-content/uploads/2020/04/99.-Best-Beauty-Academy-scaled-1.jpg",
+        "call_to_action": "Watch Now",
+        "landing_page_url": "https://www.netflix.com/fantastic4",
+        "status": "PENDING_ANALYSIS",
+        "creative_type": "banner"
+    },
+    "targeting": {
+        "keywords": [
+            "netflix",
+            "streaming",
+            "movies",
+            "entertainment",
+            "cinema",
+            "blockbuster"
+        ],
+        "topics": [
+
+        ],
+        "entities": [
+            {
+                "type": "PRODUCT",
+                "name": "fantastic 4"
+            }
+        ],
+        "countries": [
+            "US",
+            "CA",
+            "GB"
+        ],
+        "devices": [
+            "mobile",
+            "desktop",
+            "tablet"
+        ]
+    }
+}
+###
+
+POST http://localhost:8081/api/ads/serve
+Accept: application/json
+Content-Type: application/json
+X-Forwarded-For: 143.58.162.73
+
+
+{
+    "publisherId": "1",
+    "context": {
+        "url": "https://variety.com/lists/best-movies-streaming-october-2025/",
+        "keywords": [
+            "netflix",
+            "streaming",
+            "movies",
+            "entertainment",
+            "cinema",
+            "blockbuster"
+        ],
+        "title": "Top movies to stream in October 2025",
+        "description": "Discover the best movies to stream this October 2025. From thrilling dramas to hilarious comedies, find your next favorite film today."
+    },
+    "device": {
+        "type": "mobile",
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+        "language": "en-US"
+    },
+    "meta": {
+        "timestamp": 1767571200
+    }
+}
+
+
+
+###
+POST http://localhost:8081/api/events/impression?ad_id=4&auction_id=646311afc92047eaaa814cebce9824c5&campaign_id=5&nonce=23e9bfccfa6e8d12c09d6441&page_url_hash=2c269c9bfe7603a1f3e206ddf08558c9a096f88305ddeb20f35626e821b89869&price=350&pub_id=1&sig=ce1faffa0ff4486a2cebbd073d714b8ccb373442798b5b4acfbed54f14594d50&ts=1768779604775
+Accept: application/json
+Content-Type: application/json
+X-Forwarded-For: 143.58.162.99
+
+
+
+
+

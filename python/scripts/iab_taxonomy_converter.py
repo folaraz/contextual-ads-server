@@ -96,17 +96,24 @@ def write_taxonomy_json(taxonomy, path):
 
 
 def main():
-    content_taxonomy = build_nested_taxonomy_json(path='../data/raw/iab_content_taxonomy.tsv')
-    product_taxonomy = build_nested_taxonomy_json(path='../data/raw/iab_ad_product_taxonomy.tsv')
-    ad_product_to_content_mapping = generate_taxonomy_mapping(
-        path='../data/raw/ad_product_to_content_taxonomy_mapping.tsv')
-    content_to_ad_product_mapping = generate_taxonomy_mapping(
-        path='../data/raw/content_to_ad_product_taxonomy_mapping.tsv')
+    import os
 
-    write_taxonomy_json(content_taxonomy, '../data/iab_content_taxonomy.json')
-    write_taxonomy_json(product_taxonomy, '../data/iab_product_taxonomy.json')
-    write_taxonomy_json(ad_product_to_content_mapping, '../data/ad_product_to_content_taxonomy_mapping.json')
-    write_taxonomy_json(content_to_ad_product_mapping, '../data/content_to_ad_product_taxonomy_mapping.json')
+    raw_dir = os.path.join('..', '..', 'data', 'raw')
+    out_dir = os.path.join('..', '..', 'data')
+
+    content_taxonomy = build_nested_taxonomy_json(path=os.path.join(raw_dir, 'iab_content_taxonomy.tsv'))
+    product_taxonomy = build_nested_taxonomy_json(path=os.path.join(raw_dir, 'iab_ad_product_taxonomy.tsv'))
+    ad_product_to_content_mapping = generate_taxonomy_mapping(
+        path=os.path.join(raw_dir, 'ad_product_to_content_taxonomy_mapping.tsv'))
+    content_to_ad_product_mapping = generate_taxonomy_mapping(
+        path=os.path.join(raw_dir, 'content_to_ad_product_taxonomy_mapping.tsv'))
+
+    write_taxonomy_json(content_taxonomy, os.path.join(out_dir, 'iab_content_taxonomy.json'))
+    write_taxonomy_json(product_taxonomy, os.path.join(out_dir, 'iab_product_taxonomy.json'))
+    write_taxonomy_json(ad_product_to_content_mapping,
+                        os.path.join(out_dir, 'ad_product_to_content_taxonomy_mapping.json'))
+    write_taxonomy_json(content_to_ad_product_mapping,
+                        os.path.join(out_dir, 'content_to_ad_product_taxonomy_mapping.json'))
 
 
 if __name__ == '__main__':

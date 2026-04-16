@@ -1,0 +1,64 @@
+FROM flink:2.2.0-java17
+
+# Switch to root to install packages
+USER root
+
+# Install dependencies for building Python 3.11
+RUN apt-get update && \
+    apt-get install -y \
+        wget build-essential libssl-dev zlib1g-dev \
+        libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev \
+        xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Download and install Python 3.11
+RUN cd /tmp && \
+    wget https://www.python.org/ftp/python/3.11.11/Python-3.11.11.tgz && \
+    tar -xzf Python-3.11.11.tgz && \
+    cd Python-3.11.11 && \
+    ./configure --enable-optimizations --prefix=/usr/local && \
+    make -j$(nproc) && \
+    make altinstall && \
+    cd / && rm -rf /tmp/Python-3.11.11*
+
+# Create symlinks for python and pip
+RUN ln -sf /usr/local/bin/python3.11 /usr/bin/python && \
+    ln -sf /usr/local/bin/python3.11 /usr/bin/python3 && \
+    ln -sf /usr/local/bin/pip3.11 /usr/bin/pip && \
+    ln -sf /usr/local/bin/pip3.11 /usr/bin/pip3
+
+# The Flink image has JDK at /opt/java/openjdk but pemja needs include headers
+# Download and extract JDK headers for pemja to compile
+RUN mkdir -p /opt/java/openjdk/include && \
+    apt-get update && \
+    apt-get download openjdk-17-jdk-headless && \
+    dpkg -x openjdk-17-jdk-headless*.deb /tmp/jdk && \
+    cp -r /tmp/jdk/usr/lib/jvm/java-17-openjdk-*/include/* /opt/java/openjdk/include/ && \
+    rm -rf /tmp/jdk openjdk-17-jdk-headless*.deb && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install PyFlink (must match Flink version) and other required packages
+RUN pip3 install --no-cache-dir \
+    apache-flink==2.2.0 \
+    redis \
+    psycopg2-binary \
+    opentelemetry-api \
+    opentelemetry-sdk \
+    opentelemetry-exporter-otlp-proto-grpc
+
+# Copy Kafka connector JARs to Flink lib directory
+# Only non-shaded JARs (flink-connector-kafka + kafka-clients) for DataStream API
+COPY jars/*.jar /opt/flink/lib/
+
+# Create checkpoint/savepoint directories owned by flink user
+RUN mkdir -p /opt/flink/data/checkpoints /opt/flink/data/savepoints && \
+    chown -R flink:flink /opt/flink/data
+
+# Switch back to flink user
+USER flink
+
+# Set Python environment variables
+ENV PYFLINK_CLIENT_EXECUTABLE=/usr/bin/python3
+ENV PYFLINK_EXECUTABLE=/usr/bin/python3

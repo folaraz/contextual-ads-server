@@ -1,0 +1,96 @@
+# E2E Test Configuration
+# Customize these values for your test environment
+
+api:
+  base_url: "http://localhost:8090"
+  timeout_seconds: 30
+
+seeding:
+  advertisers:
+    count: 241
+    industries:
+      - e-commerce
+      - saas
+      - entertainment
+      - education
+      - finance
+      - healthcare
+      - travel
+      - automotive
+      - food-beverage
+      - technology
+      - fashion
+      - sports
+
+  publishers:
+    count: 50
+    categories:
+      - news
+      - blog
+      - e-commerce
+      - entertainment
+      - sports
+      - technology
+      - lifestyle
+      - finance
+      - health
+      - travel
+      - food
+      - automotive
+
+  campaigns:
+    count: 100
+    budget_range:
+      min: 100
+      max: 50000
+    pricing_models:
+      - CPM
+      - CPC
+    bid_amount_range:
+      cpm:
+        min: 1.0
+        max: 15.0
+      cpc:
+        min: 0.5
+        max: 5.0
+    daily_budget_pct: 0.1  # 10% of total budget
+    countries:
+      - US
+      - CA
+      - GB
+      - DE
+      - FR
+      - AU
+    devices:
+      - mobile
+      - desktop
+      - tablet
+    duration_days:
+      min: 7
+      max: 90
+    campaign_statuses:
+      - ACTIVE
+      - ACTIVE
+      - ACTIVE
+      - PAUSED  # 75% active weight
+
+timeouts:
+  api_request: 30s
+  ad_processing: 5s
+  page_processing: 10s
+
+kafka:
+  brokers:
+    - localhost:9092
+  topics:
+    ad_analyze: ad_analyze
+    page_analyze: page_analyze
+    ad_event: ad_event
+    auction: auction
+
+database:
+  host: localhost
+  port: 5435
+  user: adsuser
+  password: adspassword
+  db_name: contextual_ads

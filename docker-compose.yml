@@ -1,4 +1,95 @@
 services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper/data
+      - zookeeper_log:/var/lib/zookeeper/log
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo 'ruok' | nc localhost 2181"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    hostname: kafka
+    container_name: kafka
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_LOG_RETENTION_HOURS: 168
+      KAFKA_LOG_RETENTION_BYTES: 1073741824
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-topics", "--bootstrap-server", "kafka:29092", "--list"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  kafka-init:
+    image: confluentinc/cp-kafka:7.5.0
+    depends_on:
+      kafka:
+        condition: service_healthy
+    entrypoint: ['/bin/sh', '-c']
+    command: |
+      "
+      # Wait for Kafka to be ready
+      echo 'Waiting for Kafka to be ready...'
+      cub kafka-ready -b kafka:29092 1 60
+
+      # Create topics
+      echo 'Creating Kafka topics...'
+      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic ad_analyze --partitions 3 --replication-factor 1
+      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic page_analyze --partitions 3 --replication-factor 1
+      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic ad_event --partitions 3 --replication-factor 1
+      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic auction --partitions 3 --replication-factor 1
+      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic pacing_events --partitions 3 --replication-factor 1
+
+      echo 'Topics created successfully!'
+      kafka-topics --bootstrap-server kafka:29092 --list
+      "
+
+  kafka-ui:
+    image: ghcr.io/kafbat/kafka-ui:latest
+    container_name: kafka-ui
+    depends_on:
+      kafka:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+      DYNAMIC_CONFIG_ENABLED: 'true'
+      KAFKA_CLUSTERS_0_AUDIT_TOPICAUDITENABLED: 'true'
+      KAFKA_CLUSTERS_0_AUDIT_CONSOLEAUDITENABLED: 'true'
+    restart: unless-stopped
+
   redis:
     image: redis:latest
     restart: always
@@ -7,6 +98,337 @@ services:
     volumes:
       - cache:/data
     command: redis-server --save 20 1 --loglevel warning
+
+  postgres:
+    image: pgvector/pgvector:0.8.1-pg18
+    restart: always
+    environment:
+      POSTGRES_USER: adsuser
+      POSTGRES_PASSWORD: adspassword
+      POSTGRES_DB: contextual_ads
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U adsuser -d contextual_ads"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Page context processor - handles page analysis (higher priority, more replicas)
+  page-context-processor:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      kafka:
+        condition: service_healthy
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    environment:
+      - KAFKA_BROKERS=kafka:29092
+      - CONTEXT_PROCESSOR_TOPICS=page_analyze
+      - CONTEXT_PROCESSOR_GROUP=page_processor_group
+      - KAFKA_AUTO_OFFSET_RESET=earliest
+      - KAFKA_MAX_RETRIES=3
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_PAGE_CACHE_TTL=2592000
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=contextual_ads
+      - POSTGRES_USER=adsuser
+      - POSTGRES_PASSWORD=adspassword
+      - ENABLE_CRAWLER=true
+      - AUTO_CRAWL_PAGES=true
+      - MAX_CONCURRENCY=4
+      - NLP_THREAD_POOL_SIZE=4
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - ENVIRONMENT=development
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - TRANSFORMERS_OFFLINE=0
+    command: ["python", "consumer/context_processor.py"]
+    restart: on-failure:3
+    networks:
+      - default
+
+  # Ad context processor - handles ad analysis
+  ad-context-processor:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      kafka:
+        condition: service_healthy
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    environment:
+      - KAFKA_BROKERS=kafka:29092
+      - CONTEXT_PROCESSOR_TOPICS=ad_analyze
+      - CONTEXT_PROCESSOR_GROUP=ad_processor_group
+      - KAFKA_AUTO_OFFSET_RESET=earliest
+      - KAFKA_MAX_RETRIES=3
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=contextual_ads
+      - POSTGRES_USER=adsuser
+      - POSTGRES_PASSWORD=adspassword
+      - ENABLE_CRAWLER=true
+      - AUTO_CRAWL_PAGES=false
+      - MAX_CONCURRENCY=4
+      - NLP_THREAD_POOL_SIZE=4
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - ENVIRONMENT=development
+      - PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+      - TRANSFORMERS_OFFLINE=0
+    command: ["python", "consumer/context_processor.py"]
+    restart: on-failure:3
+    networks:
+      - default
+
+  pacing-worker:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    depends_on:
+      redis:
+        condition: service_started
+      kafka:
+        condition: service_healthy
+    environment:
+      # Kafka configuration
+      - KAFKA_BROKERS=kafka:29092
+      # Redis configuration
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      # Pacing configuration
+      - PACING_INTERVAL_SECONDS=30
+      # Observability
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - ENVIRONMENT=development
+    command: ["python", "pacing/pacing.py"]
+    restart: unless-stopped
+    networks:
+      - default
+
+  analytics-consumer:
+    build:
+      context: ./python
+      dockerfile: Dockerfile.flink-python
+    image: flink-python:2.2.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      flink-jobmanager:
+        condition: service_healthy
+    environment:
+      # Kafka configuration
+      - KAFKA_BROKERS=kafka:29092
+      - KAFKA_TOPICS=ad_event,auction,pacing_events
+      - KAFKA_CONSUMER_GROUP=event_aggregator_group
+      - KAFKA_AUTO_OFFSET_RESET=earliest
+      # PostgreSQL configuration
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=contextual_ads
+      - POSTGRES_USER=adsuser
+      - POSTGRES_PASSWORD=adspassword
+      # Redis configuration
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_METRICS_TTL=3600
+      # Sink configuration (enable/disable sinks)
+      # Redis spend is now updated synchronously by the Go ad server (event_service.go)
+      # to eliminate the batching lag that caused budget over-delivery. Flink handles
+      # PostgreSQL persistence only.
+      - SINK_POSTGRES_ENABLED=true
+      - SINK_REDIS_ENABLED=false
+      # Flink configuration
+      - FLINK_PARALLELISM=3
+      - FLINK_CHECKPOINT_INTERVAL_MS=60000
+      - FLINK_WINDOW_SIZE_SECONDS=10
+      - FLINK_JOBMANAGER_HOST=flink-jobmanager
+      - FLINK_JOBMANAGER_PORT=8081
+      # Observability
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - ENVIRONMENT=development
+    volumes:
+      # Mount the consumer code
+      - ./python/consumer:/app/python/consumer:ro
+      - ./python/config.py:/app/python/config.py:ro
+      - ./python/observability:/app/python/observability:ro
+      - ./data:/app/data:ro
+      # IMPORTANT: Mount same JARs as flink-jobmanager/taskmanager to avoid version conflicts
+      - ./python/jars/flink-connector-kafka-4.0.1-2.0.jar:/opt/flink/lib/flink-connector-kafka-4.0.1-2.0.jar
+      - ./python/jars/kafka-clients-3.6.0.jar:/opt/flink/lib/kafka-clients-3.6.0.jar
+    working_dir: /app/python
+    command: ["python", "consumer/analytics_consumer.py"]
+    restart: unless-stopped
+    networks:
+      - default
+
+  flink-jobmanager:
+    build:
+      context: ./python
+      dockerfile: Dockerfile.flink-python
+    image: flink-python:2.2.0
+    container_name: flink-jobmanager
+    ports:
+      - "8081:8081"  # Flink Web UI
+      - "6123:6123"  # RPC port
+    command: jobmanager
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: flink-jobmanager
+        jobmanager.rpc.port: 6123
+        jobmanager.memory.process.size: 1600m
+        rest.address: flink-jobmanager
+        rest.port: 8081
+        state.checkpoints.dir: file:///opt/flink/data/checkpoints
+        state.savepoints.dir: file:///opt/flink/data/savepoints
+      - KAFKA_BROKER=kafka:29092
+      - KAFKA_TOPIC=ad_event
+      - KAFKA_GROUP_ID=test_group_1
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=contextual_ads
+      - POSTGRES_USER=adsuser
+      - POSTGRES_PASSWORD=adspassword
+      - SINK_REDIS_ENABLED=true
+      - SINK_POSTGRES_ENABLED=true
+      - FLINK_WINDOW_SIZE_SECONDS=10
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - ENVIRONMENT=development
+    volumes:
+      - flink_data:/opt/flink/data
+      # IMPORTANT: Only mount one set of Kafka JARs to avoid class conflicts!
+      # Option 1: Use flink-connector-kafka + kafka-clients (non-shaded, for DataStream API)
+      # Option 2: Use flink-sql-connector-kafka ONLY (fat JAR with shaded classes, for SQL API)
+      # Do NOT mix them - causes ClassCastException between shaded/non-shaded classes
+      - ./python/jars/flink-connector-kafka-4.0.1-2.0.jar:/opt/flink/lib/flink-connector-kafka-4.0.1-2.0.jar
+      - ./python/jars/kafka-clients-3.6.0.jar:/opt/flink/lib/kafka-clients-3.6.0.jar
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/overview"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  flink-taskmanager:
+    build:
+      context: ./python
+      dockerfile: Dockerfile.flink-python
+    image: flink-python:2.2.0
+    container_name: flink-taskmanager
+    depends_on:
+      flink-jobmanager:
+        condition: service_healthy
+    command: taskmanager
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: flink-jobmanager
+        jobmanager.rpc.port: 6123
+        taskmanager.numberOfTaskSlots: 4
+        taskmanager.memory.process.size: 1728m
+        state.checkpoints.dir: file:///opt/flink/data/checkpoints
+        state.savepoints.dir: file:///opt/flink/data/savepoints
+      - KAFKA_BROKER=kafka:29092
+      - KAFKA_TOPIC=ad_event
+      - KAFKA_GROUP_ID=test_group_1
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=contextual_ads
+      - POSTGRES_USER=adsuser
+      - POSTGRES_PASSWORD=adspassword
+      - SINK_REDIS_ENABLED=false
+      - SINK_POSTGRES_ENABLED=true
+      - FLINK_WINDOW_SIZE_SECONDS=10
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - ENVIRONMENT=development
+      - PYTHONPATH=/app/python
+    volumes:
+      - flink_data:/opt/flink/data
+      - ./python/jars/flink-connector-kafka-4.0.1-2.0.jar:/opt/flink/lib/flink-connector-kafka-4.0.1-2.0.jar
+      - ./python/jars/kafka-clients-3.6.0.jar:/opt/flink/lib/kafka-clients-3.6.0.jar
+      - ./python/observability:/app/python/observability:ro
+      - ./python/consumer:/app/python/consumer:ro
+      - ./python/config.py:/app/python/config.py:ro
+    restart: unless-stopped
+
+  # ---- Go Ad Server ----
+  ad-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      kafka:
+        condition: service_healthy
+    ports:
+      - "8090:8090"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=contextual_ads
+      - DB_USER=adsuser
+      - DB_PASSWORD=adspassword
+      - DB_SSL_MODE=disable
+      - REDIS_ADDR=redis:6379
+      - KAFKA_BROKERS=kafka:29092
+      - OTEL_EXPORTER_OTLP_ENDPOINT=otel-collector:4317
+      - ENVIRONMENT=development
+    restart: unless-stopped
+
 volumes:
   cache:
+    driver: local
+  postgres_data:
+    driver: local
+  kafka_data:
+    driver: local
+  zookeeper_data:
+    driver: local
+  zookeeper_log:
+    driver: local
+  flink_data:
     driver: local

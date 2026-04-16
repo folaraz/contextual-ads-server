@@ -1,131 +1,218 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
+	"context"
+	"errors"
 	"net/http"
 	"time"
 
+	"github.com/cenkalti/backoff/v4"
+	db "github.com/folaraz/contextual-ads-server/db/sqlc"
+	"github.com/folaraz/contextual-ads-server/internal/cache"
 	"github.com/folaraz/contextual-ads-server/internal/contextextractor"
-	"github.com/folaraz/contextual-ads-server/internal/models"
-	"github.com/folaraz/contextual-ads-server/internal/models/request"
-	"github.com/folaraz/contextual-ads-server/internal/storage"
+	"github.com/folaraz/contextual-ads-server/internal/handlers"
+	"github.com/folaraz/contextual-ads-server/internal/observability"
+	"github.com/folaraz/contextual-ads-server/internal/service"
+	"github.com/folaraz/contextual-ads-server/internal/service/indexing"
+	"github.com/folaraz/contextual-ads-server/internal/storage/postgres"
+	"github.com/folaraz/contextual-ads-server/internal/storage/redis"
 )
 
-func init() {
+var (
+	advertiserHandler *handlers.AdvertiserHandler
+	campaignHandler   *handlers.CampaignHandler
+	adServeHandler    *handlers.AdServeHandler
+	eventHandler      *handlers.EventHandler
+	publisherHandler  *handlers.PublisherHandler
+)
+
+var services *service.Services
+
+var obs *observability.Observability
+
+func initApp(ctx context.Context) error {
+	redisConfig := redis.DefaultConfig()
+	if err := redis.InitClient(redisConfig); err != nil {
+		observability.Warn(ctx, "Failed to initialize Redis", "error", err)
+	}
+
+	redisClient := redis.GetRedisClient()
+
 	contextextractor.InitRequestExtractorDB()
-	err := storage.LoadAdContentToProductMapping()
+
+	cfg := postgres.DefaultConfig()
+	if err := postgres.InitDB(cfg); err != nil {
+		observability.Warn(ctx, "Failed to connect to PostgreSQL", "error", err)
+		observability.Info(ctx, "Advertiser and Campaign endpoints will not be available")
+		return nil
+	}
+
+	database, err := postgres.GetDB()
 	if err != nil {
-		return
+		observability.Warn(ctx, "Failed to get database connection", "error", err)
+		return nil
+	}
+
+	if err := cache.InitTaxonomyCache(database); err != nil {
+		observability.Warn(ctx, "Failed to initialize taxonomy cache", "error", err)
+	}
+
+	queries := db.New(database)
+
+	services = service.NewServices(service.Dependencies{
+		DB:          database,
+		RedisClient: redisClient,
+	})
+
+	initCtx, initCancel := context.WithTimeout(ctx, 30*time.Second)
+	if err := services.Taxonomy.LoadTaxonomies(initCtx); err != nil {
+		observability.Error(ctx, "Unable to load IAB Taxonomies", "error", err)
+	}
+
+	if _, err := services.Indexing.Initialize(initCtx); err != nil {
+		observability.Warn(ctx, "Failed to initialize ad index", "error", err)
+	} else {
+		observability.Info(ctx, "Initial ad index loaded successfully")
+	}
+	initCancel()
+
+	advertiserHandler = handlers.NewAdvertiserHandler(queries)
+	campaignHandler = handlers.NewCampaignHandler(services.Campaign)
+	adServeHandler = handlers.NewAdServeHandler(services.AdServe)
+	eventHandler = handlers.NewEventHandler(redisClient)
+	publisherHandler = handlers.NewPublisherHandler(services.Publisher)
+
+	go startIndexRefreshWorker(ctx, services.Indexing)
+
+	observability.Info(ctx, "Database, services, and handlers initialized successfully")
+	return nil
+}
+
+func startIndexRefreshWorker(ctx context.Context, indexingSvc *indexing.IndexingService) {
+	ticker := time.NewTicker(30 * time.Second)
+	defer ticker.Stop()
+
+	consecutiveFailures := 0
+	const maxConsecutiveFailures = 3
+
+	for range ticker.C {
+		currentIdx := indexing.GetCurrentIndex()
+		if currentIdx == nil {
+			observability.Warn(ctx, "Skipping index refresh: initial index not loaded")
+			continue
+		}
+
+		lastUpdateTime := currentIdx.LastUpdated
+
+		expBackoff := backoff.NewExponentialBackOff()
+		expBackoff.InitialInterval = 30 * time.Second
+		expBackoff.MaxInterval = 2 * time.Minute
+		expBackoff.MaxElapsedTime = 5 * time.Minute
+		expBackoff.Multiplier = 2.0
+
+		var newIndex *indexing.GlobalIndex
+		operation := func() error {
+			// Create a fresh context with timeout for each attempt
+			refreshCtx, refreshCancel := context.WithTimeout(context.Background(), 3*time.Minute)
+			defer refreshCancel()
+
+			var err error
+			newIndex, err = indexingSvc.Refresh(refreshCtx, lastUpdateTime)
+			if err != nil {
+				observability.Warn(ctx, "Index refresh attempt failed", "error", err)
+				return err
+			}
+			return nil
+		}
+
+		err := backoff.Retry(operation, backoff.WithMaxRetries(expBackoff, 3))
+
+		if err != nil {
+			consecutiveFailures++
+			observability.Error(ctx, "Error refreshing index after retries", "error", err, "consecutiveFailures", consecutiveFailures)
+
+			if consecutiveFailures >= maxConsecutiveFailures {
+				observability.Warn(ctx, "Index refresh has failed consecutive times. Index may be stale.", "consecutiveFailures", consecutiveFailures, "lastSuccessfulUpdate", currentIdx.LastUpdated)
+			}
+			continue
+		}
+
+		// Success - reset failure counter
+		consecutiveFailures = 0
+		observability.Info(ctx, "Ad index refreshed successfully", "totalAdsIndexed", len(newIndex.Ads))
 	}
 }
 
-func adHandler(w http.ResponseWriter, r *http.Request) {
-
-	var adRequest request.AdRequest
-	if err := json.NewDecoder(r.Body).Decode(&adRequest); err != nil {
-		fmt.Printf("Error decoding request payload: %v\n", err)
-		http.Error(w, fmt.Sprintf("Invalid request payload: %v", err), http.StatusBadRequest)
+func createAdvertiserHandler(w http.ResponseWriter, r *http.Request) {
+	if advertiserHandler == nil {
+		http.Error(w, "Database not configured", http.StatusServiceUnavailable)
 		return
 	}
-	requestContext := contextextractor.RetrieveRequestContext(r)
+	advertiserHandler.CreateAdvertiser(w, r)
+}
 
-	fmt.Printf("Received AdRequest: %+v\n", adRequest)
-
-	var matched []models.AdRankResult
-	requestContext := contextextractor.RetrieveRequestContext(r)
-	fmt.Printf("Request Context: %+v\n", requestContext)
-	_ = requestContext
-	_ = matched
-	fmt.Println(r)
-	//matched = GetAd(url)
-
-	//Ad_Response = {
-	//ad_id: "ad_23456",
-	//	creative: {
-	//	title: "Monday.com - Work Management Made Easy",
-	//		description: "Manage projects, track tasks...",
-	//			image_url: "https://cdn.monday.com/ad_banner_123.jpg",
-	//			click_url: "https://adserver.com/click?ad=23456&page=page_technews_12345",
-	//			impression_url: "https://adserver.com/imp?ad=23456",
-	//			cta: "Try Free"
-	//	},
-	//metadata: {
-	//price_cpm: 3.81,
-	//	relevance_score: 0.931
-	//}
-	//}
-
-	//Event_Log.write({
-	//event: "ad_served",
-	//	ad_id: "ad_23456",
-	//		page_id: "page_technews_12345",
-	//		user_id: "user_98765",
-	//		price: 3.81,
-	//		timestamp: "2025-10-19T14:35:42Z",
-	//		matching_details: {
-	//	keyword_score: 0.92,
-	//		topic_score: 0.95,
-	//			similarity_score: 0.91,
-	//			best_section: "Section 3: Project Management"
-	//	}
-	//})
-
-	//var response []struct {
-	//	ID          string          `json:"id"`
-	//	Creative    models.Creative `json:"creative"`
-	//	VectorScore float64         `json:"vector_score"`
-	//}
-	//for _, ad := range matched {
-	//	response = append(response, struct {
-	//		ID          string          `json:"id"`
-	//		Creative    models.Creative `json:"creative"`
-	//		VectorScore float64         `json:"vector_score"`
-	//	}{
-	//		ID:          ad.Ad.ID,
-	//		Creative:    ad.Ad.Creative,
-	//		VectorScore: ad.VectorScore,
-	//	})
-	//}
-
-	response := AdResponse{
-		AdID:        fmt.Sprintf("test-ad-%d", time.Now().UnixNano()),
-		PublisherID: "publisher-123",
-		Type:        "html",
-		Creative:    `<div style="padding:40px;background:brown;color:white;text-align:center;border-radius:8px;"><h2>Test Ad</h2><p>Click tracking enabled</p></div>`,
-		//Security (Signing the URL)
-		ClickURL: "https://example.com",
-	}
-
-	w.Header().Set("Content-Type", "application/json")
-	if err := json.NewEncoder(w).Encode(response); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+func listAdvertisersHandler(w http.ResponseWriter, r *http.Request) {
+	if advertiserHandler == nil {
+		http.Error(w, "Database not configured", http.StatusServiceUnavailable)
 		return
 	}
+	advertiserHandler.ListAdvertisers(w, r)
+}
+
+func createCampaignHandler(w http.ResponseWriter, r *http.Request) {
+	if campaignHandler == nil {
+		http.Error(w, "Database not configured", http.StatusServiceUnavailable)
+		return
+	}
+	campaignHandler.CreateCampaign(w, r)
+}
+
+func serveAdHandler(w http.ResponseWriter, r *http.Request) {
+	if adServeHandler == nil {
+		http.Error(w, "Ad serving handler not configured", http.StatusServiceUnavailable)
+		return
+	}
+	adServeHandler.ServeAd(w, r)
 }
 
 func clickEventHandler(w http.ResponseWriter, r *http.Request) {
-	adID := r.URL.Query().Get("adId")
-	clickURL := r.URL.Query().Get("clickUrl")
-	pageURL := r.URL.Query().Get("pageUrl")
-
-	_ = pageURL  // to avoid unused variable warning if not used later
-	_ = adID     // to avoid unused variable warning if not used later
-	_ = clickURL // to avoid unused variable warning if not used later
-
-	// have a logic to determin if you want to record the event as it might have been recorded already.
-
-	fmt.Printf("Received Event: %+v\n", "testing")
-
-	//todo log the click event to storage or analytics system. Maybe some in memory queue system for batching.
-	// Think about deduplication of clicks(idempotency). Maybe as part of the ad response payload create a unique id. Will think about it further later.
-
-	http.Redirect(w, r, "testing", http.StatusFound)
+	if eventHandler == nil {
+		http.Error(w, "Event handler not configured", http.StatusServiceUnavailable)
+		return
+	}
+	eventHandler.HandleClick(w, r)
 }
 
 func impressionEventHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("Received impression event\n")
+	if eventHandler == nil {
+		http.Error(w, "Event handler not configured", http.StatusServiceUnavailable)
+		return
+	}
+	eventHandler.HandleImpression(w, r)
+}
 
+func createPublisherHandler(w http.ResponseWriter, r *http.Request) {
+	if publisherHandler == nil {
+		http.Error(w, "Database not configured", http.StatusServiceUnavailable)
+		return
+	}
+	publisherHandler.CreatePublisher(w, r)
+}
+
+func listPublishersHandler(w http.ResponseWriter, r *http.Request) {
+	if publisherHandler == nil {
+		http.Error(w, "Database not configured", http.StatusServiceUnavailable)
+		return
+	}
+	publisherHandler.ListPublishers(w, r)
+}
+
+func getPublisherHandler(w http.ResponseWriter, r *http.Request) {
+	if publisherHandler == nil {
+		http.Error(w, "Database not configured", http.StatusServiceUnavailable)
+		return
+	}
+	publisherHandler.GetPublisher(w, r)
 }
 
 func corsMiddleware(next http.Handler) http.Handler {
@@ -140,36 +227,45 @@ func corsMiddleware(next http.Handler) http.Handler {
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Forwarded-For")
 		w.Header().Set("Access-Control-Max-Age", "3600")
 
-		// Handle preflight requests
 		if r.Method == "OPTIONS" {
 			w.WriteHeader(http.StatusOK)
 			return
 		}
 
-		// Call the next handler
 		next.ServeHTTP(w, r)
 	})
 }
 
-// request comes in with url and keywords.
-// checks cache for embeddings and usese that to query for the ads from inventory
-// matching engine for right ads to display
-// todo expose api to get vector representation of url from storage
-// run query to get the top k ads that matches the vector from the inventory
-// run the matching engine to get the bid winner for the ad and return it to the client
 func main() {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	obs = observability.NewObservability("contextual-ads-server")
+
+	if err := initApp(ctx); err != nil {
+		obs.Fatal(err, "Failed to initialize application")
+	}
+
 	mux := http.NewServeMux()
 
-	//get user agent from request header
-	mux.HandleFunc("POST /v1/ads", adHandler)
-	mux.HandleFunc("POST /v1/events/impression", impressionEventHandler)
-	mux.HandleFunc("GET /v1/events/click", clickEventHandler)
+	mux.HandleFunc("POST /api/ads/serve", serveAdHandler)
+	mux.HandleFunc("POST /api/advertisers", createAdvertiserHandler)
+	mux.HandleFunc("GET /api/advertisers", listAdvertisersHandler)
+	mux.HandleFunc("POST /api/campaigns", createCampaignHandler)
+	mux.HandleFunc("POST /api/publishers", createPublisherHandler)
+	mux.HandleFunc("GET /api/publishers", listPublishersHandler)
+	mux.HandleFunc("GET /api/publishers/{publisherID}", getPublisherHandler)
+	mux.HandleFunc("POST /api/events/impression", impressionEventHandler)
+	mux.HandleFunc("GET /api/events/click", clickEventHandler)
 
-	// Wrap the mux with CORS middleware
-	handler := corsMiddleware(mux)
+	handler := corsMiddleware(observability.MetricsMiddleware(observability.TracingMiddleware(mux)))
 
-	err := http.ListenAndServe(":8080", handler)
-	if err != nil {
-		fmt.Println(err)
+	srv := &http.Server{
+		Addr:    ":8090",
+		Handler: handler,
+	}
+
+	if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		obs.Fatal(err, "ListenAndServe failed")
 	}
 }

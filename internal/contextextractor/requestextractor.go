@@ -56,7 +56,15 @@ func InitRequestExtractorDB() {
 
 func RetrieveRequestContext(r *http.Request) RequestContext {
 	ip := getClientIP(r)
-	geo := extractGeo(ip)
+
+	// Allow geo country override via header (for traffic simulation / testing)
+	var geo GeoInfo
+	if countryOverride := r.Header.Get("X-Geo-Country"); countryOverride != "" {
+		geo = GeoInfo{Country: countryOverride}
+	} else {
+		geo = extractGeo(ip)
+	}
+
 	device := extractDevice(r)
 	lang := extractLanguage(r)
 
@@ -83,12 +91,21 @@ func extractLanguage(r *http.Request) string {
 
 func extractDevice(r *http.Request) DeviceInfo {
 	ua := r.Header.Get("User-Agent")
-	client := uaParser.Parse(ua)
 
 	deviceType := "desktop"
 	if strings.Contains(strings.ToLower(ua), "mobile") {
 		deviceType = "mobile"
 	}
+
+	// Handle case where UA parser failed to initialize
+	if uaParser == nil {
+		return DeviceInfo{
+			Device: deviceType,
+			OS:     "unknown",
+		}
+	}
+
+	client := uaParser.Parse(ua)
 
 	return DeviceInfo{
 		Device: deviceType,
@@ -97,9 +114,11 @@ func extractDevice(r *http.Request) DeviceInfo {
 }
 
 func extractGeo(ip string) GeoInfo {
-	if value, found := ipGeoLRU.Get(ip); found {
-		if geoInfo, ok := value.(*GeoInfo); ok {
-			return *geoInfo
+	if ipGeoLRU != nil {
+		if value, found := ipGeoLRU.Get(ip); found {
+			if geoInfo, ok := value.(*GeoInfo); ok {
+				return *geoInfo
+			}
 		}
 	}
 	record, _, err := LookupGeo(ip)
@@ -115,18 +134,28 @@ func extractGeo(ip string) GeoInfo {
 	}
 
 	if record.Location.HasCoordinates() {
-		geoInfo.Lat = *record.Location.Latitude
-		geoInfo.Lon = *record.Location.Longitude
+		if record.Location.Latitude != nil {
+			geoInfo.Lat = *record.Location.Latitude
+		}
+		if record.Location.Longitude != nil {
+			geoInfo.Lon = *record.Location.Longitude
+		}
 	}
 	geoInfo.Country = record.Country.ISOCode
 	geoInfo.City = record.City.Names.English
 
-	ipGeoLRU.Add(ip, &geoInfo)
+	if ipGeoLRU != nil {
+		ipGeoLRU.Add(ip, &geoInfo)
+	}
 
 	return geoInfo
 }
 
 func LookupGeo(ipStr string) (*geoip2.City, netip.Addr, error) {
+	if geoDB == nil {
+		return nil, netip.Addr{}, fmt.Errorf("geo database not initialized")
+	}
+
 	ip, err := netip.ParseAddr(ipStr)
 	if err != nil {
 		return nil, netip.Addr{}, fmt.Errorf("invalid IP address: %v", err)

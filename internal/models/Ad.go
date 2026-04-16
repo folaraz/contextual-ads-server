@@ -1,68 +1,68 @@
 package models
 
+import "time"
+
 type Strategy int
 
 const (
 	CPM Strategy = iota
 	CPC
-	CPA
 )
 
 type Ad struct {
-	ID               string     `json:"id"`
-	Advertiser       Advertiser `json:"advertiser"`
-	Campaign         Campaign   `json:"campaign"`
-	Creative         Creative   `json:"creative"`
-	Targeting        Targeting  `json:"targeting"`
-	AdContext        AdContext  `json:"ad_context"`
-	DailyBudget      float64    `json:"daily_budget"`
-	RemainingBudget  float64    `json:"remaining_budget"`
-	DailyBudgetSpend float64    `json:"daily_budget_spend"`
-	BidAmount        float64    `json:"bid_amount"`
-	Strategy         Strategy   `json:"strategy"` // e.g., CPC, CPM, CPA
+	AdID             int32      `json:"ad_id"`
+	AdSetID          int32      `json:"ad_set_id"`
+	Headline         string     `json:"headline"`
+	Description      string     `json:"description"`
+	CreativeType     string     `json:"creative_type"`
+	MediaURL         string     `json:"media_url"`
+	DestinationURL   string     `json:"destination_url"`
+	BidAmountCents   int64      `json:"bid_amount_cents"`
+	DailyBudgetCents int64      `json:"daily_budget_cents"`
+	PricingModel     Strategy   `json:"pricing_model"`
 	Status           string     `json:"status"`
-	StartDate        string     `json:"start_date"`
-	EndDate          string     `json:"end_date"`
-	CreatedAt        string     `json:"created_at"`
-	Impressions      int        `json:"impressions"`
-	Clicks           int        `json:"clicks"`
-	Spend            float64    `json:"spend"`
+	CampaignID       int32      `json:"campaign_id"`
+	CampaignStatus   string     `json:"campaign_status"`
+	CreatedAt        time.Time  `json:"created_at"`
+	UpdatedAt        time.Time  `json:"updated_at"`
+	StartDate        time.Time  `json:"start_date"`
+	EndDate          *time.Time `json:"end_date,omitempty"`
+
+	// Targeting criteria
+	Keywords  []KeywordTarget `json:"keywords"`
+	Topics    []TopicTarget   `json:"topics"`
+	Entities  []EntityTarget  `json:"entities"`
+	Countries []CountryTarget `json:"countries"`
+	Devices   []DeviceTarget  `json:"devices"`
 }
 
-type Advertiser struct {
-	Name     string  `json:"name"`
-	Budget   float64 `json:"budget"`
-	Currency string  `json:"currency"`
+type KeywordTarget struct {
+	Keyword        string  `json:"keyword"`
+	RelevanceScore float64 `json:"relevance_score"`
 }
 
-type Campaign struct {
-	Name string `json:"name"`
+type TopicTarget struct {
+	TopicID        int32   `json:"topic_id"`
+	Tier           int     `json:"tier"`
+	RelevanceScore float64 `json:"relevance_score"`
 }
 
-type Creative struct {
-	Headline     string `json:"headline"`
-	Description  string `json:"description"`
-	ImageURL     string `json:"image_url"`
-	CallToAction string `json:"call_to_action"`
+type EntityTarget struct {
+	EntityID   string `json:"entity_id"`
+	EntityType string `json:"entity_type"`
 }
 
-type Targeting struct {
-	Countries []string `json:"countries"`
-	Entities  []string `json:"entities"`
-	Keywords  []string `json:"keywords"`
-	Languages []string `json:"languages"`
-	Topics    []Topic  `json:"topics"`
+type CountryTarget struct {
+	CountryISOCode string `json:"country_iso_code"`
+}
+
+type DeviceTarget struct {
+	DeviceType string `json:"device_type"` // mobile, desktop, tablet
 }
 
 type AdContext struct {
-	Keywords  map[string]float64 `json:"keywords"`  // {"food": 1.0, "healthy": 1.0}
-	Entities  map[string]string  `json:"entities"`  // todo: still need to solve the llm integration for entity extraction
-	Topics    map[string]Topic   `json:"topics"`    // iab_id -> Topic
-	Embedding []float64          `json:"embedding"` // [0.015, -0.023, ...]
-}
-
-type Topic struct {
-	IabID string  `json:"iab_id"`
-	Tier  int     `json:"tier"`
-	Score float64 `json:"score"`
+	Keywords map[string]float64 `json:"keywords"` // {"food": 1.0, "healthy": 1.0}
+	Entities map[string]string  `json:"entities"` // todo: still need to solve the llm integration for entity extraction
+	//Topics    map[string]Topic   `json:"topics"`    // iab_id -> Topic
+	Embedding []float64 `json:"embedding"`
 }

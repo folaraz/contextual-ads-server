@@ -1,6 +1,6 @@
 package response
 
-type AdResponse struct {
+type AdServeResponse struct {
 	AdID        string `json:"adId"`
 	PublisherID string `json:"publisherId"`
 	Type        string `json:"type"`

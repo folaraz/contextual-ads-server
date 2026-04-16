@@ -1,0 +1,6002 @@
+[
+  {
+    "id": 1,
+    "name": "H&M",
+    "website": "https://www.hm.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 2,
+    "name": "Zara",
+    "website": "https://www.zara.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 3,
+    "name": "Everlane",
+    "website": "https://www.everlane.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 4,
+    "name": "ASOS",
+    "website": "https://www.asos.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 5,
+    "name": "Uniqlo",
+    "website": "https://www.uniqlo.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 6,
+    "name": "Nordstrom",
+    "website": "https://www.nordstrom.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 7,
+    "name": "Gap",
+    "website": "https://www.gap.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 8,
+    "name": "J.Crew",
+    "website": "https://www.jcrew.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 9,
+    "name": "Mango",
+    "website": "https://www.mango.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 10,
+    "name": "Anthropologie",
+    "website": "https://www.anthropologie.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 970,
+    "name": "Reformation",
+    "website": "https://www.thereformation.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 12,
+    "name": "Stitch Fix",
+    "website": "https://www.stitchfix.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 421,
+    "name": "Shein",
+    "website": "https://www.shein.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 797,
+    "name": "ThredUp",
+    "website": "https://www.thredup.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 422,
+    "name": "Revolve",
+    "website": "https://www.revolve.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 16,
+    "name": "Sephora",
+    "website": "https://www.sephora.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 17,
+    "name": "Glossier",
+    "website": "https://www.glossier.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 18,
+    "name": "Ulta Beauty",
+    "website": "https://www.ulta.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 19,
+    "name": "Fenty Beauty",
+    "website": "https://www.fentybeauty.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 426,
+    "name": "The Ordinary",
+    "website": "https://www.theordinary.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 21,
+    "name": "MAC Cosmetics",
+    "website": "https://www.maccosmetics.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 22,
+    "name": "Clinique",
+    "website": "https://www.clinique.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 427,
+    "name": "Drunk Elephant",
+    "website": "https://www.drunkelephant.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 24,
+    "name": "Tatcha",
+    "website": "https://www.tatcha.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 25,
+    "name": "Charlotte Tilbury",
+    "website": "https://www.charlottetilbury.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 26,
+    "name": "Lululemon",
+    "website": "https://www.lululemon.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 27,
+    "name": "Nike Training",
+    "website": "https://www.nike.com/training",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 28,
+    "name": "Gymshark",
+    "website": "https://www.gymshark.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 29,
+    "name": "Athleta",
+    "website": "https://www.athleta.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 30,
+    "name": "Alo Yoga",
+    "website": "https://www.aloyoga.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 31,
+    "name": "Vuori",
+    "website": "https://www.vuoriclothing.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 32,
+    "name": "Outdoor Voices",
+    "website": "https://www.outdoorvoices.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 33,
+    "name": "Fabletics",
+    "website": "https://www.fabletics.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 34,
+    "name": "Warby Parker",
+    "website": "https://www.warbyparker.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 437,
+    "name": "Ray-Ban",
+    "website": "https://www.ray-ban.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 441,
+    "name": "Coach",
+    "website": "https://www.coach.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 442,
+    "name": "Kate Spade",
+    "website": "https://www.katespade.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 440,
+    "name": "Fossil",
+    "website": "https://www.fossil.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 39,
+    "name": "Tiffany & Co",
+    "website": "https://www.tiffany.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 40,
+    "name": "Louis Vuitton",
+    "website": "https://www.louisvuitton.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 41,
+    "name": "Gucci",
+    "website": "https://www.gucci.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 42,
+    "name": "Prada",
+    "website": "https://www.prada.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 43,
+    "name": "Burberry",
+    "website": "https://www.burberry.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 44,
+    "name": "Hermès",
+    "website": "https://www.hermes.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 45,
+    "name": "Cartier",
+    "website": "https://www.cartier.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 46,
+    "name": "Spotify",
+    "website": "https://www.spotify.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 47,
+    "name": "Apple Music",
+    "website": "https://www.apple.com/apple-music",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 48,
+    "name": "Tidal",
+    "website": "https://www.tidal.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 49,
+    "name": "Amazon Music",
+    "website": "https://music.amazon.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 50,
+    "name": "Deezer",
+    "website": "https://www.deezer.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 51,
+    "name": "Ticketmaster",
+    "website": "https://www.ticketmaster.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 52,
+    "name": "StubHub",
+    "website": "https://www.stubhub.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 463,
+    "name": "SeatGeek",
+    "website": "https://www.seatgeek.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 464,
+    "name": "Vivid Seats",
+    "website": "https://www.vividseats.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 55,
+    "name": "Gibson",
+    "website": "https://www.gibson.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 56,
+    "name": "Fender",
+    "website": "https://www.fender.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 473,
+    "name": "Yamaha Music",
+    "website": "https://www.yamaha.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 474,
+    "name": "Roland",
+    "website": "https://www.roland.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 59,
+    "name": "Netflix",
+    "website": "https://www.netflix.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 60,
+    "name": "Disney+",
+    "website": "https://www.disneyplus.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 61,
+    "name": "HBO Max",
+    "website": "https://www.hbomax.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 479,
+    "name": "Paramount+",
+    "website": "https://www.paramountplus.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 63,
+    "name": "Hulu",
+    "website": "https://www.hulu.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 480,
+    "name": "Peacock",
+    "website": "https://www.peacocktv.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 65,
+    "name": "Apple TV+",
+    "website": "https://tv.apple.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 484,
+    "name": "Crunchyroll",
+    "website": "https://www.crunchyroll.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 67,
+    "name": "AMC Theatres",
+    "website": "https://www.amctheatres.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 68,
+    "name": "Regal Cinemas",
+    "website": "https://www.regmovies.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 485,
+    "name": "Cinemark",
+    "website": "https://www.cinemark.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 486,
+    "name": "Alamo Drafthouse",
+    "website": "https://www.drafthouse.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 71,
+    "name": "PlayStation",
+    "website": "https://www.playstation.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 72,
+    "name": "Xbox",
+    "website": "https://www.xbox.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 73,
+    "name": "Nintendo",
+    "website": "https://www.nintendo.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 74,
+    "name": "Steam",
+    "website": "https://store.steampowered.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 75,
+    "name": "Epic Games",
+    "website": "https://www.epicgames.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 494,
+    "name": "Riot Games",
+    "website": "https://www.riotgames.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 77,
+    "name": "EA Sports",
+    "website": "https://www.ea.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 78,
+    "name": "Activision",
+    "website": "https://www.activision.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 79,
+    "name": "Fidelity",
+    "website": "https://www.fidelity.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 80,
+    "name": "Charles Schwab",
+    "website": "https://www.schwab.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 81,
+    "name": "Vanguard",
+    "website": "https://www.vanguard.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 82,
+    "name": "TD Ameritrade",
+    "website": "https://www.tdameritrade.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 83,
+    "name": "E*TRADE",
+    "website": "https://www.etrade.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 84,
+    "name": "Goldman Sachs",
+    "website": "https://www.goldmansachs.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 85,
+    "name": "JP Morgan",
+    "website": "https://www.jpmorgan.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 86,
+    "name": "Morgan Stanley",
+    "website": "https://www.morganstanley.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 87,
+    "name": "Robinhood",
+    "website": "https://www.robinhood.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 88,
+    "name": "Acorns",
+    "website": "https://www.acorns.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 504,
+    "name": "Wealthfront",
+    "website": "https://www.wealthfront.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 505,
+    "name": "Betterment",
+    "website": "https://www.betterment.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 91,
+    "name": "SoFi",
+    "website": "https://www.sofi.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 92,
+    "name": "Coinbase",
+    "website": "https://www.coinbase.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 514,
+    "name": "Kraken",
+    "website": "https://www.kraken.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 94,
+    "name": "Gemini",
+    "website": "https://www.gemini.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 95,
+    "name": "Binance US",
+    "website": "https://www.binance.us",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 96,
+    "name": "Crypto.com",
+    "website": "https://crypto.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 97,
+    "name": "Mint",
+    "website": "https://www.mint.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 98,
+    "name": "Credit Karma",
+    "website": "https://www.creditkarma.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 522,
+    "name": "YNAB",
+    "website": "https://www.ynab.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 523,
+    "name": "Personal Capital",
+    "website": "https://www.personalcapital.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 101,
+    "name": "Geico",
+    "website": "https://www.geico.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 102,
+    "name": "Progressive",
+    "website": "https://www.progressive.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 103,
+    "name": "State Farm",
+    "website": "https://www.statefarm.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 535,
+    "name": "Allstate",
+    "website": "https://www.allstate.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 105,
+    "name": "Lemonade",
+    "website": "https://www.lemonade.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 531,
+    "name": "Root Insurance",
+    "website": "https://www.joinroot.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 107,
+    "name": "NBA League Pass",
+    "website": "https://www.nba.com/watch",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 108,
+    "name": "NFL Sunday Ticket",
+    "website": "https://www.nfl.com/watch",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 109,
+    "name": "ESPN+",
+    "website": "https://www.espn.com/espnplus",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 539,
+    "name": "DAZN",
+    "website": "https://www.dazn.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 111,
+    "name": "Nike Basketball",
+    "website": "https://www.nike.com/basketball",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 112,
+    "name": "Under Armour",
+    "website": "https://www.underarmour.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 113,
+    "name": "Adidas Soccer",
+    "website": "https://www.adidas.com/soccer",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 114,
+    "name": "Puma Soccer",
+    "website": "https://www.puma.com/soccer",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 115,
+    "name": "Nike Football",
+    "website": "https://www.nike.com/football",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 116,
+    "name": "New Balance Athletics",
+    "website": "https://www.newbalance.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 117,
+    "name": "Spalding",
+    "website": "https://www.spalding.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 118,
+    "name": "Riddell",
+    "website": "https://www.riddell.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 119,
+    "name": "Wilson Tennis",
+    "website": "https://www.wilson.com/tennis",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 554,
+    "name": "Callaway Golf",
+    "website": "https://www.callawaygolf.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 555,
+    "name": "Titleist",
+    "website": "https://www.titleist.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 562,
+    "name": "Fanatics",
+    "website": "https://www.fanatics.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 123,
+    "name": "NFL Shop",
+    "website": "https://www.nflshop.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 124,
+    "name": "Tennis Warehouse",
+    "website": "https://www.tennis-warehouse.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 125,
+    "name": "SoccerPro",
+    "website": "https://www.soccerpro.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 126,
+    "name": "Dick's Sporting Goods",
+    "website": "https://www.dickssportinggoods.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 127,
+    "name": "Apple",
+    "website": "https://www.apple.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 128,
+    "name": "Samsung",
+    "website": "https://www.samsung.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 129,
+    "name": "Google Pixel",
+    "website": "https://store.google.com/pixel",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 130,
+    "name": "Sony Electronics",
+    "website": "https://www.sony.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 579,
+    "name": "Bose",
+    "website": "https://www.bose.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 132,
+    "name": "Microsoft",
+    "website": "https://www.microsoft.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 133,
+    "name": "Salesforce",
+    "website": "https://www.salesforce.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 134,
+    "name": "Adobe",
+    "website": "https://www.adobe.com",
+    "industry": "Software"
+  },
+  {
+    "id": 135,
+    "name": "Figma",
+    "website": "https://www.figma.com",
+    "industry": "Software"
+  },
+  {
+    "id": 713,
+    "name": "Notion",
+    "website": "https://www.notion.so",
+    "industry": "Software"
+  },
+  {
+    "id": 137,
+    "name": "Tesla",
+    "website": "https://www.tesla.com",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 138,
+    "name": "Rivian",
+    "website": "https://www.rivian.com",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 139,
+    "name": "Dell",
+    "website": "https://www.dell.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 140,
+    "name": "Lenovo",
+    "website": "https://www.lenovo.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 141,
+    "name": "HP",
+    "website": "https://www.hp.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 142,
+    "name": "ASUS",
+    "website": "https://www.asus.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 143,
+    "name": "Razer",
+    "website": "https://www.razer.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 144,
+    "name": "Verizon",
+    "website": "https://www.verizon.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 145,
+    "name": "AT&T",
+    "website": "https://www.att.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 146,
+    "name": "T-Mobile",
+    "website": "https://www.t-mobile.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 147,
+    "name": "Mint Mobile",
+    "website": "https://www.mintmobile.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 148,
+    "name": "Google Fi",
+    "website": "https://fi.google.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 149,
+    "name": "The New York Times",
+    "website": "https://www.nytimes.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 150,
+    "name": "The Washington Post",
+    "website": "https://www.washingtonpost.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 151,
+    "name": "The Atlantic",
+    "website": "https://www.theatlantic.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 152,
+    "name": "Reuters",
+    "website": "https://www.reuters.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 153,
+    "name": "Bloomberg",
+    "website": "https://www.bloomberg.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 627,
+    "name": "The Economist",
+    "website": "https://www.economist.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 155,
+    "name": "Audible",
+    "website": "https://www.audible.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 156,
+    "name": "Scribd",
+    "website": "https://www.scribd.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 157,
+    "name": "Libro.fm",
+    "website": "https://www.libro.fm",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 158,
+    "name": "Kobo",
+    "website": "https://www.kobo.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 159,
+    "name": "Zillow",
+    "website": "https://www.zillow.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 160,
+    "name": "Redfin",
+    "website": "https://www.redfin.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 161,
+    "name": "Realtor.com",
+    "website": "https://www.realtor.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 640,
+    "name": "Compass",
+    "website": "https://www.compass.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 163,
+    "name": "Opendoor",
+    "website": "https://www.opendoor.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 164,
+    "name": "Trulia",
+    "website": "https://www.trulia.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 165,
+    "name": "Chewy",
+    "website": "https://www.chewy.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 647,
+    "name": "BarkBox",
+    "website": "https://www.barkbox.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 648,
+    "name": "Petco",
+    "website": "https://www.petco.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 649,
+    "name": "PetSmart",
+    "website": "https://www.petsmart.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 169,
+    "name": "Rover",
+    "website": "https://www.rover.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 170,
+    "name": "Ollie",
+    "website": "https://www.myollie.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 171,
+    "name": "Wayfair",
+    "website": "https://www.wayfair.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 172,
+    "name": "West Elm",
+    "website": "https://www.westelm.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 173,
+    "name": "Pottery Barn",
+    "website": "https://www.potterybarn.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 174,
+    "name": "IKEA",
+    "website": "https://www.ikea.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 175,
+    "name": "Crate & Barrel",
+    "website": "https://www.crateandbarrel.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 176,
+    "name": "The Home Depot",
+    "website": "https://www.homedepot.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 732,
+    "name": "Coursera",
+    "website": "https://www.coursera.org",
+    "industry": "EdTech"
+  },
+  {
+    "id": 178,
+    "name": "Udemy",
+    "website": "https://www.udemy.com",
+    "industry": "EdTech"
+  },
+  {
+    "id": 662,
+    "name": "Khan Academy",
+    "website": "https://www.khanacademy.org",
+    "industry": "EdTech"
+  },
+  {
+    "id": 180,
+    "name": "Duolingo",
+    "website": "https://www.duolingo.com",
+    "industry": "EdTech"
+  },
+  {
+    "id": 181,
+    "name": "MasterClass",
+    "website": "https://www.masterclass.com",
+    "industry": "EdTech"
+  },
+  {
+    "id": 182,
+    "name": "Skillshare",
+    "website": "https://www.skillshare.com",
+    "industry": "EdTech"
+  },
+  {
+    "id": 183,
+    "name": "LinkedIn Learning",
+    "website": "https://www.linkedin.com/learning",
+    "industry": "EdTech"
+  },
+  {
+    "id": 663,
+    "name": "Codecademy",
+    "website": "https://www.codecademy.com",
+    "industry": "EdTech"
+  },
+  {
+    "id": 185,
+    "name": "DoorDash",
+    "website": "https://www.doordash.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 186,
+    "name": "Uber Eats",
+    "website": "https://www.ubereats.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 187,
+    "name": "Grubhub",
+    "website": "https://www.grubhub.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 667,
+    "name": "Instacart",
+    "website": "https://www.instacart.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 189,
+    "name": "HelloFresh",
+    "website": "https://www.hellofresh.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 190,
+    "name": "Blue Apron",
+    "website": "https://www.blueapron.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 191,
+    "name": "Chipotle",
+    "website": "https://www.chipotle.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 192,
+    "name": "Sweetgreen",
+    "website": "https://www.sweetgreen.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 193,
+    "name": "Shake Shack",
+    "website": "https://www.shakeshack.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 194,
+    "name": "Panera Bread",
+    "website": "https://www.panerabread.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 195,
+    "name": "Starbucks",
+    "website": "https://www.starbucks.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 196,
+    "name": "Domino's",
+    "website": "https://www.dominos.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 197,
+    "name": "Peloton",
+    "website": "https://www.onepeloton.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 198,
+    "name": "ClassPass",
+    "website": "https://www.classpass.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 199,
+    "name": "Calm",
+    "website": "https://www.calm.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 200,
+    "name": "Headspace",
+    "website": "https://www.headspace.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 790,
+    "name": "Noom",
+    "website": "https://www.noom.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 202,
+    "name": "Mirror",
+    "website": "https://www.mirror.co",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 203,
+    "name": "Whoop",
+    "website": "https://www.whoop.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 204,
+    "name": "Fitbit",
+    "website": "https://www.fitbit.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 205,
+    "name": "Hims & Hers",
+    "website": "https://www.forhims.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 206,
+    "name": "Roman",
+    "website": "https://www.getroman.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 686,
+    "name": "Nurx",
+    "website": "https://www.nurx.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 208,
+    "name": "GoodRx",
+    "website": "https://www.goodrx.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 209,
+    "name": "Teladoc",
+    "website": "https://www.teladoc.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 210,
+    "name": "Airbnb",
+    "website": "https://www.airbnb.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 211,
+    "name": "Booking.com",
+    "website": "https://www.booking.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 212,
+    "name": "Expedia",
+    "website": "https://www.expedia.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 213,
+    "name": "Vrbo",
+    "website": "https://www.vrbo.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 214,
+    "name": "Tripadvisor",
+    "website": "https://www.tripadvisor.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 215,
+    "name": "Kayak",
+    "website": "https://www.kayak.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 693,
+    "name": "Hopper",
+    "website": "https://www.hopper.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 695,
+    "name": "Hotels.com",
+    "website": "https://www.hotels.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 218,
+    "name": "Delta Airlines",
+    "website": "https://www.delta.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 219,
+    "name": "United Airlines",
+    "website": "https://www.united.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 220,
+    "name": "Southwest Airlines",
+    "website": "https://www.southwest.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 221,
+    "name": "JetBlue",
+    "website": "https://www.jetblue.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 222,
+    "name": "Alaska Airlines",
+    "website": "https://www.alaskaair.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 223,
+    "name": "Toyota",
+    "website": "https://www.toyota.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 224,
+    "name": "Honda",
+    "website": "https://www.honda.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 225,
+    "name": "BMW",
+    "website": "https://www.bmw.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 226,
+    "name": "Mercedes-Benz",
+    "website": "https://www.mercedes-benz.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 227,
+    "name": "Ford",
+    "website": "https://www.ford.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 228,
+    "name": "Hyundai",
+    "website": "https://www.hyundai.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 229,
+    "name": "Slack",
+    "website": "https://www.slack.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 230,
+    "name": "Zoom",
+    "website": "https://www.zoom.us",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 231,
+    "name": "HubSpot",
+    "website": "https://www.hubspot.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 232,
+    "name": "Atlassian",
+    "website": "https://www.atlassian.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 233,
+    "name": "Datadog",
+    "website": "https://www.datadog.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 234,
+    "name": "Snowflake",
+    "website": "https://www.snowflake.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 235,
+    "name": "Stripe",
+    "website": "https://www.stripe.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 236,
+    "name": "Twilio",
+    "website": "https://www.twilio.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 237,
+    "name": "MongoDB",
+    "website": "https://www.mongodb.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 238,
+    "name": "Vercel",
+    "website": "https://www.vercel.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 239,
+    "name": "CrowdStrike",
+    "website": "https://www.crowdstrike.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 240,
+    "name": "Palo Alto Networks",
+    "website": "https://www.paloaltonetworks.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 241,
+    "name": "Okta",
+    "website": "https://www.okta.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 242,
+    "name": "Zscaler",
+    "website": "https://www.zscaler.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 243,
+    "name": "1Password",
+    "website": "https://www.1password.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 244,
+    "name": "Smithsonian",
+    "website": "https://www.si.edu",
+    "industry": "Culture"
+  },
+  {
+    "id": 245,
+    "name": "National Geographic",
+    "website": "https://www.nationalgeographic.com",
+    "industry": "Culture"
+  },
+  {
+    "id": 246,
+    "name": "The Met",
+    "website": "https://www.metmuseum.org",
+    "industry": "Culture"
+  },
+  {
+    "id": 247,
+    "name": "MoMA",
+    "website": "https://www.moma.org",
+    "industry": "Culture"
+  },
+  {
+    "id": 248,
+    "name": "PBS",
+    "website": "https://www.pbs.org",
+    "industry": "Culture"
+  },
+  {
+    "id": 249,
+    "name": "Harvard Online",
+    "website": "https://www.harvardonline.harvard.edu",
+    "industry": "Education"
+  },
+  {
+    "id": 250,
+    "name": "Stanford Online",
+    "website": "https://online.stanford.edu",
+    "industry": "Education"
+  },
+  {
+    "id": 251,
+    "name": "MIT OpenCourseWare",
+    "website": "https://ocw.mit.edu",
+    "industry": "Education"
+  },
+  {
+    "id": 252,
+    "name": "Pearson",
+    "website": "https://www.pearson.com",
+    "industry": "Education"
+  },
+  {
+    "id": 253,
+    "name": "McGraw-Hill",
+    "website": "https://www.mheducation.com",
+    "industry": "Education"
+  },
+  {
+    "id": 254,
+    "name": "Chegg",
+    "website": "https://www.chegg.com",
+    "industry": "Education"
+  },
+  {
+    "id": 255,
+    "name": "UNICEF",
+    "website": "https://www.unicef.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 256,
+    "name": "Red Cross",
+    "website": "https://www.redcross.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 257,
+    "name": "World Wildlife Fund",
+    "website": "https://www.worldwildlife.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 258,
+    "name": "Doctors Without Borders",
+    "website": "https://www.msf.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 259,
+    "name": "Habitat for Humanity",
+    "website": "https://www.habitat.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 260,
+    "name": "USA.gov",
+    "website": "https://www.usa.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 261,
+    "name": "CDC",
+    "website": "https://www.cdc.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 262,
+    "name": "NASA",
+    "website": "https://www.nasa.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 263,
+    "name": "USPS",
+    "website": "https://www.usps.com",
+    "industry": "Government"
+  },
+  {
+    "id": 264,
+    "name": "Politico",
+    "website": "https://www.politico.com",
+    "industry": "Politics"
+  },
+  {
+    "id": 265,
+    "name": "The Hill",
+    "website": "https://thehill.com",
+    "industry": "Politics"
+  },
+  {
+    "id": 266,
+    "name": "FiveThirtyEight",
+    "website": "https://fivethirtyeight.com",
+    "industry": "Politics"
+  },
+  {
+    "id": 267,
+    "name": "C-SPAN",
+    "website": "https://www.c-span.org",
+    "industry": "Politics"
+  },
+  {
+    "id": 268,
+    "name": "NVIDIA",
+    "website": "https://www.nvidia.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 269,
+    "name": "Intel",
+    "website": "https://www.intel.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 270,
+    "name": "AMD",
+    "website": "https://www.amd.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 271,
+    "name": "Qualcomm",
+    "website": "https://www.qualcomm.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 272,
+    "name": "Cisco",
+    "website": "https://www.cisco.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 273,
+    "name": "OpenAI",
+    "website": "https://www.openai.com",
+    "industry": "AI"
+  },
+  {
+    "id": 274,
+    "name": "Anthropic",
+    "website": "https://www.anthropic.com",
+    "industry": "AI"
+  },
+  {
+    "id": 275,
+    "name": "Google DeepMind",
+    "website": "https://deepmind.google",
+    "industry": "AI"
+  },
+  {
+    "id": 276,
+    "name": "Hugging Face",
+    "website": "https://huggingface.co",
+    "industry": "AI"
+  },
+  {
+    "id": 277,
+    "name": "Stability AI",
+    "website": "https://stability.ai",
+    "industry": "AI"
+  },
+  {
+    "id": 278,
+    "name": "Cohere",
+    "website": "https://cohere.com",
+    "industry": "AI"
+  },
+  {
+    "id": 279,
+    "name": "Square",
+    "website": "https://squareup.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 280,
+    "name": "Plaid",
+    "website": "https://plaid.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 281,
+    "name": "Chime",
+    "website": "https://www.chime.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 282,
+    "name": "Revolut",
+    "website": "https://www.revolut.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 283,
+    "name": "Wise",
+    "website": "https://wise.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 284,
+    "name": "Affirm",
+    "website": "https://www.affirm.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 285,
+    "name": "Zocdoc",
+    "website": "https://www.zocdoc.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 286,
+    "name": "Ro",
+    "website": "https://ro.co",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 287,
+    "name": "Cityblock Health",
+    "website": "https://www.cityblock.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 288,
+    "name": "Tempus",
+    "website": "https://www.tempus.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 289,
+    "name": "Oscar Health",
+    "website": "https://www.hioscar.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 290,
+    "name": "Shopify",
+    "website": "https://www.shopify.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 291,
+    "name": "Etsy",
+    "website": "https://www.etsy.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 292,
+    "name": "Amazon",
+    "website": "https://www.amazon.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 293,
+    "name": "eBay",
+    "website": "https://www.ebay.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 294,
+    "name": "Walmart Marketplace",
+    "website": "https://www.walmart.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 295,
+    "name": "Wish",
+    "website": "https://www.wish.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 296,
+    "name": "Chase",
+    "website": "https://www.chase.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 297,
+    "name": "Bank of America",
+    "website": "https://www.bankofamerica.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 298,
+    "name": "Wells Fargo",
+    "website": "https://www.wellsfargo.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 299,
+    "name": "Ally Bank",
+    "website": "https://www.ally.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 300,
+    "name": "Marcus by Goldman Sachs",
+    "website": "https://www.marcus.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 301,
+    "name": "Capital One",
+    "website": "https://www.capitalone.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 302,
+    "name": "Heineken",
+    "website": "https://www.heineken.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 303,
+    "name": "Diageo",
+    "website": "https://www.diageo.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 304,
+    "name": "Anheuser-Busch",
+    "website": "https://www.anheuser-busch.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 305,
+    "name": "Patrón",
+    "website": "https://www.patrontequila.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 306,
+    "name": "Drizly",
+    "website": "https://www.drizly.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 307,
+    "name": "Red Bull",
+    "website": "https://www.redbull.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 308,
+    "name": "Monster Energy",
+    "website": "https://www.monsterenergy.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 309,
+    "name": "Celsius",
+    "website": "https://www.celsius.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 310,
+    "name": "Ghost Energy",
+    "website": "https://www.ghostenergy.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 311,
+    "name": "Prime",
+    "website": "https://drinkprime.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 312,
+    "name": "Nespresso",
+    "website": "https://www.nespresso.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 313,
+    "name": "Blue Bottle Coffee",
+    "website": "https://bluebottlecoffee.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 314,
+    "name": "Illy",
+    "website": "https://www.illy.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 315,
+    "name": "Twinings",
+    "website": "https://www.twinings.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 316,
+    "name": "Trade Coffee",
+    "website": "https://www.drinktrade.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 317,
+    "name": "Pfizer",
+    "website": "https://www.pfizer.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 318,
+    "name": "Johnson & Johnson",
+    "website": "https://www.jnj.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 319,
+    "name": "AbbVie",
+    "website": "https://www.abbvie.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 320,
+    "name": "Moderna",
+    "website": "https://www.modernatx.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 321,
+    "name": "Eli Lilly",
+    "website": "https://www.lilly.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 322,
+    "name": "GNC",
+    "website": "https://www.gnc.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 323,
+    "name": "AG1",
+    "website": "https://drinkag1.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 324,
+    "name": "Huel",
+    "website": "https://www.huel.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 325,
+    "name": "Vital Proteins",
+    "website": "https://www.vitalproteins.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 326,
+    "name": "Optimum Nutrition",
+    "website": "https://www.optimumnutrition.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 327,
+    "name": "Marriott",
+    "website": "https://www.marriott.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 328,
+    "name": "Hilton",
+    "website": "https://www.hilton.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 329,
+    "name": "Hyatt",
+    "website": "https://www.hyatt.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 330,
+    "name": "IHG",
+    "website": "https://www.ihg.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 331,
+    "name": "Four Seasons",
+    "website": "https://www.fourseasons.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 332,
+    "name": "Royal Caribbean",
+    "website": "https://www.royalcaribbean.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 333,
+    "name": "Carnival Cruise Line",
+    "website": "https://www.carnival.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 334,
+    "name": "Norwegian Cruise Line",
+    "website": "https://www.ncl.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 335,
+    "name": "Celebrity Cruises",
+    "website": "https://www.celebritycruises.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 336,
+    "name": "LinkedIn",
+    "website": "https://www.linkedin.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 337,
+    "name": "Indeed",
+    "website": "https://www.indeed.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 338,
+    "name": "Glassdoor",
+    "website": "https://www.glassdoor.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 339,
+    "name": "Workday",
+    "website": "https://www.workday.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 340,
+    "name": "BambooHR",
+    "website": "https://www.bamboohr.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 341,
+    "name": "TurboTax",
+    "website": "https://turbotax.intuit.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 342,
+    "name": "H&R Block",
+    "website": "https://www.hrblock.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 343,
+    "name": "QuickBooks",
+    "website": "https://quickbooks.intuit.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 344,
+    "name": "FreshBooks",
+    "website": "https://www.freshbooks.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 345,
+    "name": "Xero",
+    "website": "https://www.xero.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 346,
+    "name": "LegalZoom",
+    "website": "https://www.legalzoom.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 347,
+    "name": "Rocket Lawyer",
+    "website": "https://www.rocketlawyer.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 348,
+    "name": "Avvo",
+    "website": "https://www.avvo.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 349,
+    "name": "FindLaw",
+    "website": "https://www.findlaw.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 350,
+    "name": "LawDepot",
+    "website": "https://www.lawdepot.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 351,
+    "name": "TikTok",
+    "website": "https://www.tiktok.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 352,
+    "name": "Snapchat",
+    "website": "https://www.snapchat.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 353,
+    "name": "Pinterest",
+    "website": "https://www.pinterest.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 354,
+    "name": "Reddit",
+    "website": "https://www.reddit.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 355,
+    "name": "Discord",
+    "website": "https://www.discord.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 356,
+    "name": "Patreon",
+    "website": "https://www.patreon.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 357,
+    "name": "Substack",
+    "website": "https://substack.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 358,
+    "name": "Gumroad",
+    "website": "https://gumroad.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 359,
+    "name": "Kajabi",
+    "website": "https://www.kajabi.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 360,
+    "name": "Teachable",
+    "website": "https://teachable.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 361,
+    "name": "Pampers",
+    "website": "https://www.pampers.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 362,
+    "name": "BabyCenter",
+    "website": "https://www.babycenter.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 363,
+    "name": "Nanit",
+    "website": "https://www.nanit.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 364,
+    "name": "Hatch",
+    "website": "https://www.hatchwearable.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 365,
+    "name": "Ergobaby",
+    "website": "https://www.ergobaby.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 366,
+    "name": "Disney Junior",
+    "website": "https://disneyjunior.disney.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 367,
+    "name": "Lego",
+    "website": "https://www.lego.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 368,
+    "name": "Nickelodeon",
+    "website": "https://www.nick.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 369,
+    "name": "PBS Kids",
+    "website": "https://pbskids.org",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 370,
+    "name": "Mattel",
+    "website": "https://www.mattel.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 371,
+    "name": "Angi",
+    "website": "https://www.angi.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 372,
+    "name": "Thumbtack",
+    "website": "https://www.thumbtack.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 373,
+    "name": "TaskRabbit",
+    "website": "https://www.taskrabbit.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 374,
+    "name": "Handy",
+    "website": "https://www.handy.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 375,
+    "name": "HomeAdvisor",
+    "website": "https://www.homeadvisor.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 376,
+    "name": "Procter & Gamble",
+    "website": "https://www.pg.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 377,
+    "name": "Clorox",
+    "website": "https://www.clorox.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 378,
+    "name": "Seventh Generation",
+    "website": "https://www.seventhgeneration.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 379,
+    "name": "Method",
+    "website": "https://methodhome.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 380,
+    "name": "Mrs. Meyer's",
+    "website": "https://www.mrsmeyers.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 381,
+    "name": "SunPower",
+    "website": "https://www.sunpower.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 382,
+    "name": "Sunrun",
+    "website": "https://www.sunrun.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 383,
+    "name": "Tesla Energy",
+    "website": "https://www.tesla.com/energy",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 384,
+    "name": "EnergySage",
+    "website": "https://www.energysage.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 385,
+    "name": "Enphase Energy",
+    "website": "https://www.enphase.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 386,
+    "name": "NordVPN",
+    "website": "https://nordvpn.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 387,
+    "name": "ExpressVPN",
+    "website": "https://www.expressvpn.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 388,
+    "name": "LifeLock",
+    "website": "https://www.lifelock.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 389,
+    "name": "DeleteMe",
+    "website": "https://joindeleteme.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 390,
+    "name": "Surfshark",
+    "website": "https://surfshark.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 391,
+    "name": "Zola",
+    "website": "https://www.zola.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 392,
+    "name": "The Knot",
+    "website": "https://www.theknot.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 393,
+    "name": "WeddingWire",
+    "website": "https://www.weddingwire.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 394,
+    "name": "Minted",
+    "website": "https://www.minted.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 395,
+    "name": "Joy",
+    "website": "https://www.withjoy.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 396,
+    "name": "FedEx",
+    "website": "https://www.fedex.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 397,
+    "name": "UPS",
+    "website": "https://www.ups.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 398,
+    "name": "DHL",
+    "website": "https://www.dhl.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 399,
+    "name": "ShipBob",
+    "website": "https://www.shipbob.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 400,
+    "name": "Flexport",
+    "website": "https://www.flexport.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 401,
+    "name": "Patagonia",
+    "website": "https://www.patagonia.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 402,
+    "name": "Allbirds",
+    "website": "https://www.allbirds.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 403,
+    "name": "Oatly",
+    "website": "https://www.oatly.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 404,
+    "name": "Beyond Meat",
+    "website": "https://www.beyondmeat.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 405,
+    "name": "Tentree",
+    "website": "https://www.tentree.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 406,
+    "name": "NBA Store",
+    "website": "https://store.nba.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 407,
+    "name": "MLB Shop",
+    "website": "https://www.mlbshop.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 408,
+    "name": "Mitchell & Ness",
+    "website": "https://www.mitchellandness.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 409,
+    "name": "REI",
+    "website": "https://www.rei.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 410,
+    "name": "Academy Sports",
+    "website": "https://www.academy.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 411,
+    "name": "Bass Pro Shops",
+    "website": "https://www.basspro.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 412,
+    "name": "Canva",
+    "website": "https://www.canva.com",
+    "industry": "Software"
+  },
+  {
+    "id": 413,
+    "name": "Sketch",
+    "website": "https://www.sketch.com",
+    "industry": "Software"
+  },
+  {
+    "id": 414,
+    "name": "Miro",
+    "website": "https://miro.com",
+    "industry": "Software"
+  },
+  {
+    "id": 415,
+    "name": "AWS",
+    "website": "https://aws.amazon.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 416,
+    "name": "Google Cloud",
+    "website": "https://cloud.google.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 417,
+    "name": "Oracle Cloud",
+    "website": "https://www.oracle.com/cloud",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 418,
+    "name": "Lucid Motors",
+    "website": "https://www.lucidmotors.com",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 419,
+    "name": "Polestar",
+    "website": "https://www.polestar.com",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 420,
+    "name": "VinFast",
+    "website": "https://www.vinfast.com",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 421,
+    "name": "Shein",
+    "website": "https://www.shein.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 422,
+    "name": "Revolve",
+    "website": "https://www.revolve.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 423,
+    "name": "Abercrombie & Fitch",
+    "website": "https://www.abercrombie.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 424,
+    "name": "Banana Republic",
+    "website": "https://bananarepublic.gap.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 425,
+    "name": "Express",
+    "website": "https://www.express.com",
+    "industry": "Fashion Retail"
+  },
+  {
+    "id": 426,
+    "name": "The Ordinary",
+    "website": "https://theordinary.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 427,
+    "name": "Drunk Elephant",
+    "website": "https://www.drunkelephant.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 428,
+    "name": "CeraVe",
+    "website": "https://www.cerave.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 429,
+    "name": "Olaplex",
+    "website": "https://www.olaplex.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 430,
+    "name": "Kiehl's",
+    "website": "https://www.kiehls.com",
+    "industry": "Beauty"
+  },
+  {
+    "id": 431,
+    "name": "On Running",
+    "website": "https://www.on.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 432,
+    "name": "HOKA",
+    "website": "https://www.hoka.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 433,
+    "name": "Brooks Running",
+    "website": "https://www.brooksrunning.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 548,
+    "name": "Reebok",
+    "website": "https://www.reebok.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 435,
+    "name": "New Balance",
+    "website": "https://www.newbalance.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 436,
+    "name": "Asics",
+    "website": "https://www.asics.com",
+    "industry": "Athletic Wear"
+  },
+  {
+    "id": 437,
+    "name": "Ray-Ban",
+    "website": "https://www.ray-ban.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 438,
+    "name": "Pandora",
+    "website": "https://www.pandora.net",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 439,
+    "name": "Swarovski",
+    "website": "https://www.swarovski.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 440,
+    "name": "Fossil",
+    "website": "https://www.fossil.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 441,
+    "name": "Coach",
+    "website": "https://www.coach.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 442,
+    "name": "Kate Spade",
+    "website": "https://www.katespade.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 443,
+    "name": "Michael Kors",
+    "website": "https://www.michaelkors.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 444,
+    "name": "Tiffany & Co.",
+    "website": "https://www.tiffany.com",
+    "industry": "Fashion Accessories"
+  },
+  {
+    "id": 445,
+    "name": "Balenciaga",
+    "website": "https://www.balenciaga.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 446,
+    "name": "Fendi",
+    "website": "https://www.fendi.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 447,
+    "name": "Valentino",
+    "website": "https://www.valentino.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 448,
+    "name": "Versace",
+    "website": "https://www.versace.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 449,
+    "name": "Saint Laurent",
+    "website": "https://www.ysl.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 450,
+    "name": "Bottega Veneta",
+    "website": "https://www.bottegaveneta.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 451,
+    "name": "Omega",
+    "website": "https://www.omegawatches.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 452,
+    "name": "Rolex",
+    "website": "https://www.rolex.com",
+    "industry": "Luxury Goods"
+  },
+  {
+    "id": 453,
+    "name": "Pandora Music",
+    "website": "https://www.pandora.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 454,
+    "name": "SoundCloud",
+    "website": "https://soundcloud.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 455,
+    "name": "iHeartRadio",
+    "website": "https://www.iheart.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 456,
+    "name": "Audiomack",
+    "website": "https://audiomack.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 457,
+    "name": "Qobuz",
+    "website": "https://www.qobuz.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 458,
+    "name": "Napster",
+    "website": "https://www.napster.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 459,
+    "name": "LiveOne",
+    "website": "https://www.liveone.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 460,
+    "name": "Mixcloud",
+    "website": "https://www.mixcloud.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 461,
+    "name": "Eventbrite",
+    "website": "https://www.eventbrite.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 462,
+    "name": "AXS",
+    "website": "https://www.axs.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 463,
+    "name": "SeatGeek",
+    "website": "https://seatgeek.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 464,
+    "name": "Vivid Seats",
+    "website": "https://www.vividseats.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 465,
+    "name": "Dice",
+    "website": "https://dice.fm",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 466,
+    "name": "Fever",
+    "website": "https://ffrr.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 467,
+    "name": "Bandsintown",
+    "website": "https://www.bandsintown.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 468,
+    "name": "TickPick",
+    "website": "https://www.tickpick.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 469,
+    "name": "Gametime",
+    "website": "https://gametime.co",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 470,
+    "name": "Sweetwater",
+    "website": "https://www.sweetwater.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 471,
+    "name": "Guitar Center",
+    "website": "https://www.guitarcenter.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 472,
+    "name": "Reverb",
+    "website": "https://reverb.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 473,
+    "name": "Yamaha Music",
+    "website": "https://www.yamaha.com/en/musical_instruments",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 474,
+    "name": "Roland",
+    "website": "https://www.roland.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 475,
+    "name": "Steinway & Sons",
+    "website": "https://www.steinway.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 476,
+    "name": "Korg",
+    "website": "https://www.korg.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 477,
+    "name": "PRS Guitars",
+    "website": "https://www.prsguitars.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 478,
+    "name": "Zildjian",
+    "website": "https://zildjian.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 479,
+    "name": "Paramount+",
+    "website": "https://www.paramountplus.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 480,
+    "name": "Peacock",
+    "website": "https://www.peacocktv.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 481,
+    "name": "Discovery+",
+    "website": "https://www.discoveryplus.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 482,
+    "name": "Tubi",
+    "website": "https://tubitv.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 483,
+    "name": "Pluto TV",
+    "website": "https://pluto.tv",
+    "industry": "Streaming"
+  },
+  {
+    "id": 484,
+    "name": "Crunchyroll",
+    "website": "https://www.crunchyroll.com",
+    "industry": "Streaming"
+  },
+  {
+    "id": 485,
+    "name": "Cinemark",
+    "website": "https://www.cinemark.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 486,
+    "name": "Alamo Drafthouse",
+    "website": "https://drafthouse.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 487,
+    "name": "Landmark Theatres",
+    "website": "https://www.landmarktheatres.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 488,
+    "name": "Harkins Theatres",
+    "website": "https://www.harkins.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 489,
+    "name": "Showcase Cinemas",
+    "website": "https://www.showcasecinemas.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 490,
+    "name": "Marcus Theatres",
+    "website": "https://www.marcustheatres.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 491,
+    "name": "Studio Movie Grill",
+    "website": "https://www.studiomoviegrill.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 492,
+    "name": "Angelika Film Center",
+    "website": "https://www.angelikafilmcenter.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 493,
+    "name": "iPic Theaters",
+    "website": "https://www.ipic.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 494,
+    "name": "Riot Games",
+    "website": "https://www.riotgames.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 495,
+    "name": "Ubisoft",
+    "website": "https://www.ubisoft.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 496,
+    "name": "Supercell",
+    "website": "https://supercell.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 497,
+    "name": "Valve",
+    "website": "https://www.valvesoftware.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 498,
+    "name": "Bungie",
+    "website": "https://www.bungie.net",
+    "industry": "Gaming"
+  },
+  {
+    "id": 499,
+    "name": "miHoYo",
+    "website": "https://www.hoyoverse.com",
+    "industry": "Gaming"
+  },
+  {
+    "id": 500,
+    "name": "Edward Jones",
+    "website": "https://www.edwardjones.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 501,
+    "name": "T. Rowe Price",
+    "website": "https://www.troweprice.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 502,
+    "name": "BlackRock",
+    "website": "https://www.blackrock.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 503,
+    "name": "J.P. Morgan Wealth",
+    "website": "https://www.jpmorgan.com/wealth-management",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 504,
+    "name": "Wealthfront",
+    "website": "https://www.wealthfront.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 505,
+    "name": "Betterment",
+    "website": "https://www.betterment.com",
+    "industry": "Financial Services"
+  },
+  {
+    "id": 506,
+    "name": "Webull",
+    "website": "https://www.webull.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 507,
+    "name": "Wealthsimple",
+    "website": "https://www.wealthsimple.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 508,
+    "name": "eToro",
+    "website": "https://www.etoro.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 509,
+    "name": "Public.com",
+    "website": "https://public.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 510,
+    "name": "Moomoo",
+    "website": "https://www.moomoo.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 511,
+    "name": "Stash",
+    "website": "https://www.stash.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 512,
+    "name": "M1 Finance",
+    "website": "https://m1.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 513,
+    "name": "Fundrise",
+    "website": "https://fundrise.com",
+    "industry": "Investment App"
+  },
+  {
+    "id": 514,
+    "name": "Kraken",
+    "website": "https://www.kraken.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 515,
+    "name": "Binance",
+    "website": "https://www.binance.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 516,
+    "name": "Ledger",
+    "website": "https://www.ledger.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 517,
+    "name": "Phantom",
+    "website": "https://phantom.app",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 518,
+    "name": "OKX",
+    "website": "https://www.okx.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 519,
+    "name": "Uniswap",
+    "website": "https://uniswap.org",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 520,
+    "name": "BlockFi",
+    "website": "https://blockfi.com",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 521,
+    "name": "MetaMask",
+    "website": "https://metamask.io",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 522,
+    "name": "YNAB",
+    "website": "https://www.ynab.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 523,
+    "name": "Personal Capital",
+    "website": "https://www.personalcapital.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 524,
+    "name": "Rocket Money",
+    "website": "https://www.rocketmoney.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 525,
+    "name": "Copilot Money",
+    "website": "https://copilot.money",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 526,
+    "name": "Tiller Money",
+    "website": "https://www.tillerhq.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 527,
+    "name": "Simplifi",
+    "website": "https://www.quicken.com/simplifi",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 528,
+    "name": "Honeydue",
+    "website": "https://www.honeydue.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 529,
+    "name": "Monarch Money",
+    "website": "https://www.monarchmoney.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 530,
+    "name": "Goodbudget",
+    "website": "https://goodbudget.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 531,
+    "name": "Root Insurance",
+    "website": "https://www.joinroot.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 532,
+    "name": "Hippo Insurance",
+    "website": "https://www.hippo.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 533,
+    "name": "Policygenius",
+    "website": "https://www.policygenius.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 534,
+    "name": "USAA",
+    "website": "https://www.usaa.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 535,
+    "name": "Allstate",
+    "website": "https://www.allstate.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 536,
+    "name": "Liberty Mutual",
+    "website": "https://www.libertymutual.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 537,
+    "name": "Nationwide",
+    "website": "https://www.nationwide.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 538,
+    "name": "Fubo",
+    "website": "https://www.fubo.tv",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 539,
+    "name": "DAZN",
+    "website": "https://www.dazn.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 540,
+    "name": "NBC Sports",
+    "website": "https://www.nbcsports.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 541,
+    "name": "Fox Sports",
+    "website": "https://www.foxsports.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 542,
+    "name": "CBS Sports",
+    "website": "https://www.cbssports.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 543,
+    "name": "FloSports",
+    "website": "https://www.flosports.tv",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 544,
+    "name": "Bally Sports",
+    "website": "https://www.ballysports.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 545,
+    "name": "Venu Sports",
+    "website": "https://www.venusports.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 546,
+    "name": "Stadium",
+    "website": "https://watchstadium.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 547,
+    "name": "Puma",
+    "website": "https://www.puma.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 548,
+    "name": "Reebok",
+    "website": "https://www.reebok.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 549,
+    "name": "Champion",
+    "website": "https://www.champion.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 550,
+    "name": "Fila",
+    "website": "https://www.fila.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 551,
+    "name": "2XU",
+    "website": "https://www.2xu.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 552,
+    "name": "Salomon",
+    "website": "https://www.salomon.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 553,
+    "name": "Ellesse",
+    "website": "https://www.ellesse.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 554,
+    "name": "Callaway Golf",
+    "website": "https://www.callawaygolf.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 555,
+    "name": "Titleist",
+    "website": "https://www.titleist.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 556,
+    "name": "Yonex",
+    "website": "https://www.yonex.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 557,
+    "name": "Ping",
+    "website": "https://ping.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 558,
+    "name": "Babolat",
+    "website": "https://www.babolat.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 559,
+    "name": "Easton",
+    "website": "https://www.easton.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 560,
+    "name": "Mizuno",
+    "website": "https://www.mizuno.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 561,
+    "name": "TaylorMade",
+    "website": "https://www.taylormadegolf.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 562,
+    "name": "Fanatics",
+    "website": "https://www.fanatics.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 563,
+    "name": "NHL Shop",
+    "website": "https://shop.nhl.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 564,
+    "name": "MLS Store",
+    "website": "https://www.mlsstore.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 565,
+    "name": "New Era",
+    "website": "https://www.neweracap.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 566,
+    "name": "47 Brand",
+    "website": "https://www.47brand.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 567,
+    "name": "Lids",
+    "website": "https://www.lids.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 568,
+    "name": "Pro:Direct Sport",
+    "website": "https://www.prodirectsport.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 569,
+    "name": "Soccer.com",
+    "website": "https://www.soccer.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 570,
+    "name": "Cabela's",
+    "website": "https://www.cabelas.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 571,
+    "name": "Scheels",
+    "website": "https://www.scheels.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 572,
+    "name": "Decathlon",
+    "website": "https://www.decathlon.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 573,
+    "name": "Big 5 Sporting Goods",
+    "website": "https://www.big5sportinggoods.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 574,
+    "name": "Backcountry",
+    "website": "https://www.backcountry.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 575,
+    "name": "Sierra Trading Post",
+    "website": "https://www.sierra.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 576,
+    "name": "Moosejaw",
+    "website": "https://www.moosejaw.com",
+    "industry": "Sports Retail"
+  },
+  {
+    "id": 577,
+    "name": "Sony",
+    "website": "https://www.sony.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 578,
+    "name": "LG Electronics",
+    "website": "https://www.lg.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 579,
+    "name": "Bose",
+    "website": "https://www.bose.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 580,
+    "name": "Sonos",
+    "website": "https://www.sonos.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 581,
+    "name": "Garmin",
+    "website": "https://www.garmin.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 582,
+    "name": "JBL",
+    "website": "https://www.jbl.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 583,
+    "name": "Anker",
+    "website": "https://www.anker.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 584,
+    "name": "Logitech",
+    "website": "https://www.logitech.com",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 585,
+    "name": "IBM Cloud",
+    "website": "https://www.ibm.com/cloud",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 586,
+    "name": "DigitalOcean",
+    "website": "https://www.digitalocean.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 587,
+    "name": "Cloudflare",
+    "website": "https://www.cloudflare.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 588,
+    "name": "Akamai",
+    "website": "https://www.akamai.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 589,
+    "name": "VMware",
+    "website": "https://www.vmware.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 590,
+    "name": "Red Hat",
+    "website": "https://www.redhat.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 591,
+    "name": "Heroku",
+    "website": "https://www.heroku.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 592,
+    "name": "Linode",
+    "website": "https://www.linode.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 713,
+    "name": "Notion",
+    "website": "https://www.notion.so",
+    "industry": "Software"
+  },
+  {
+    "id": 714,
+    "name": "Airtable",
+    "website": "https://www.airtable.com",
+    "industry": "Software"
+  },
+  {
+    "id": 595,
+    "name": "InVision",
+    "website": "https://www.invisionapp.com",
+    "industry": "Software"
+  },
+  {
+    "id": 596,
+    "name": "Procreate",
+    "website": "https://procreate.com",
+    "industry": "Software"
+  },
+  {
+    "id": 597,
+    "name": "Affinity",
+    "website": "https://affinity.serif.com",
+    "industry": "Software"
+  },
+  {
+    "id": 598,
+    "name": "DaVinci Resolve",
+    "website": "https://www.blackmagicdesign.com/products/davinciresolve",
+    "industry": "Software"
+  },
+  {
+    "id": 599,
+    "name": "Loom",
+    "website": "https://www.loom.com",
+    "industry": "Software"
+  },
+  {
+    "id": 600,
+    "name": "BMW iX",
+    "website": "https://www.bmwusa.com/vehicles/bmwix",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 601,
+    "name": "Mercedes EQ",
+    "website": "https://www.mbusa.com/en/eq",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 602,
+    "name": "Hyundai IONIQ",
+    "website": "https://www.hyundaiusa.com/ioniq",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 603,
+    "name": "Kia EV",
+    "website": "https://www.kia.com/ev",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 604,
+    "name": "Fisker",
+    "website": "https://www.fiskerinc.com",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 605,
+    "name": "Canoo",
+    "website": "https://www.canoo.com",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 606,
+    "name": "Volvo EX",
+    "website": "https://www.volvocars.com/electric",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 607,
+    "name": "Ford Electric",
+    "website": "https://www.ford.com/electric",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 608,
+    "name": "Acer",
+    "website": "https://www.acer.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 609,
+    "name": "MSI",
+    "website": "https://www.msi.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 610,
+    "name": "Corsair",
+    "website": "https://www.corsair.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 611,
+    "name": "Alienware",
+    "website": "https://www.dell.com/alienware",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 612,
+    "name": "System76",
+    "website": "https://system76.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 613,
+    "name": "Framework",
+    "website": "https://frame.work",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 614,
+    "name": "Dynabook",
+    "website": "https://www.dynabook.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 615,
+    "name": "Samsung PC",
+    "website": "https://www.samsung.com/us/computing",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 616,
+    "name": "Xfinity Mobile",
+    "website": "https://www.xfinity.com/mobile",
+    "industry": "Telecom"
+  },
+  {
+    "id": 617,
+    "name": "US Cellular",
+    "website": "https://www.uscellular.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 618,
+    "name": "Visible",
+    "website": "https://www.visible.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 619,
+    "name": "Cricket Wireless",
+    "website": "https://www.cricketwireless.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 620,
+    "name": "Boost Mobile",
+    "website": "https://www.boostmobile.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 621,
+    "name": "Spectrum Mobile",
+    "website": "https://www.spectrum.com/mobile",
+    "industry": "Telecom"
+  },
+  {
+    "id": 622,
+    "name": "Straight Talk",
+    "website": "https://www.straighttalk.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 623,
+    "name": "Consumer Cellular",
+    "website": "https://www.consumercellular.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 624,
+    "name": "Wall Street Journal",
+    "website": "https://www.wsj.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 625,
+    "name": "The Guardian",
+    "website": "https://www.theguardian.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 626,
+    "name": "Financial Times",
+    "website": "https://www.ft.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 627,
+    "name": "The Economist",
+    "website": "https://www.economist.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 628,
+    "name": "Axios",
+    "website": "https://www.axios.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 629,
+    "name": "Vox Media",
+    "website": "https://www.voxmedia.com",
+    "industry": "News Media"
+  },
+  {
+    "id": 630,
+    "name": "Vice News",
+    "website": "https://www.vice.com/en/section/news",
+    "industry": "News Media"
+  },
+  {
+    "id": 631,
+    "name": "Storytel",
+    "website": "https://www.storytel.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 632,
+    "name": "Chirp",
+    "website": "https://www.chirpbooks.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 633,
+    "name": "Hoopla",
+    "website": "https://www.hoopladigital.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 634,
+    "name": "Blinkist",
+    "website": "https://www.blinkist.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 635,
+    "name": "Libby",
+    "website": "https://libbyapp.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 636,
+    "name": "Podimo",
+    "website": "https://podimo.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 637,
+    "name": "NextoryAB",
+    "website": "https://www.nextory.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 638,
+    "name": "Everand",
+    "website": "https://www.everand.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 639,
+    "name": "Downpour",
+    "website": "https://www.downpour.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 640,
+    "name": "Compass",
+    "website": "https://www.compass.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 641,
+    "name": "Offerpad",
+    "website": "https://www.offerpad.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 642,
+    "name": "Homelight",
+    "website": "https://www.homelight.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 643,
+    "name": "Knock",
+    "website": "https://www.knock.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 644,
+    "name": "Rocket Homes",
+    "website": "https://www.rockethomes.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 645,
+    "name": "Flyhomes",
+    "website": "https://www.flyhomes.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 646,
+    "name": "Movoto",
+    "website": "https://www.movoto.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 647,
+    "name": "BarkBox",
+    "website": "https://www.barkbox.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 648,
+    "name": "Petco",
+    "website": "https://www.petco.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 649,
+    "name": "PetSmart",
+    "website": "https://www.petsmart.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 650,
+    "name": "The Farmer's Dog",
+    "website": "https://www.thefarmersdog.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 651,
+    "name": "Nom Nom",
+    "website": "https://www.nomnomnow.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 652,
+    "name": "Wisdom Panel",
+    "website": "https://www.wisdompanel.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 653,
+    "name": "PetPlate",
+    "website": "https://www.petplate.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 654,
+    "name": "Lowe's",
+    "website": "https://www.lowes.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 655,
+    "name": "Overstock",
+    "website": "https://www.overstock.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 656,
+    "name": "Article",
+    "website": "https://www.article.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 657,
+    "name": "Floyd",
+    "website": "https://floydhome.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 658,
+    "name": "Burrow",
+    "website": "https://burrow.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 659,
+    "name": "Ruggable",
+    "website": "https://ruggable.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 660,
+    "name": "Joybird",
+    "website": "https://joybird.com",
+    "industry": "Home & Garden"
+  },
+  {
+    "id": 661,
+    "name": "Pluralsight",
+    "website": "https://www.pluralsight.com",
+    "industry": "EdTech"
+  },
+  {
+    "id": 662,
+    "name": "Khan Academy",
+    "website": "https://www.khanacademy.org",
+    "industry": "EdTech"
+  },
+  {
+    "id": 663,
+    "name": "Codecademy",
+    "website": "https://www.codecademy.com",
+    "industry": "EdTech"
+  },
+  {
+    "id": 664,
+    "name": "DataCamp",
+    "website": "https://www.datacamp.com",
+    "industry": "EdTech"
+  },
+  {
+    "id": 665,
+    "name": "Brilliant",
+    "website": "https://brilliant.org",
+    "industry": "EdTech"
+  },
+  {
+    "id": 666,
+    "name": "Postmates",
+    "website": "https://postmates.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 667,
+    "name": "Instacart",
+    "website": "https://www.instacart.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 668,
+    "name": "Caviar",
+    "website": "https://www.trycaviar.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 669,
+    "name": "Gopuff",
+    "website": "https://gopuff.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 670,
+    "name": "Factor",
+    "website": "https://www.factor75.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 671,
+    "name": "Freshly",
+    "website": "https://www.freshly.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 672,
+    "name": "Hungryroot",
+    "website": "https://www.hungryroot.com",
+    "industry": "Food Delivery"
+  },
+  {
+    "id": 673,
+    "name": "Chick-fil-A",
+    "website": "https://www.chick-fil-a.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 674,
+    "name": "Wingstop",
+    "website": "https://www.wingstop.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 675,
+    "name": "Five Guys",
+    "website": "https://www.fiveguys.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 676,
+    "name": "Nando's",
+    "website": "https://www.nandos.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 677,
+    "name": "Cava",
+    "website": "https://www.cava.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 678,
+    "name": "Portillo's",
+    "website": "https://www.portillos.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 679,
+    "name": "Raising Cane's",
+    "website": "https://www.raisingcanes.com",
+    "industry": "Restaurants"
+  },
+  {
+    "id": 680,
+    "name": "Orangetheory",
+    "website": "https://www.orangetheory.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 681,
+    "name": "CrossFit",
+    "website": "https://www.crossfit.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 682,
+    "name": "Barry's",
+    "website": "https://www.barrys.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 683,
+    "name": "SoulCycle",
+    "website": "https://www.soul-cycle.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 684,
+    "name": "F45 Training",
+    "website": "https://f45training.com",
+    "industry": "Fitness & Wellness"
+  },
+  {
+    "id": 685,
+    "name": "Cerebral",
+    "website": "https://cerebral.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 686,
+    "name": "Nurx",
+    "website": "https://www.nurx.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 687,
+    "name": "Done",
+    "website": "https://www.donefirst.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 688,
+    "name": "PlushCare",
+    "website": "https://plushcare.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 689,
+    "name": "MDLive",
+    "website": "https://www.mdlive.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 690,
+    "name": "Amwell",
+    "website": "https://www.amwell.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 691,
+    "name": "98point6",
+    "website": "https://www.98point6.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 692,
+    "name": "K Health",
+    "website": "https://khealth.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 693,
+    "name": "Hopper",
+    "website": "https://www.hopper.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 694,
+    "name": "Skyscanner",
+    "website": "https://www.skyscanner.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 695,
+    "name": "Hotels.com",
+    "website": "https://www.hotels.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 696,
+    "name": "Priceline",
+    "website": "https://www.priceline.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 697,
+    "name": "Trivago",
+    "website": "https://www.trivago.com",
+    "industry": "Travel"
+  },
+  {
+    "id": 698,
+    "name": "Spirit Airlines",
+    "website": "https://www.spirit.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 699,
+    "name": "Frontier Airlines",
+    "website": "https://www.flyfrontier.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 700,
+    "name": "Hawaiian Airlines",
+    "website": "https://www.hawaiianairlines.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 701,
+    "name": "Allegiant Air",
+    "website": "https://www.allegiantair.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 702,
+    "name": "Breeze Airways",
+    "website": "https://www.flybreeze.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 703,
+    "name": "Sun Country Airlines",
+    "website": "https://www.suncountry.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 704,
+    "name": "Avelo Airlines",
+    "website": "https://www.aveloair.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 705,
+    "name": "JSX",
+    "website": "https://www.jsx.com",
+    "industry": "Airlines"
+  },
+  {
+    "id": 706,
+    "name": "Chevrolet",
+    "website": "https://www.chevrolet.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 707,
+    "name": "Nissan",
+    "website": "https://www.nissanusa.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 708,
+    "name": "Mazda",
+    "website": "https://www.mazdausa.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 709,
+    "name": "Subaru",
+    "website": "https://www.subaru.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 710,
+    "name": "Kia",
+    "website": "https://www.kia.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 711,
+    "name": "Volvo",
+    "website": "https://www.volvocars.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 712,
+    "name": "Jeep",
+    "website": "https://www.jeep.com",
+    "industry": "Automotive"
+  },
+  {
+    "id": 713,
+    "name": "Notion",
+    "website": "https://www.notion.so",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 714,
+    "name": "Airtable",
+    "website": "https://www.airtable.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 715,
+    "name": "Zapier",
+    "website": "https://zapier.com",
+    "industry": "B2B SaaS"
+  },
+  {
+    "id": 716,
+    "name": "Fortinet",
+    "website": "https://www.fortinet.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 717,
+    "name": "SentinelOne",
+    "website": "https://www.sentinelone.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 718,
+    "name": "Snyk",
+    "website": "https://snyk.io",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 719,
+    "name": "Proofpoint",
+    "website": "https://www.proofpoint.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 720,
+    "name": "Cloudflare Security",
+    "website": "https://www.cloudflare.com/security",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 721,
+    "name": "Sophos",
+    "website": "https://www.sophos.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 722,
+    "name": "Trend Micro",
+    "website": "https://www.trendmicro.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 723,
+    "name": "KnowBe4",
+    "website": "https://www.knowbe4.com",
+    "industry": "Cybersecurity"
+  },
+  {
+    "id": 724,
+    "name": "Artsy",
+    "website": "https://www.artsy.net",
+    "industry": "Culture"
+  },
+  {
+    "id": 725,
+    "name": "British Museum",
+    "website": "https://www.britishmuseum.org",
+    "industry": "Culture"
+  },
+  {
+    "id": 726,
+    "name": "Guggenheim",
+    "website": "https://www.guggenheim.org",
+    "industry": "Culture"
+  },
+  {
+    "id": 727,
+    "name": "Lincoln Center",
+    "website": "https://www.lincolncenter.org",
+    "industry": "Culture"
+  },
+  {
+    "id": 728,
+    "name": "Carnegie Hall",
+    "website": "https://www.carnegiehall.org",
+    "industry": "Culture"
+  },
+  {
+    "id": 729,
+    "name": "Criterion Collection",
+    "website": "https://www.criterion.com",
+    "industry": "Culture"
+  },
+  {
+    "id": 730,
+    "name": "Sundance Institute",
+    "website": "https://www.sundance.org",
+    "industry": "Culture"
+  },
+  {
+    "id": 731,
+    "name": "TIFF",
+    "website": "https://www.tiff.net",
+    "industry": "Culture"
+  },
+  {
+    "id": 732,
+    "name": "Coursera",
+    "website": "https://www.coursera.org",
+    "industry": "Education"
+  },
+  {
+    "id": 733,
+    "name": "edX",
+    "website": "https://www.edx.org",
+    "industry": "Education"
+  },
+  {
+    "id": 734,
+    "name": "Scholastic",
+    "website": "https://www.scholastic.com",
+    "industry": "Education"
+  },
+  {
+    "id": 735,
+    "name": "Cengage",
+    "website": "https://www.cengage.com",
+    "industry": "Education"
+  },
+  {
+    "id": 736,
+    "name": "Kaplan",
+    "website": "https://www.kaplan.com",
+    "industry": "Education"
+  },
+  {
+    "id": 737,
+    "name": "Princeton Review",
+    "website": "https://www.princetonreview.com",
+    "industry": "Education"
+  },
+  {
+    "id": 738,
+    "name": "Houghton Mifflin",
+    "website": "https://www.hmhco.com",
+    "industry": "Education"
+  },
+  {
+    "id": 739,
+    "name": "Save the Children",
+    "website": "https://www.savethechildren.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 740,
+    "name": "Amnesty International",
+    "website": "https://www.amnesty.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 741,
+    "name": "Feeding America",
+    "website": "https://www.feedingamerica.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 742,
+    "name": "Greenpeace",
+    "website": "https://www.greenpeace.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 743,
+    "name": "The Nature Conservancy",
+    "website": "https://www.nature.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 744,
+    "name": "St. Jude",
+    "website": "https://www.stjude.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 745,
+    "name": "Oxfam",
+    "website": "https://www.oxfam.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 746,
+    "name": "Goodwill",
+    "website": "https://www.goodwill.org",
+    "industry": "Non-Profit"
+  },
+  {
+    "id": 747,
+    "name": "EPA",
+    "website": "https://www.epa.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 748,
+    "name": "FEMA",
+    "website": "https://www.fema.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 749,
+    "name": "SSA",
+    "website": "https://www.ssa.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 750,
+    "name": "National Park Service",
+    "website": "https://www.nps.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 751,
+    "name": "TSA",
+    "website": "https://www.tsa.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 752,
+    "name": "SBA",
+    "website": "https://www.sba.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 753,
+    "name": "VA",
+    "website": "https://www.va.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 754,
+    "name": "NIH",
+    "website": "https://www.nih.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 755,
+    "name": "DOE",
+    "website": "https://www.energy.gov",
+    "industry": "Government"
+  },
+  {
+    "id": 756,
+    "name": "Associated Press",
+    "website": "https://apnews.com",
+    "industry": "Politics"
+  },
+  {
+    "id": 757,
+    "name": "NPR Politics",
+    "website": "https://www.npr.org/sections/politics",
+    "industry": "Politics"
+  },
+  {
+    "id": 758,
+    "name": "ProPublica",
+    "website": "https://www.propublica.org",
+    "industry": "Politics"
+  },
+  {
+    "id": 759,
+    "name": "The Intercept",
+    "website": "https://theintercept.com",
+    "industry": "Politics"
+  },
+  {
+    "id": 760,
+    "name": "Ballotpedia",
+    "website": "https://ballotpedia.org",
+    "industry": "Politics"
+  },
+  {
+    "id": 761,
+    "name": "OpenSecrets",
+    "website": "https://www.opensecrets.org",
+    "industry": "Politics"
+  },
+  {
+    "id": 762,
+    "name": "Real Clear Politics",
+    "website": "https://www.realclearpolitics.com",
+    "industry": "Politics"
+  },
+  {
+    "id": 763,
+    "name": "Pew Research",
+    "website": "https://www.pewresearch.org",
+    "industry": "Politics"
+  },
+  {
+    "id": 764,
+    "name": "The Marshall Project",
+    "website": "https://www.themarshallproject.org",
+    "industry": "Politics"
+  },
+  {
+    "id": 765,
+    "name": "ARM",
+    "website": "https://www.arm.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 766,
+    "name": "Broadcom",
+    "website": "https://www.broadcom.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 767,
+    "name": "Texas Instruments",
+    "website": "https://www.ti.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 768,
+    "name": "Micron",
+    "website": "https://www.micron.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 769,
+    "name": "Western Digital",
+    "website": "https://www.westerndigital.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 770,
+    "name": "Seagate",
+    "website": "https://www.seagate.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 771,
+    "name": "NetApp",
+    "website": "https://www.netapp.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 772,
+    "name": "HPE",
+    "website": "https://www.hpe.com",
+    "industry": "Technology"
+  },
+  {
+    "id": 773,
+    "name": "Mistral AI",
+    "website": "https://mistral.ai",
+    "industry": "AI"
+  },
+  {
+    "id": 774,
+    "name": "Perplexity",
+    "website": "https://www.perplexity.ai",
+    "industry": "AI"
+  },
+  {
+    "id": 775,
+    "name": "Jasper AI",
+    "website": "https://www.jasper.ai",
+    "industry": "AI"
+  },
+  {
+    "id": 776,
+    "name": "Runway ML",
+    "website": "https://runwayml.com",
+    "industry": "AI"
+  },
+  {
+    "id": 777,
+    "name": "Scale AI",
+    "website": "https://scale.com",
+    "industry": "AI"
+  },
+  {
+    "id": 778,
+    "name": "Weights & Biases",
+    "website": "https://wandb.ai",
+    "industry": "AI"
+  },
+  {
+    "id": 779,
+    "name": "Replicate",
+    "website": "https://replicate.com",
+    "industry": "AI"
+  },
+  {
+    "id": 780,
+    "name": "Klarna",
+    "website": "https://www.klarna.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 781,
+    "name": "Marqeta",
+    "website": "https://www.marqeta.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 782,
+    "name": "Brex",
+    "website": "https://www.brex.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 783,
+    "name": "Ramp",
+    "website": "https://ramp.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 784,
+    "name": "Mercury",
+    "website": "https://mercury.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 785,
+    "name": "Dave",
+    "website": "https://www.dave.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 786,
+    "name": "Current",
+    "website": "https://current.com",
+    "industry": "FinTech"
+  },
+  {
+    "id": 787,
+    "name": "Headspace Health",
+    "website": "https://www.headspace.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 788,
+    "name": "Included Health",
+    "website": "https://www.includedhealth.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 789,
+    "name": "Hinge Health",
+    "website": "https://www.hingehealth.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 790,
+    "name": "Noom",
+    "website": "https://www.noom.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 791,
+    "name": "Virta Health",
+    "website": "https://www.virtahealth.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 792,
+    "name": "Color Health",
+    "website": "https://www.color.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 793,
+    "name": "Omada Health",
+    "website": "https://www.omadahealth.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 794,
+    "name": "Spring Health",
+    "website": "https://www.springhealth.com",
+    "industry": "HealthTech"
+  },
+  {
+    "id": 795,
+    "name": "Mercari",
+    "website": "https://www.mercari.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 796,
+    "name": "Poshmark",
+    "website": "https://poshmark.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 797,
+    "name": "ThredUp",
+    "website": "https://www.thredup.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 798,
+    "name": "StockX",
+    "website": "https://stockx.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 799,
+    "name": "Depop",
+    "website": "https://www.depop.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 800,
+    "name": "Temu",
+    "website": "https://www.temu.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 801,
+    "name": "Faire",
+    "website": "https://www.faire.com",
+    "industry": "E-commerce"
+  },
+  {
+    "id": 802,
+    "name": "Citi",
+    "website": "https://www.citi.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 803,
+    "name": "US Bank",
+    "website": "https://www.usbank.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 804,
+    "name": "PNC",
+    "website": "https://www.pnc.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 805,
+    "name": "TD Bank",
+    "website": "https://www.td.com",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 806,
+    "name": "Discover Bank",
+    "website": "https://www.discover.com/online-banking",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 807,
+    "name": "SoFi Banking",
+    "website": "https://www.sofi.com/banking",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 808,
+    "name": "Wealthfront Cash",
+    "website": "https://www.wealthfront.com/cash",
+    "industry": "Personal Banking"
+  },
+  {
+    "id": 809,
+    "name": "BrewDog",
+    "website": "https://www.brewdog.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 810,
+    "name": "Stone Brewing",
+    "website": "https://www.stonebrewing.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 811,
+    "name": "Lagunitas",
+    "website": "https://lagunitas.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 812,
+    "name": "Hendrick's Gin",
+    "website": "https://www.hendricksgin.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 813,
+    "name": "Bulleit Bourbon",
+    "website": "https://www.bulleit.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 814,
+    "name": "Casamigos",
+    "website": "https://www.casamigos.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 815,
+    "name": "Aviation Gin",
+    "website": "https://www.aviationgin.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 816,
+    "name": "Athletic Brewing",
+    "website": "https://athleticbrewing.com",
+    "industry": "Craft Beer & Spirits"
+  },
+  {
+    "id": 817,
+    "name": "Liquid Death",
+    "website": "https://liquiddeath.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 818,
+    "name": "ZOA Energy",
+    "website": "https://zoaenergy.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 819,
+    "name": "Alani Nu",
+    "website": "https://www.alaninu.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 820,
+    "name": "Reign",
+    "website": "https://www.reignbodyfuel.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 821,
+    "name": "Bang Energy",
+    "website": "https://bangenergy.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 822,
+    "name": "C4 Energy",
+    "website": "https://cellucor.com/c4-energy",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 823,
+    "name": "Guayaki",
+    "website": "https://guayaki.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 824,
+    "name": "Nuun",
+    "website": "https://nuunlife.com",
+    "industry": "Energy Drinks"
+  },
+  {
+    "id": 825,
+    "name": "Stumptown Coffee",
+    "website": "https://www.stumptowncoffee.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 826,
+    "name": "Counter Culture",
+    "website": "https://counterculturecoffee.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 827,
+    "name": "Intelligentsia",
+    "website": "https://www.intelligentsia.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 828,
+    "name": "La Colombe",
+    "website": "https://www.lacolombe.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 829,
+    "name": "Peet's Coffee",
+    "website": "https://www.peets.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 830,
+    "name": "Rishi Tea",
+    "website": "https://www.rishi-tea.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 831,
+    "name": "DAVIDsTEA",
+    "website": "https://www.davidstea.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 832,
+    "name": "Keurig",
+    "website": "https://www.keurig.com",
+    "industry": "Coffee & Tea"
+  },
+  {
+    "id": 833,
+    "name": "Merck",
+    "website": "https://www.merck.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 834,
+    "name": "Bristol-Myers Squibb",
+    "website": "https://www.bms.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 835,
+    "name": "Novartis",
+    "website": "https://www.novartis.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 836,
+    "name": "AstraZeneca",
+    "website": "https://www.astrazeneca.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 837,
+    "name": "Roche",
+    "website": "https://www.roche.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 838,
+    "name": "Sanofi",
+    "website": "https://www.sanofi.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 839,
+    "name": "GSK",
+    "website": "https://www.gsk.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 840,
+    "name": "Amgen",
+    "website": "https://www.amgen.com",
+    "industry": "Pharmaceuticals"
+  },
+  {
+    "id": 841,
+    "name": "Garden of Life",
+    "website": "https://www.gardenoflife.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 842,
+    "name": "Nature's Way",
+    "website": "https://www.naturesway.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 843,
+    "name": "MusclePharm",
+    "website": "https://www.musclepharm.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 844,
+    "name": "Orgain",
+    "website": "https://www.orgain.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 845,
+    "name": "Athletic Greens",
+    "website": "https://athleticgreens.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 846,
+    "name": "Ritual",
+    "website": "https://ritual.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 847,
+    "name": "Momentous",
+    "website": "https://www.livemomentous.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 848,
+    "name": "OWYN",
+    "website": "https://liveowyn.com",
+    "industry": "Supplements & Nutrition"
+  },
+  {
+    "id": 849,
+    "name": "Accor",
+    "website": "https://www.accor.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 850,
+    "name": "Wyndham",
+    "website": "https://www.wyndhamhotels.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 851,
+    "name": "Best Western",
+    "website": "https://www.bestwestern.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 852,
+    "name": "Radisson",
+    "website": "https://www.radissonhotels.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 853,
+    "name": "Rosewood Hotels",
+    "website": "https://www.rosewoodhotels.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 854,
+    "name": "Aman Resorts",
+    "website": "https://www.aman.com",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 855,
+    "name": "W Hotels",
+    "website": "https://www.marriott.com/w-hotels",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 856,
+    "name": "Kimpton Hotels",
+    "website": "https://www.ihg.com/kimptonhotels",
+    "industry": "Hotels & Resorts"
+  },
+  {
+    "id": 857,
+    "name": "MSC Cruises",
+    "website": "https://www.msccruises.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 858,
+    "name": "Disney Cruise Line",
+    "website": "https://disneycruise.disney.go.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 859,
+    "name": "Viking Cruises",
+    "website": "https://www.vikingcruises.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 860,
+    "name": "Princess Cruises",
+    "website": "https://www.princess.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 861,
+    "name": "Holland America",
+    "website": "https://www.hollandamerica.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 862,
+    "name": "Silversea",
+    "website": "https://www.silversea.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 863,
+    "name": "Cunard",
+    "website": "https://www.cunard.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 864,
+    "name": "Windstar Cruises",
+    "website": "https://www.windstarcruises.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 865,
+    "name": "Azamara",
+    "website": "https://www.azamara.com",
+    "industry": "Cruises"
+  },
+  {
+    "id": 866,
+    "name": "ZipRecruiter",
+    "website": "https://www.ziprecruiter.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 867,
+    "name": "Lever",
+    "website": "https://www.lever.co",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 868,
+    "name": "Greenhouse",
+    "website": "https://www.greenhouse.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 869,
+    "name": "Gusto",
+    "website": "https://gusto.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 870,
+    "name": "Rippling",
+    "website": "https://www.rippling.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 871,
+    "name": "Lattice",
+    "website": "https://lattice.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 872,
+    "name": "Deel",
+    "website": "https://www.deel.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 873,
+    "name": "Remote.com",
+    "website": "https://remote.com",
+    "industry": "HR & Recruiting"
+  },
+  {
+    "id": 874,
+    "name": "Sage",
+    "website": "https://www.sage.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 875,
+    "name": "Bench",
+    "website": "https://bench.co",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 876,
+    "name": "Pilot",
+    "website": "https://pilot.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 877,
+    "name": "TaxJar",
+    "website": "https://www.taxjar.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 878,
+    "name": "TaxAct",
+    "website": "https://www.taxact.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 879,
+    "name": "FreeTaxUSA",
+    "website": "https://www.freetaxusa.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 880,
+    "name": "Zoho Books",
+    "website": "https://www.zoho.com/books",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 881,
+    "name": "NetSuite",
+    "website": "https://www.netsuite.com",
+    "industry": "Accounting & Tax"
+  },
+  {
+    "id": 882,
+    "name": "Clio",
+    "website": "https://www.clio.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 883,
+    "name": "DocuSign Legal",
+    "website": "https://www.docusign.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 884,
+    "name": "Nolo",
+    "website": "https://www.nolo.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 885,
+    "name": "US Legal Forms",
+    "website": "https://www.uslegalforms.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 886,
+    "name": "LegalShield",
+    "website": "https://www.legalshield.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 887,
+    "name": "DoNotPay",
+    "website": "https://donotpay.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 888,
+    "name": "Justia",
+    "website": "https://www.justia.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 889,
+    "name": "UpCounsel",
+    "website": "https://www.upcounsel.com",
+    "industry": "Legal Services"
+  },
+  {
+    "id": 890,
+    "name": "Threads",
+    "website": "https://www.threads.net",
+    "industry": "Social Media"
+  },
+  {
+    "id": 891,
+    "name": "LinkedIn Social",
+    "website": "https://www.linkedin.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 892,
+    "name": "BeReal",
+    "website": "https://bereal.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 893,
+    "name": "Mastodon",
+    "website": "https://joinmastodon.org",
+    "industry": "Social Media"
+  },
+  {
+    "id": 894,
+    "name": "Bluesky",
+    "website": "https://bsky.app",
+    "industry": "Social Media"
+  },
+  {
+    "id": 895,
+    "name": "Lemon8",
+    "website": "https://www.lemon8-app.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 896,
+    "name": "Nextdoor",
+    "website": "https://www.nextdoor.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 897,
+    "name": "Clubhouse",
+    "website": "https://www.clubhouse.com",
+    "industry": "Social Media"
+  },
+  {
+    "id": 898,
+    "name": "Stan Store",
+    "website": "https://www.stan.store",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 899,
+    "name": "Beehiiv",
+    "website": "https://www.beehiiv.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 900,
+    "name": "ConvertKit",
+    "website": "https://convertkit.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 901,
+    "name": "Fourthwall",
+    "website": "https://fourthwall.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 902,
+    "name": "Podia",
+    "website": "https://www.podia.com",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 903,
+    "name": "Circle",
+    "website": "https://circle.so",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 904,
+    "name": "Linktree",
+    "website": "https://linktr.ee",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 905,
+    "name": "Spring",
+    "website": "https://www.spri.ng",
+    "industry": "Creator Economy"
+  },
+  {
+    "id": 906,
+    "name": "UPPAbaby",
+    "website": "https://uppababy.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 907,
+    "name": "Snoo",
+    "website": "https://www.happiestbaby.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 908,
+    "name": "Babylist",
+    "website": "https://www.babylist.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 909,
+    "name": "Owlet",
+    "website": "https://www.owletcare.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 910,
+    "name": "Lovevery",
+    "website": "https://lovevery.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 911,
+    "name": "Tubby Todd",
+    "website": "https://tubbytodd.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 912,
+    "name": "Newton Baby",
+    "website": "https://www.newtonbaby.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 913,
+    "name": "Graco",
+    "website": "https://www.gracobaby.com",
+    "industry": "Baby & Parenting"
+  },
+  {
+    "id": 914,
+    "name": "Hasbro",
+    "website": "https://www.hasbro.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 915,
+    "name": "VTech",
+    "website": "https://www.vtechkids.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 916,
+    "name": "Melissa & Doug",
+    "website": "https://www.melissaanddoug.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 917,
+    "name": "Fisher-Price",
+    "website": "https://www.fisher-price.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 918,
+    "name": "Bluey (BBC)",
+    "website": "https://www.bluey.tv",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 919,
+    "name": "Hot Wheels",
+    "website": "https://www.hotwheels.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 920,
+    "name": "National Geographic Kids",
+    "website": "https://kids.nationalgeographic.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 921,
+    "name": "KiwiCo",
+    "website": "https://www.kiwico.com",
+    "industry": "Kids & Family Entertainment"
+  },
+  {
+    "id": 922,
+    "name": "Porch",
+    "website": "https://porch.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 923,
+    "name": "Yelp Home",
+    "website": "https://www.yelp.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 924,
+    "name": "Houzz",
+    "website": "https://www.houzz.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 925,
+    "name": "Networx",
+    "website": "https://www.networx.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 926,
+    "name": "Pro Referral",
+    "website": "https://www.proreferral.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 927,
+    "name": "Bark",
+    "website": "https://www.bark.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 928,
+    "name": "Fixd Repair",
+    "website": "https://www.fixdrepair.com",
+    "industry": "Home Services"
+  },
+  {
+    "id": 929,
+    "name": "Hometree",
+    "website": "https://www.hometree.co.uk",
+    "industry": "Home Services"
+  },
+  {
+    "id": 930,
+    "name": "SC Johnson",
+    "website": "https://www.scjohnson.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 931,
+    "name": "Arm & Hammer",
+    "website": "https://www.armandhammer.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 932,
+    "name": "Blueland",
+    "website": "https://www.blueland.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 933,
+    "name": "Dropps",
+    "website": "https://www.dropps.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 934,
+    "name": "Grove Collaborative",
+    "website": "https://www.grove.co",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 935,
+    "name": "Tide",
+    "website": "https://tide.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 936,
+    "name": "OxiClean",
+    "website": "https://www.oxiclean.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 937,
+    "name": "Swiffer",
+    "website": "https://swiffer.com",
+    "industry": "Cleaning & Household"
+  },
+  {
+    "id": 938,
+    "name": "Vivint Solar",
+    "website": "https://www.vivintsolar.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 939,
+    "name": "Palmetto",
+    "website": "https://palmetto.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 940,
+    "name": "SolarEdge",
+    "website": "https://www.solaredge.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 941,
+    "name": "Freedom Solar",
+    "website": "https://freedomsolarpower.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 942,
+    "name": "Momentum Solar",
+    "website": "https://momentumsolar.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 943,
+    "name": "Trinity Solar",
+    "website": "https://www.trinitysolar.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 944,
+    "name": "Blue Raven Solar",
+    "website": "https://blueravensolar.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 945,
+    "name": "Generac",
+    "website": "https://www.generac.com",
+    "industry": "Solar & Renewable Energy"
+  },
+  {
+    "id": 946,
+    "name": "Bitwarden",
+    "website": "https://bitwarden.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 947,
+    "name": "ProtonVPN",
+    "website": "https://protonvpn.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 948,
+    "name": "Dashlane",
+    "website": "https://www.dashlane.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 949,
+    "name": "Aura",
+    "website": "https://www.aura.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 950,
+    "name": "IDShield",
+    "website": "https://www.idshield.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 951,
+    "name": "Privacy.com",
+    "website": "https://privacy.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 952,
+    "name": "Keeper Security",
+    "website": "https://www.keepersecurity.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 953,
+    "name": "Private Internet Access",
+    "website": "https://www.privateinternetaccess.com",
+    "industry": "Identity & Privacy"
+  },
+  {
+    "id": 954,
+    "name": "David's Bridal",
+    "website": "https://www.davidsbridal.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 955,
+    "name": "Shutterfly",
+    "website": "https://www.shutterfly.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 956,
+    "name": "Vistaprint Weddings",
+    "website": "https://www.vistaprint.com/wedding",
+    "industry": "Weddings"
+  },
+  {
+    "id": 957,
+    "name": "Paperless Post",
+    "website": "https://www.paperlesspost.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 958,
+    "name": "Azazie",
+    "website": "https://www.azazie.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 959,
+    "name": "BHLDN",
+    "website": "https://www.bhldn.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 960,
+    "name": "Honeyfund",
+    "website": "https://www.honeyfund.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 961,
+    "name": "AllSeated",
+    "website": "https://www.allseated.com",
+    "industry": "Weddings"
+  },
+  {
+    "id": 962,
+    "name": "Maersk",
+    "website": "https://www.maersk.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 963,
+    "name": "XPO Logistics",
+    "website": "https://www.xpo.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 964,
+    "name": "Shippo",
+    "website": "https://goshippo.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 965,
+    "name": "EasyShip",
+    "website": "https://www.easyship.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 966,
+    "name": "Pitney Bowes",
+    "website": "https://www.pitneybowes.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 967,
+    "name": "Stamps.com",
+    "website": "https://www.stamps.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 968,
+    "name": "ShipStation",
+    "website": "https://www.shipstation.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 969,
+    "name": "Sendle",
+    "website": "https://www.sendle.com",
+    "industry": "Logistics & Shipping"
+  },
+  {
+    "id": 970,
+    "name": "Reformation",
+    "website": "https://www.thereformation.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 971,
+    "name": "Girlfriend Collective",
+    "website": "https://www.girlfriend.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 972,
+    "name": "Who Gives A Crap",
+    "website": "https://www.whogivesacrap.org",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 973,
+    "name": "Pela Case",
+    "website": "https://www.pelacase.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 974,
+    "name": "Bite Toothpaste",
+    "website": "https://www.bitetoothpastebits.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 975,
+    "name": "Stasher",
+    "website": "https://www.stasherbag.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 976,
+    "name": "Pangaia",
+    "website": "https://thepangaia.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 977,
+    "name": "Cotopaxi",
+    "website": "https://www.cotopaxi.com",
+    "industry": "Sustainability"
+  },
+  {
+    "id": 978,
+    "name": "Bandcamp",
+    "website": "https://bandcamp.com",
+    "industry": "Music Streaming"
+  },
+  {
+    "id": 979,
+    "name": "Universe",
+    "website": "https://www.universe.com",
+    "industry": "Event Tickets"
+  },
+  {
+    "id": 980,
+    "name": "Taylor Guitars",
+    "website": "https://www.taylorguitars.com",
+    "industry": "Musical Instruments"
+  },
+  {
+    "id": 981,
+    "name": "Cinépolis",
+    "website": "https://www.cinepolis.com",
+    "industry": "Movie Theaters"
+  },
+  {
+    "id": 982,
+    "name": "Saxo Bank",
+    "website": "https://www.home.saxo",
+    "industry": "Investment App"
+  },
+  {
+    "id": 983,
+    "name": "Trezor",
+    "website": "https://trezor.io",
+    "industry": "Cryptocurrency"
+  },
+  {
+    "id": 984,
+    "name": "Quicken",
+    "website": "https://www.quicken.com",
+    "industry": "Financial Planning"
+  },
+  {
+    "id": 985,
+    "name": "Alto Insurance",
+    "website": "https://www.altoinsurance.com",
+    "industry": "Insurance"
+  },
+  {
+    "id": 986,
+    "name": "Sling TV",
+    "website": "https://www.sling.com",
+    "industry": "Sports Streaming"
+  },
+  {
+    "id": 987,
+    "name": "Arc'teryx",
+    "website": "https://arcteryx.com",
+    "industry": "Sports Apparel"
+  },
+  {
+    "id": 988,
+    "name": "HEAD",
+    "website": "https://www.head.com",
+    "industry": "Sports Equipment"
+  },
+  {
+    "id": 989,
+    "name": "Rally House",
+    "website": "https://www.rallyhouse.com",
+    "industry": "Sports Merchandise"
+  },
+  {
+    "id": 990,
+    "name": "Nothing Phone",
+    "website": "https://nothing.tech",
+    "industry": "Consumer Electronics"
+  },
+  {
+    "id": 991,
+    "name": "Render",
+    "website": "https://render.com",
+    "industry": "Software & Cloud"
+  },
+  {
+    "id": 992,
+    "name": "Scout Motors",
+    "website": "https://www.scoutmotors.com",
+    "industry": "Electric Vehicles"
+  },
+  {
+    "id": 993,
+    "name": "NZXT",
+    "website": "https://nzxt.com",
+    "industry": "Computer Hardware"
+  },
+  {
+    "id": 994,
+    "name": "Republic Wireless",
+    "website": "https://republicwireless.com",
+    "industry": "Telecom"
+  },
+  {
+    "id": 995,
+    "name": "Rest of World",
+    "website": "https://restofworld.org",
+    "industry": "News Media"
+  },
+  {
+    "id": 996,
+    "name": "Audm",
+    "website": "https://www.audm.com",
+    "industry": "Audiobooks"
+  },
+  {
+    "id": 997,
+    "name": "Sundae",
+    "website": "https://sundae.com",
+    "industry": "Real Estate"
+  },
+  {
+    "id": 998,
+    "name": "Spot & Tango",
+    "website": "https://www.spotandtango.com",
+    "industry": "Pet Products"
+  },
+  {
+    "id": 999,
+    "name": "Talkiatry",
+    "website": "https://www.talkiatry.com",
+    "industry": "Healthcare"
+  },
+  {
+    "id": 1000,
+    "name": "CB2",
+    "website": "https://www.cb2.com",
+    "industry": "Home & Garden"
+  }
+]

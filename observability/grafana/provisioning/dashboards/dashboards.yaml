@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: 'Contextual Ads Dashboards'
+    orgId: 1
+    folder: 'Contextual Ads'
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards

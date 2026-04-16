@@ -1,6 +1,6 @@
 package request
 
-type AdRequest struct {
+type AdServeRequest struct {
 	PublisherID string  `json:"publisherId"`
 	Context     Context `json:"context"`
 	Device      Device  `json:"device"`
